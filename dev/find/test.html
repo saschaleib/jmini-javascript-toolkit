@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>jMini lib Test for Find functions</title>
+		<script src="find.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>jMini Tests – Find functions</h1>
+		<h2>List</h2>
+		<ul>
+			<li id="item-1" class="odd">First</li>
+			<li id="item-2" class="even">Second</li>
+			<li id="item-3" class="odd">Third</li>
+			<li id="item-4" class="even">Fourth</li>
+			<li id="item-5" class="odd">Fifth</li>
+			<li id="item-6" class="even">Sixt</li>
+			<li id="item-7" class="odd">Seventh</li>
+			<li id="item-8" class="even">Eight</li>
+			<li id="item-9" class="odd">Ninth</li>
+			<li id="item-1" class="even">Tenth</li>
+		</ul>
+		
+		<p>See console for test results.</p>
+		
+		<script type="text/javascript">
+		
+			console.group('FIND FUNCTIONS:');
+			
+				console.group("1. Find element by tag name:");
+				
+					console.log("1.1 Find body element:");
+					let body = $M.find.tags('body');
+					console.info(" Expected: HTMLCollection with one element, representing the <body> element:");
+					console.log(body);
+
+					console.log("1.1 Find <li> elements:");
+					let lis = $M.find.tags('li');
+					console.info(" Expected: HTMLCollection with 10 elements, representing the ten list items on the page:");
+					console.log(lis);
+
+					console.log("1.1 Find not existing elements:");
+					let addr = $M.find.tags('address');
+					console.info(" Expected: Empty HTMLCollection with 0 elements:");
+					console.log(addr);
+					
+				console.groupEnd();
+				console.group("2. Find element by ID:");
+				
+					console.log("2.1 Find element with ID 'item-7':");
+					let it7 = $M.find.id('item-7');
+					console.info(" Expected: Element object of <li> mit ID #item-7:");
+					console.log(it7);
+		
+					console.log("2.2 Find element with non-existing ID:");
+					let it0 = $M.find.id('item-0');
+					console.info(" Expected: null");
+					console.log(it0);
+		
+					console.log("2.2 Find element with duplicate ID:");
+					let it1b = $M.find.id('item-1');
+					console.info(" Expected: Element object of <li> with ID #item-1 and class '.odd':");
+					console.log(it1b);
+
+				console.groupEnd();
+				console.group("3. Find elements by Class name:");
+				
+					console.log("3.1 Find elements with class 'odd':");
+					let cOdd = $M.find.class('odd');
+					console.info(" Expected: HTMLCollection with 5 <li> elements, all with the class '.odd':");
+					console.log(cOdd);
+					
+					console.log("3.1 Find elements with nonexisting class:");
+					let cNot = $M.find.class('whatever');
+					console.info(" Expected: Empty HTMLCollection with 0 elements:");
+					console.log(cNot);
+
+				console.groupEnd();
+				console.group("4 Find elements by CSS query:");
+
+					console.log("4.1 Find <li> elements with class 'even':");
+					let q1 = $M.find.q('li.even');
+					console.info(" Expected: NodeList with 5 <li> elements, all with the class '.even':");
+					console.log(q1);
+
+					console.log("4.2 Find <ul> after <h2>:");
+					let q2 = $M.find.q('h2 + ul');
+					console.info(" Expected: NodeList containing one <ul> element:");
+					console.log(q2);
+
+					console.log("4.3 Find any headline element");
+					let q3 = $M.find.q('h1,h2,h3,h4,h5,h6');
+					console.info(" Expected: NodeList containing two element, one <h1> and one <h2>:");
+					console.log(q3);
+
+					console.log("4.2 Find only the first li with class 'even':");
+					let q4 = $M.find.q('li.even', false);
+					console.info(" Expected: NodeList containing one <li> element with class '.even':");
+					console.log(q4);
+
+					console.log("4.5 Illegal query string");
+					console.info(" Expected: DOMExceltion (caught and logged to console), return value 'null':");
+					let q5 = $M.find.q('h1 &+. h2');
+					console.log(q5);
+					
+					console.log('Test: the caught exception should not stop the program flow.');
+
+				console.groupEnd();
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>
