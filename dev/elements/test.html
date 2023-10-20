@@ -8,8 +8,8 @@
 	</head>
 	<body>
 		<h1>jMini Tests – Element functions</h1>
-		<main>
-			<h2>Main</h2>
+		<main data-itemid="main-item">
+			<h2><span title="Main Content">Main</span></h2>
 			<ul></ul>
 		</main>
 		<footer>
@@ -38,7 +38,7 @@
 				console.log("2.1 add a text node to the <p>:");
 				console.info(" Expected: HTML of <p> element  with text content:");
 				p.text("Dolor sit amet... ");
-				console.log(p.html());
+				console.log(p.outerHTML);
 
 			console.groupEnd();
 			console.group("3. Append element nodes:");
@@ -46,15 +46,47 @@
 				console.log("3.1 append a new <li> to the (initially empty) list:");
 				let ul = document.getElementsByTagName('ul')[0];
 				let li1 = $M.e.new('li').text("First item.");
-				console.log(li1.html());
+				console.log(li1.outerHTML);
 				ul.append(li1);
 				console.info(" Expected: The new bullet point with text should appear in the document.");
 
 				console.log("3.2 create another <li> with a <em> child and some text:");
 				let li2 = $M.e.new('li').append($M.e.new('em').text("Second item"));
-				console.log(li2.html());
+				console.log(li2.outerHTML);
 				ul.append(li2);
 				console.info(" Expected: The new bullet point with italic text should appear in the document.");
+
+			console.groupEnd();
+			console.group("4. Get attributes:");
+			
+				console.log("4.1 get the itemId from <main>:");
+				let itemId = document.getElementsByTagName('main')[0].attr('data-itemid');
+				console.info(" Expected: the itemId:");
+				console.log('data-itemid="' + itemId + '"');
+
+				console.log("4.2 get the title from <h2>:");
+				let title = document.querySelectorAll('h2 span')[0].attr('title');
+				console.info(" Expected: the title text:");
+				console.log('title="' + title + '"');
+
+			console.groupEnd();
+			console.group("5. Chaining tests:");
+			
+				console.log("5.1 Chain a text node after the attr() call:");
+				console.info(" Expected: New list item 'Third element' with attributes appears on screen.");
+				let li = document.createElement('li');
+				li.attr('id', 'item-3')
+				  .attr('title', 'third')
+				  .text('Third element');
+				document.querySelectorAll('main ul')[0].append(li);
+
+			console.groupEnd();
+			console.group("6. Set attributes:");
+			
+				console.log("6.1 Add a new title to the <h1> headline:");
+				document.getElementsByTagName('h1')[0].attr('title', 'Lorem ipsum...')
+				console.info(" Expected: The new title attribute appears in the headline element.");
+				console.log(document.getElementsByTagName('h1')[0].outerHTML);
 
 			console.groupEnd();
 

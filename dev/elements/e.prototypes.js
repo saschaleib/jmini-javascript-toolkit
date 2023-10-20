@@ -15,14 +15,6 @@ Element.prototype.text = function(txt = null) {
 	}
 }
 
-/* Gets the html content of an element */
-/* parameter: none */
-/* parent object: Element */
-/* returns: the outer HTML of the element (String) */
-Element.prototype.html = function() {
-	return this.outerHTML;
-}
-
 /* appends a child element to the passed. Uses chaining to pass the object reference */
 /* parameter: (required) child element/node */
 /* parent object: Element */
@@ -31,4 +23,20 @@ Element.prototype.html = function() {
 Element.prototype.append = function(e) {
 	this.appendChild(e);
 	return this;
+}
+
+/* Gets or sets an attribute from an element */
+/* parameter: name (String) the name of the attribute, */
+/* parameter: value (String, optional) the value for the attribute */
+/* parent object: Element */
+/* returns: the value of the attribute (String) if no value is set, */
+/* returns: the parent element (Object) if value is set */
+/* Support: DOM Level 1 (1998) */
+Element.prototype.attr = function(n, v = null) {
+	if (v) {
+		this.setAttribute(n, v);
+		return this;
+	} else {
+		return this.getAttribute(n);
+	}
 }
