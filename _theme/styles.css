@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/* Stylesheet for the jMini Download page
+ * File name: styles.css
+ */
+ 
+html, body {
+	background-color: #FFF;
+	color: #333;
+	padding: 0;
+	margin: 0;
+}
+
+body > header,
+body > main,
+body > footer {
+	width: 100%;
+	max-width: 990px;
+	margin: 0 auto;
+	padding: 0 .25rem;
+}
+
+/* the topics download list: */
+#topics-list {
+	width: calc(100% - .5rem);
+	background-color: #232327;
+	color: #B1B1B3;
+	font-family: -apple-system, Segoe UI, Roboto, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
+	border: #38383D solid 1px;
+	border-radius: 1rem;
+}
+#topics-list header {
+	background-color: #18181A;
+	border-bottom: #38383D solid 2px;
+	border-radius: 1rem 1rem 0 0;
+}
+#topics-list header p {
+	margin: .15rem 0 .25rem .25rem;
+	padding: .25rem .5rem;
+	display: grid;
+	grid-template-columns: auto max-content 3em;
+}
+#topics-list header p span.label {
+	font-weight: bold;
+}
+
+#topics-list footer {
+	background-color: #0C0C0D;
+	border-top: #38383D solid 2px;
+	border-radius: 0 0 1rem 1rem;
+	text-align: center;
+}
+#topics-list footer button[type=submit] {
+	background: #0C0C0D url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" style="fill:%23B3B3B3" /%3E%3C/svg%3E') right center no-repeat;
+	color: #B3B3B3;
+	border: none;
+	padding: .5rem 1.75em .5rem .5rem;
+	cursor: pointer;
+	font-size: smaller;
+	background-size: 1.5em;
+}
+
+#topics-list footer button[type=submit]:hover {
+	text-decoration: underline;
+	background-color: #232327;
+}
+
+/* list elements */
+#topics-list details {
+	/*border-bottom: #333 solid 1px;*/
+}
+#topics-list details:last-child() {
+	/*border-bottom:transparent none 0;*/
+}
+#topics-list form > details summary {
+	display: grid;
+	grid-template-columns: 1.75em auto max-content 3em;
+	padding: .25rem .5rem;
+	border-bottom: #333 solid 1px;
+	cursor: pointer;
+}
+#topics-list form > details summary::before {
+	content: '';
+	background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L10.11,5.22L16,8.61L17.96,7.5L12,4.15M6.04,7.5L12,10.85L13.96,9.75L8.08,6.35L6.04,7.5M5,15.91L11,19.29V12.58L5,9.21V15.91M19,15.91V9.21L13,12.58V19.29L19,15.91Z' style='fill:%23888'/%3E%3C/svg%3E") center no-repeat;
+	background-size: 1.25em;
+}
+#topics-list details summary span.label {
+	font-weight: bold;
+}
+
+#topics-list details summary::marker {
+	display: none;
+}
+#topics-list details summary:hover {
+	background-color: #353B48;
+}
+#topics-list details summary:hover span.label {
+	text-decoration: underline;
+}
+
+/* sub-list */
+#topics-list .sub-items {
+	margin: 0 .5em;
+	padding-left: .25em;
+	border-left: #38383D solid 2px;
+}
+#topics-list .sub-items p {
+	margin: 0; padding: 0;
+}
+#topics-list .sub-items details summary {
+	display: grid;
+	grid-template-columns: 1.75em max-content auto max-content 1.25em;
+	padding: .25rem 1.5rem .25rem .5rem;
+	cursor: pointer;
+}
+#topics-list .sub-items details summary::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 3C3.9 3 3 3.9 3 5S2.1 7 1 7V9C2.1 9 3 9.9 3 11S3.9 13 5 13H7V11H5V10C5 8.9 4.1 8 3 8C4.1 8 5 7.1 5 6V5H7V3M11 3C12.1 3 13 3.9 13 5S13.9 7 15 7V9C13.9 9 13 9.9 13 11S12.1 13 11 13H9V11H11V10C11 8.9 11.9 8 13 8C11.9 8 11 7.1 11 6V5H9V3H11M22 6V18C22 19.11 21.11 20 20 20H4C2.9 20 2 19.11 2 18V15H4V18H20V6H17.03V4H20C21.11 4 22 4.89 22 6Z' style='fill:%2388888A' /%3E%3C/svg%3E");
+}
+
+#topics-list .sub-items details summary .desc {
+	font-style: italic;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#topics-list .sub-items details summary .desc::before {
+	content: ' – ';
+}
+
+#topics-list .sub-items details[open] summary {
+	border-bottom-color: transparent;
+}
+#topics-list .sub-items details[open] .desc {
+	visibility: hidden;
+}
+#topics-list .sub-items details[open] {
+	padding-bottom: .25em;
+	border-bottom: #333 solid 2px;
+}
+#topics-list .sub-items details p {
+	margin-left: 2.5em;
+}
+
+/* loader animation from https://loading.io/css/ */
+.loading-anim {
+	display: inline-block;
+	position: relative;
+	width: 20px;
+	height: 1em;
+	margin-left: .5em;
+}
+.loading-anim div {
+	display: inline-block;
+	position: absolute;
+	left: 2px;
+	width: 4px;
+	background: #204E8A;
+	animation: loading-anim 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loading-anim div:nth-child(1) {
+	left: 2px;
+	animation-delay: -0.24s;
+}
+.loading-anim div:nth-child(2) {
+	left: 8px;
+	animation-delay: -0.12s;
+}
+.loading-anim div:nth-child(3) {
+	left: 14px;
+	animation-delay: 0;
+}
+@keyframes loading-anim {
+ 0% { top: 2px; height: 16px; }
+ 50%, 100% { top: 6px; height: 8px; }
+}

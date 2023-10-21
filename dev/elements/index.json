@@ -1,6 +1,7 @@
 [
 	{
-		"name": "<i>&lt;Element&gt;</i>.append",
+		"id": "element_append",
+		"name": ".<b>append</b>(…)",
 		"desc": "Appends an Element inside of an existing Element (at the end).",
 		"variants": [
 		  {
@@ -22,10 +23,12 @@
 		  }
 		],
 		"size": 70,
-		"depends_on": []
+		"requires": [],
+		"conflics": []
 	},
 	{
-		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
+		"id": "element_attr",
+		"name": ".<b>attr</b>(…)",
 		"desc": "Gets or sets an attribute of an Element.",
 		"variants": [
 		  {
@@ -46,7 +49,7 @@
 			}
 		  },
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;, value <i>&lt;String&gt;</i>)",
+			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>, value <i>&lt;String&gt;</i>)",
 			"desc": "Returns the value of an attribute of the Element.",
 			"flags": [],
 			"param": [
@@ -70,10 +73,12 @@
 		  }
 		],
 		"size": 103,
-		"depends_on": []
+		"requires": [],
+		"conflics": []
 	},
 	{
-		"name": "Element.<b>new</b>",
+		"id": "element_new",
+		"name": ".<b>new</b>(…)",
 		"desc": "Creates a new Element.",
 		"variants": [
 		  {
@@ -95,10 +100,12 @@
 		  }
 		],
 		"size": 103,
-		"depends_on": []
+		"requires": [],
+		"conflics": []
 	},
 	{
-		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
+		"id": "element_text",
+		"name": ".<b>text</b>(…)",
 		"desc": "Gets or sets the text node of an Element",
 		"variants": [
 		  {
@@ -130,6 +137,45 @@
 		  }
 		],
 		"size": 93,
-		"depends_on": []
+		"requires": [],
+		"conflics": []
+	},
+	{
+		"id": "element_html",
+		"name": ".<b>html</b>(…)",
+		"desc": "Gets or sets the HTML content of an element",
+		"variants": [
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>()",
+			"desc": "Returns the HTML content the Element.",
+			"flags": [],
+			"param": [],
+			"returns": {
+				"type": "String",
+				"desc": "The inner HTML of the Element as String."
+			}
+		  },
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
+			"desc": "Sets the HTML content of the Element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "xhtml",
+				"type": "String",
+				"desc": "The HTML code to interpret and assign to the Element content.",
+				"note": "The parser is strict and requires valid XHTML!",
+				"required": true
+				}
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The (modified) parent Element."
+			}
+		  }
+		],
+		"size": 93,
+		"requires": [],
+		"conflics": []
 	}
 ]
