@@ -3,8 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>jMini lib Test for Element functions</title>
-		<script src="elements.js" type="text/javascript"></script>
-		<script src="e.prototypes.js" type="text/javascript"></script>
+		<script src="Element.new.js" type="text/javascript"></script>
+		<script src="Element.text.js" type="text/javascript"></script>
+		<script src="Element.append.js" type="text/javascript"></script>
+		<script src="Element.attr.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<h1>jMini Tests – Element functions</h1>
@@ -23,13 +25,13 @@
 			console.group("1. Create new elements:");
 			
 				console.log("1.1 create a new <p> element:");
-				let p = $M.e.new('p');
+				let p = Element.new('p');
 				console.info(" Expected: the newly created <p> element:");
 				console.log(p);
 
 				console.log("1.2 create an illegal element name:");
 				console.info(" Expected: DOMException, returns null element:");
-				let ne = $M.e.new('x/y&g#N');
+				let ne = Element.new('x/y&g#N');
 				console.log(ne);
 				
 			console.groupEnd();
@@ -45,13 +47,13 @@
 			
 				console.log("3.1 append a new <li> to the (initially empty) list:");
 				let ul = document.getElementsByTagName('ul')[0];
-				let li1 = $M.e.new('li').text("First item.");
+				let li1 = Element.new('li').text("First item.");
 				console.log(li1.outerHTML);
 				ul.append(li1);
 				console.info(" Expected: The new bullet point with text should appear in the document.");
 
 				console.log("3.2 create another <li> with a <em> child and some text:");
-				let li2 = $M.e.new('li').append($M.e.new('em').text("Second item"));
+				let li2 = Element.new('li').append(Element.new('em').text("Second item"));
 				console.log(li2.outerHTML);
 				ul.append(li2);
 				console.info(" Expected: The new bullet point with italic text should appear in the document.");
