@@ -4,6 +4,7 @@
 		"name": "Element.<b>new</b>",
 		"type": "static",
 		"desc": "Creates a new Element.",
+		"file": "Element.new.min.js",
 		"variants": [
 		  {
 			"sig": "Element.<b>new</b>(name <i>&lt;String&gt;</i>)",
@@ -33,6 +34,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>append</b>",
 		"type": "prototype",
 		"desc": "Appends an Element inside of an existing Element (at the end).",
+		"file": "Element.append.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>append</b>(e <i>&lt;Element&gt;</i>)",
@@ -52,7 +54,7 @@
 			}
 		  }
 		],
-		"size": 70,
+		"size": 121,
 		"requires": ["element_html"],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
@@ -62,6 +64,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
 		"type": "prototype",
 		"desc": "Gets or sets an attribute of an Element.",
+		"file": "Element.attr.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>)",
@@ -114,6 +117,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>html</b>",
 		"type": "prototype",
 		"desc": "Gets or sets the HTML content of an element",
+		"file": "Element.html.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>()",
@@ -144,7 +148,7 @@
 			}
 		  }
 		],
-		"size": 93,
+		"size": 202,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
@@ -154,6 +158,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
 		"type": "prototype",
 		"desc": "Gets or sets the text node of an Element",
+		"file": "Element.text.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>text</b>()",

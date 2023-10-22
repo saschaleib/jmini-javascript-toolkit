@@ -19,6 +19,7 @@ let $P = {
 		$P.list.init();
 		
 		$P.gui.busy.end();
+
 	},
 	
 	gui: {
@@ -38,6 +39,9 @@ let $P = {
 						break;
 					case 'topic':
 						$P.data.changeTopicState(e.target);
+						break;
+					case 'all':
+						$P.data.changeAllState(e.target);
 						break;
 					default:
 						console.warn("No handler for checkbox scope '" + e.target.attr('data-scope') + "' available!")
@@ -111,6 +115,25 @@ let $P = {
 			}
 		},
 
+		/* changes the status of all elements, depending on the status of the all checkbox. */
+		changeAllState: function(cb) {
+			let nv = ( cb.checked ? 1 : 0 ); /* 'checked' is a tri-state in some contexts, that is why it needs to be cast to a number! */
+
+			/* loop over all topics */
+			let M = $P.data._model;
+			M.forEach( (topic) => {
+				topic._function.forEach( (func) => {
+					
+					if (!func._status || func._status !== 'error') {
+						func._checked = nv;
+						func._checkbox.checked = (nv == 1);
+					}
+					
+				});
+				$P.data.recalculateTopic(topic);
+			});
+		},
+
 		/* changes the status of a topic element, depending on the status of its checkbox. */
 		changeTopicState: function(cb) {
 			
@@ -122,8 +145,11 @@ let $P = {
 				let topic = $P.data.findTopic(ref);
 				topic._checked = nv;				
 				topic._function.forEach( (func) => {
-					func._checked = nv;
-					func._checkbox.checked = (nv == 1);
+
+					if (!func._status || func._status !== 'error') {
+						func._checked = nv;
+						func._checkbox.checked = (nv == 1);
+					}
 				});
 				
 				$P.data.recalculateTopic(topic);
@@ -240,9 +266,8 @@ let $P = {
 			var cCount = 0; /* number of checked or partially checked items */
 
 			/* loop over the topics */
-			let M = $P.data._model;
-			for (var i=0; i<M.length; i++) {
-				let T = M[i];
+			for (var i=0; i<$P.data._model.length; i++) {
+				let T = $P.data._model[i];
 				total += T.size;
 				if (T._checked < 1) { cStatus = -1; }
 				if (Math.abs(T._checked) == 1) { cCount += 1; }
@@ -259,12 +284,52 @@ let $P = {
 				$P.data._head._checkbox.checked = (cStatus > 0);
 				$P.data._head._checkbox.indeterminate = false;
 			}
-		}
+		},
+
 	},
 		
 	list: {
 		init: function() {
 			$P.list._loadJSONFile('dev/index.json', $P.list.buildRoot);
+		},
+
+		/* generate a single download file */
+		download: function(e) {
+			
+			e.preventDefault();
+			
+			var code = "'use strict'\n";
+			
+			$P.data._model.forEach( (topic) => {
+				
+				if (topic._checked !== 0 ) {
+					code += "/* " + topic.title + " */\n";
+					
+					topic._function.forEach( (func) => {
+						//console.log(func);
+						
+						if (func._checked > 0 ) {
+							code += func._code + "\n";
+						}
+						
+					});
+				}
+			});
+
+			console.info(code);
+			
+			/* prepare the download woraround: */
+			let tmpLink = Element.new('a')
+				.attr('download', 'jmini.js')
+				.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code))
+			;
+			tmpLink.style.display = 'none';
+			document.body.append(tmpLink);
+			
+			tmpLink.click();
+			
+			document.body.removeChild(tmpLink);
+			
 		},
 
 		/* build the root level of the list */
@@ -355,13 +420,15 @@ let $P = {
 			/* add the footer items: */
 			let footer = Element.new('footer')
 				.append(Element.new('button')
+					.on('click', $P.list.download)
 					.attr('type', 'submit')
 					.text('Download')
-				);
+				)
+			;
 			form.append(footer);
 
 			main.append(section);
-			
+
 			/* done. now load the sub-items: */
 			$P.list.loadSubItems();
 			
@@ -375,18 +442,22 @@ let $P = {
 			
 			/* loop over all the loaded items and load the sub-info: */
 			$P.data._model.forEach((topic) => {
-				
 				$P.list._loadJSONFile('dev/' + topic.path + 'index.json', $P.list.builditem, topic);
 			});
+
 		},
 		
 		builditem: function(json, topic) {
+
+			//console.info(topic);
 
 			/* store the loaded data in the model */
 			topic._function = json;
 
 			/* create elements for each function: */
 			json.forEach((func) => {
+
+				//console.info(func);
 
 				/* first create the checkbox and store a reference in the model: */
 				let checkbox = $P.gui.make.checkbox('function', 'cb-2-' + func.id, true, func.id)
@@ -450,9 +521,38 @@ let $P = {
 						.append('<a href="' + func.moreinfo + '" target="_blank">More information</a>')
 					)
 				}
-
-				topic._sublist.append(item);
 				
+				/* load the file content: */
+				let path = 'dev/' + topic.path + func.file;
+				$P.list._loadCodeFile(path, (code, func) => {
+					
+					func._code = code;
+					
+					if (code.length !== func.size) {
+						func.size = code.length;
+						if (func._sizefield) {
+							func._sizefield.text($P.list._formatBytes(func.size));
+						}
+					}
+				}, func, (e) => {
+					
+					/* an error occured! */
+					console.warn(e);
+					console.info(func);
+					
+					func.size = 0;
+					if (func._sizefield) {
+						func._status = 'error';
+						func._sizefield.text('[error]').attr('class', 'funcSize error');
+						func._checkbox.checked = false;
+						func._checkbox.attr('disabled', 'disabled');
+						func._checked = 0;
+					}
+					
+				});
+
+				/* append to list: */
+				topic._sublist.append(item);
 			})
 		},
 		
@@ -462,6 +562,25 @@ let $P = {
 				.then(response => response.json())
 				.then(jsonResponse => callback(jsonResponse, context));
 		},
+		
+		/* todo: this should be added to jMini: */
+		_loadCodeFile: async function(path, callback, context, errorCallback) {
+
+			$P.gui.busy.start();
+
+			console.info("Loading from: " + path);
+			try {
+				let response = await fetch(path);
+				if (!response.ok) {	throw new Error(`HTTP error! Status: ${response.status}`); }
+				let code = await response.text();
+				callback(code, context);
+			} catch(e) {
+				errorCallback(e);
+			}
+
+			$P.gui.busy.end();
+		},
+
 		
 		/* helper function to format bytes in a more friendly way */
 		/* (from https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript) */

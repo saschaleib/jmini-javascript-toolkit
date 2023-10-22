@@ -80,12 +80,6 @@ body > footer {
 }
 
 /* list elements */
-#topics-list details {
-	/*border-bottom: #333 solid 1px;*/
-}
-#topics-list details:last-child() {
-	/*border-bottom:transparent none 0;*/
-}
 #topics-list form > details summary {
 	display: grid;
 	grid-template-columns: 1.75em auto max-content 3em;
@@ -148,6 +142,9 @@ body > footer {
 }
 #topics-list .sub-items details summary .funcSize {
 	font-size: small;
+}
+#topics-list .sub-items details summary .funcSize.error {
+	color: #FF3B6B;
 }
 
 #topics-list .sub-items details[open] summary {
@@ -217,7 +214,7 @@ body > footer {
 }
 .loading-anim div:nth-child(3) {
 	left: 14px;
-	animation-delay: 0;
+	animation-delay: 0s;
 }
 @keyframes loading-anim {
  0% { top: 2px; height: 16px; }

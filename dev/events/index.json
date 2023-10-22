@@ -4,6 +4,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>on</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an Element.",
+		"file": "Element.on.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>on</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
@@ -39,6 +40,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>once</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an Element that will be called at most one time.",
+		"file": "Element.once.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>once</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
@@ -73,6 +75,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>click</b>",
 		"type": "prototype",
 		"desc": "Attaches a handler for the 'click' event to an Element.",
+		"file": "Element.click.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>click</b>(callback <i>&lt;Function&gt;</i>)",
@@ -102,6 +105,7 @@
 		"name": "<i>&lt;Element&gt;</i>.<b>off</b>",
 		"type": "prototype",
 		"desc": "Removes an event handler from an Element.",
+		"file": "Element.off.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Element&gt;</i>.<b>off</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
@@ -127,7 +131,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 81,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
