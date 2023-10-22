@@ -1,37 +1,6 @@
 [
 	{
-		"id": "element_new",
-		"name": "Element.<b>new</b>",
-		"type": "static",
-		"desc": "Creates a new Element.",
-		"variants": [
-		  {
-			"sig": "Element.<b>new</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Factory method to create a new Element with the passed name.",
-			"flags": ["static"],
-			"param": [
-			  {
-				"name": "Name",
-				"type": "String",
-				"desc": "The name of the Element to create",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The newly created Element (or <i>null</i> if the Element could not be created)"
-			}
-		  }
-		],
-		"size": 103,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
-	},
-	{
-		"id": "element_append",
-		"name": "<i>&lt;Element&gt;</i>.<b>append</b>",
-		"type": "prototype",
+		"name": "<i>&lt;Element&gt;</i>.append",
 		"desc": "Appends an Element inside of an existing Element (at the end).",
 		"variants": [
 		  {
@@ -41,8 +10,8 @@
 			"param": [
 			  {
 				"name": "Element",
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>) or <i>&lt;Object&gt;</i>",
-				"desc": "The element to add, or an HTML string to generate (synonym to Element.html)",
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The element to add",
 				"required": true
 			  }
 			],
@@ -53,14 +22,10 @@
 		  }
 		],
 		"size": 70,
-		"requires": ["element_html"],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
+		"depends_on": []
 	},
 	{
-		"id": "element_attr",
 		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
-		"type": "prototype",
 		"desc": "Gets or sets an attribute of an Element.",
 		"variants": [
 		  {
@@ -81,7 +46,7 @@
 			}
 		  },
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>, value <i>&lt;String&gt;</i>)",
+			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;, value <i>&lt;String&gt;</i>)",
 			"desc": "Returns the value of an attribute of the Element.",
 			"flags": [],
 			"param": [
@@ -105,54 +70,35 @@
 		  }
 		],
 		"size": 103,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/attr.html"
+		"depends_on": []
 	},
 	{
-		"id": "element_html",
-		"name": "<i>&lt;Element&gt;</i>.<b>html</b>",
-		"type": "prototype",
-		"desc": "Gets or sets the HTML content of an element",
+		"name": "Element.<b>new</b>",
+		"desc": "Creates a new Element.",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>()",
-			"desc": "Returns the HTML content the Element.",
-			"flags": [],
-			"param": [],
-			"returns": {
-				"type": "String",
-				"desc": "The inner HTML of the Element as String."
-			}
-		  },
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
-			"desc": "Sets the HTML content of the Element.",
-			"flags": [],
+			"sig": "Element.<b>new</b>(name <i>&lt;String&gt;</i>)",
+			"desc": "Factory method to create a new Element with the passed name.",
+			"flags": ["static"],
 			"param": [
 			  {
-				"name": "xhtml",
+				"name": "Name",
 				"type": "String",
-				"desc": "The HTML code to interpret and assign to the Element content.",
-				"note": "The parser is strict and requires valid XHTML!",
+				"desc": "The name of the Element to create",
 				"required": true
-				}
+			  }
 			],
 			"returns": {
 				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"desc": "The newly created Element (or <i>null</i> if the Element could not be created)"
 			}
 		  }
 		],
-		"size": 93,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
+		"size": 103,
+		"depends_on": []
 	},
 	{
-		"id": "element_text",
 		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
-		"type": "prototype",
 		"desc": "Gets or sets the text node of an Element",
 		"variants": [
 		  {
@@ -184,8 +130,6 @@
 		  }
 		],
 		"size": 93,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/text.html"
+		"depends_on": []
 	}
 ]

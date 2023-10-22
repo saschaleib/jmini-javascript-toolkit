@@ -6,7 +6,7 @@
 Element.prototype.html = function(xhtml = null) {
 	if (xhtml) {
 		let parser = new DOMParser();
-		let doc = parser.parseFromString('<span>' + xhtml + '</span>', 'application/xml');
+		let doc = parser.parseFromString('<div>' + xhtml + '</div>', 'application/xml');
 		this.innerHTML = doc.documentElement.innerHTML;
 		return this;
 	} else {

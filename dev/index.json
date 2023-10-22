@@ -1,19 +1,19 @@
 {
-	"version": "2023-10-21",
+	"version": "2023-10-22",
 	"topics": [
 		{
 			"id": "elements",
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
-			"size": 517
+			"size": 462
 		},
 		{
 			"id": "events",
 			"title": "Events",
 			"desc": "Everything related to event handling.",
 			"path": "events/",
-			"size": 12367890
+			"size": 162
 		}
 	]
 }
