@@ -19,8 +19,6 @@ let $P = {
 		$P.list.init();
 		
 		$P.gui.busy.end();
-		
-		console.log('Main thread ready.');
 	},
 	
 	gui: {
@@ -263,12 +261,9 @@ let $P = {
 			}
 		}
 	},
-	
-	
+		
 	list: {
 		init: function() {
-			console.log("$P.list.init()");
-			
 			$P.list._loadJSONFile('dev/index.json', $P.list.buildRoot);
 		},
 
@@ -276,7 +271,7 @@ let $P = {
 		buildRoot: function(json) {
 			
 			let version = json.version;
-			console.info("Version: " + version);
+			console.info("Index file version: " + version);
 			
 			// TODO: check if version is OK!
 			
@@ -483,5 +478,6 @@ let $P = {
 		}
 	}
 }
-// init when document is ready: 
-$(function() { $P.init(); });
+
+/* init when document is ready: */
+this.addEventListener('DOMContentLoaded', $P.init, false);

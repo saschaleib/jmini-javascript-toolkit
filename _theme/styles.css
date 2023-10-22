@@ -35,10 +35,19 @@ body > footer {
 	border-radius: 1rem 1rem 0 0;
 }
 #topics-list header p {
-	margin: .15rem 0 .25rem .25rem;
+	margin:.15rem 0 .25rem 0;
 	padding: .25rem .5rem;
 	display: grid;
-	grid-template-columns: auto max-content 3em;
+	grid-template-columns: 2em auto max-content 3em;
+}
+#topics-list header p::before {
+	content: '♊︎';
+	border: #888 solid 1pt;
+	border-radius: 50%;
+	text-align: center;
+	margin-right: .7em;
+	line-height: 1.1em;
+	font-size: .9em;
 }
 #topics-list header p span.label {
 	font-weight: bold;
