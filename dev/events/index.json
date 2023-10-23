@@ -103,5 +103,34 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
+	},
+	{	"id": "element_onclick",
+		"name": "<i>&lt;Element&gt;</i>.<b>onClick</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'click' event.",
+		"file": "Element.onClick.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>onClick</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'click' event of the Element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "callback",
+				"type": "<i>&lt;Function&gt;</i>",
+				"desc": "The callback function to attach.",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The (modified) parent Element."
+			}
+		  }
+		],
+		"size": 81,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onClick.html"
 	}
 ]

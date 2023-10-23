@@ -4,7 +4,7 @@
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
 Element.prototype.text = function(txt = undefined) {
-	if (txt) {
+	if (typeof txt !== 'undefined') {
 		this.textContent = txt.toString();
 		return this;
 	} else {
