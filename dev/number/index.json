@@ -1,135 +1,33 @@
 [
 	{
-		"name": "<i>&lt;Element&gt;</i>.append",
-		"desc": "Appends an Element inside of an existing Element (at the end).",
+		"name": "<i>&lt;Number&gt;</i>.toBytesString",
+		"desc": "Converts a number to a formatted bytes sting using KiB, MiB, etc.",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>append</b>(e <i>&lt;Element&gt;</i>)",
-			"desc": "Appends the passed Element to the inside of the parent Element.",
+			"sig": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i> = 2, locale <i>&lt;String&gt;</i> = &quot;en-US&quot;)",
+			"desc": "Converts the Number to a formatted String with suitable unit.",
 			"flags": [],
 			"param": [
 			  {
-				"name": "Element",
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The element to add",
-				"required": true
+				"name": "digits",
+				"type": "<i>&lt;Number&gt;</i>",
+				"desc": "The maximum number of significant digits to show (default: 2)",
+				"required": false
+			  },
+			  {
+				"name": "locale",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "A valid locale indicator to specifiy how the number should be formatted (default: 'en-US')",
+				"required": false
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The formatted number as String."
 			}
 		  }
 		],
 		"size": 70,
-		"depends_on": []
-	},
-	{
-		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
-		"desc": "Gets or sets an attribute of an Element.",
-		"variants": [
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Returns the value of an attribute of the Element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "Name",
-				"type": "String",
-				"desc": "The name of the attribute to read",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "String",
-				"desc": "The value of the attribute (empty string, if not found)"
-			}
-		  },
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;, value <i>&lt;String&gt;</i>)",
-			"desc": "Returns the value of an attribute of the Element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "Name",
-				"type": "String",
-				"desc": "The name of the attribute to read.",
-				"required": true
-				},
-			  {
-				"name": "Value",
-				"type": "String",
-				"desc": "The value to be set.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
-			}
-		  }
-		],
-		"size": 103,
-		"depends_on": []
-	},
-	{
-		"name": "Element.<b>new</b>",
-		"desc": "Creates a new Element.",
-		"variants": [
-		  {
-			"sig": "Element.<b>new</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Factory method to create a new Element with the passed name.",
-			"flags": ["static"],
-			"param": [
-			  {
-				"name": "Name",
-				"type": "String",
-				"desc": "The name of the Element to create",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The newly created Element (or <i>null</i> if the Element could not be created)"
-			}
-		  }
-		],
-		"size": 103,
-		"depends_on": []
-	},
-	{
-		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
-		"desc": "Gets or sets the text node of an Element",
-		"variants": [
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>text</b>()",
-			"desc": "Returns the text content the Element.",
-			"flags": [],
-			"param": [],
-			"returns": {
-				"type": "String",
-				"desc": "The text value of the attribute (as returned by <i>textContent</i>)"
-			}
-		  },
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(text <i>&lt;String&gt;</i>)",
-			"desc": "Sets the text content of the Element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "Text",
-				"type": "String",
-				"desc": "The text content to set.",
-				"required": true
-				}
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
-			}
-		  }
-		],
-		"size": 93,
 		"depends_on": []
 	}
 ]
