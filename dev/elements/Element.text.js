@@ -3,11 +3,11 @@
 /* parent object: Element */
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
-Element.prototype.text = function(txt = null) {
-	if (txt) {
+Element.prototype.text = function(txt = undefined) {
+	if (txt === undefined) {
+		return this.textContent;
+	} else {
 		this.textContent = txt.toString();
 		return this;
-	} else {
-		return this.textContent;
 	}
 }

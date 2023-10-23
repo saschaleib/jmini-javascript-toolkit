@@ -43,13 +43,13 @@
 			"param": [
 			  {
 				"name": "Element",
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>) or <i>&lt;Object&gt;</i>",
-				"desc": "The element to add, or an HTML string to generate (synonym to Element.html)",
+				"type": "<i>&lt;Element&gt;</i>",
+				"desc": "The element to append to the parent",
 				"required": true
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"type": "<i>&lt;Element&gt;</i>",
 				"desc": "The (modified) parent Element."
 			}
 		  }
