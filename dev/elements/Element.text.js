@@ -5,7 +5,7 @@
 /* Support: DOM Level 1 (1998) */
 Element.prototype.text = function(txt = null) {
 	if (txt) {
-		this.textContent = txt;
+		this.textContent = txt.toString();
 		return this;
 	} else {
 		return this.textContent;
