@@ -1,7 +1,9 @@
 [
-	{
+	{	"id": "number_tobytesstring",
 		"name": "<i>&lt;Number&gt;</i>.toBytesString",
+		"type": "prototype",
 		"desc": "Converts a number to a formatted bytes sting using KiB, MiB, etc.",
+		"file": "Element.toBytesString.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i> = 2, locale <i>&lt;String&gt;</i> = &quot;en-US&quot;)",
@@ -27,7 +29,9 @@
 			}
 		  }
 		],
-		"size": 70,
-		"depends_on": []
+		"size": 277,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/numbers/toBytesString.html"
 	}
 ]

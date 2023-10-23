@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>jMini lib Test for <Number>.toBytesString() functions</title>
+		<title>&lt;Number&gt;.toBytesString() — jMini Test</title>
 		<script src="Number.toBytesString.js" type="text/javascript"></script>
 		<script src="../elements/Element.new.js" type="text/javascript"></script>
 		<script src="../elements/Element.html.js" type="text/javascript"></script>
@@ -13,14 +13,28 @@
 		</style>
 	</head>
 	<body>
-		<h1>jMini Tests – <Number>.toBytesString() functions</h1>
+		<h1>Tests: <i>&lt;Number&gt;</i>.toBytesString()</h1>
 		<main data-itemid="main-item">
-			<h2><span title="Main Content">Main</span></h2>
+			<h2>Simple formatting:</h2>
+			<p>
+				Usage: <code><i>&lt;Number&gt;</i>.<b>toBytesString</b>()</code>
+			</p>
 			<table border>
 				<thead>
 					<tr><th>Input</th><th>Result</th></tr>
 				</thead>
-				<tbody id="target"></tbody>
+				<tbody id="target1"></tbody>
+			</table>
+
+			<h2>Advanced options:</h2>
+			<p>
+				Usage: <code><i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i>, locale <i>&lt;String&gt;</i>)</code>
+			</p>
+			<table border>
+				<thead>
+					<tr><th>Input</th><th>digits</th><th>locale</th><th>Result</th></tr>
+				</thead>
+				<tbody id="target2"></tbody>
 			</table>
 		</main>
 		<footer>
@@ -28,18 +42,22 @@
 		</footer>
 		
 		<script type="text/javascript">
+
+			console.group('Tests: <Number>.toBytesString()');
 		
 			/* function to log to screen: */
-			let listLog = function(a, b) {
+			let listLog = function(trg, a, b, c = undefined, d = undefined) {
 				let tr = Element.new('tr');
 				tr.append(Element.new('td').text(a));
 				tr.append(Element.new('td').text(b));
+				if (c) tr.append(Element.new('td').text(c));
+				if (d) tr.append(Element.new('td').text(d));
 					
-				document.getElementById('target').append(tr);
+				document.getElementById(trg).append(tr);
 			};
 			
 			/* numbers to test */
-			let tests = [
+			let test1 = [
 				0,
 				24,
 				567,
@@ -58,14 +76,23 @@
 				1234567890123456
 			];
 
-			tests.forEach( (n) => {
-			
+			test1.forEach( (n) => {
 				let s = n.toBytesString();
-				listLog(n, s);
-				
+				listLog('target1', n, s);
 			});
 
-			console.log('End of tests.');
+			/* advanced test */
+			let test2 = [
+				{n: 1010, d: 3, l: 'de'}
+			];
+			
+			test2.forEach( (o) => {
+				let s = o.n.toBytesString(o.d, o.l);
+				listLog('target2', o.n, o.d, o.l, s);
+			});
+
+			/* done. */
+			console.groupEnd();
 
 		</script>
 	</body>

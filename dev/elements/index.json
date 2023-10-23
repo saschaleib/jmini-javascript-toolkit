@@ -1,6 +1,5 @@
 [
-	{
-		"id": "element_new",
+	{	"id": "element_new",
 		"name": "Element.<b>new</b>",
 		"type": "static",
 		"desc": "Creates a new Element.",
@@ -29,8 +28,7 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
 	},
-	{
-		"id": "element_append",
+	{	"id": "element_append",
 		"name": "<i>&lt;Element&gt;</i>.<b>append</b>",
 		"type": "prototype",
 		"desc": "Appends an Element inside of an existing Element (at the end).",
@@ -59,8 +57,7 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
 	},
-	{
-		"id": "element_attr",
+	{	"id": "element_attr",
 		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
 		"type": "prototype",
 		"desc": "Gets or sets an attribute of an Element.",
@@ -112,8 +109,7 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/attr.html"
 	},
-	{
-		"id": "element_html",
+	{	"id": "element_html",
 		"name": "<i>&lt;Element&gt;</i>.<b>html</b>",
 		"type": "prototype",
 		"desc": "Gets or sets the HTML content of an element",
@@ -153,8 +149,7 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
 	},
-	{
-		"id": "element_text",
+	{	"id": "element_text",
 		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
 		"type": "prototype",
 		"desc": "Gets or sets the text node of an Element",
@@ -188,7 +183,7 @@
 			}
 		  }
 		],
-		"size": 93,
+		"size": 106,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/text.html"

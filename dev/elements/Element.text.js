@@ -4,10 +4,10 @@
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
 Element.prototype.text = function(txt = undefined) {
-	if (txt === undefined) {
-		return this.textContent;
-	} else {
+	if (txt) {
 		this.textContent = txt.toString();
 		return this;
+	} else {
+		return this.textContent;
 	}
 }

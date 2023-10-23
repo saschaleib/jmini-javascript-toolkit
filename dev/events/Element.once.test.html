@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;Element&gt;.once() — jMini Test</title>
+		<script src="../events/Element.once.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Element&gt;</i>.once()</h1>
+		<main>
+			<h2><span>Attach single-use event:</span></h2>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>once</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)</code>
+			</p>
+			<p>Note: the event should only be captured once, after which it is automatically removed. A second click should have no effect.</p>
+			
+			<button id="target1">Click me</button>
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.on()');
+
+			/* read some attributes from target1: */
+
+			let trg1 = document.getElementById('target1');
+			trg1.once('click', (e) => {
+				console.log(e);
+				alert('Event captured.');
+			});
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

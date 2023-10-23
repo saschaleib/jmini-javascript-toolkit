@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;Element&gt;.off() — jMini Test</title>
+		<script src="../events/Element.on.js" type="text/javascript"></script>
+		<script src="../events/Element.off.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Element&gt;</i>.off()</h1>
+		<main>
+			<h2><span>Detach event:</span></h2>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>off</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)</code>
+			</p>
+			
+			<button id="target1">Click me</button>
+			
+			<p>Note: This test attaches a <i>click</i> event to the button, and then removes it when it has been clicked. This is functionally equivalent to using <code>.once()</code> instead.</p>
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.on()');
+
+			/* read some attributes from target1: */
+
+			let trg1 = document.getElementById('target1');
+			let func = function(e) {
+				console.log(e);
+				trg1.off('click', func);
+				alert('Event handler removed. Click again to test.');
+			}
+			
+			trg1.on('click', func);
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

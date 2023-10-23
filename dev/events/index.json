@@ -1,6 +1,5 @@
 [
-	{
-		"id": "element_on",
+	{	"id": "element_on",
 		"name": "<i>&lt;Element&gt;</i>.<b>on</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an Element.",
@@ -35,8 +34,7 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
 	},
-	{
-		"id": "element_once",
+	{	"id": "element_once",
 		"name": "<i>&lt;Element&gt;</i>.<b>once</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an Element that will be called at most one time.",
@@ -70,38 +68,8 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
-	},	{
-		"id": "element_click",
-		"name": "<i>&lt;Element&gt;</i>.<b>click</b>",
-		"type": "prototype",
-		"desc": "Attaches a handler for the 'click' event to an Element.",
-		"file": "Element.click.min.js",
-		"variants": [
-		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>click</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the element for the named event.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The function to call when the click event occurs.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
-			}
-		  }
-		],
-		"size": 85,
-		"requires": ["element_on"],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/click.html"
 	},
-	{
-		"id": "element_off",
+	{	"id": "element_off",
 		"name": "<i>&lt;Element&gt;</i>.<b>off</b>",
 		"type": "prototype",
 		"desc": "Removes an event handler from an Element.",

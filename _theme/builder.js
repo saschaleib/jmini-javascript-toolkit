@@ -354,22 +354,24 @@ let $P = {
 				.attr('id', 'downloadSize')
 				.text('—')
 			$P.data._head._sizefield = sizefield;
+			
+			let loadingAnim = Element.new('div')
+				.attr('class', 'loading-anim')
+				.attr('style', 'display:none')
+				.append(Element.new('div'))
+				.append(Element.new('div'))
+				.append(Element.new('div'));
+				
+			let lbl = Element.new('span')
+				.attr('class', 'label')
+			//	.text("jMini Download")
+				.append(loadingAnim);
 
 			/* create the form target: */
 			let form = Element.new('form')
 				.append(Element.new('header')
 					.append(Element.new('p')
-						.append(Element.new('span')
-							.attr('class', 'label')
-							.text("jMini Download")
-							.append(Element.new('div')
-								.attr('class', 'loading-anim')
-								.attr('style', 'display:none')
-								.append(Element.new('div'))
-								.append(Element.new('div'))
-								.append(Element.new('div'))
-							)
-						)
+						.append(lbl)
 						.append(sizefield)
 						.append(checkbox)
 					)
