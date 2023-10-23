@@ -104,6 +104,35 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
 	},
+	{	"id": "element_onblur",
+		"name": "<i>&lt;Element&gt;</i>.<b>onBlur</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'blur' event.",
+		"file": "Element.onBlur.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'blur' event of the Element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "callback",
+				"type": "<i>&lt;Function&gt;</i>",
+				"desc": "The callback function to attach.",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The (modified) parent Element."
+			}
+		  }
+		],
+		"size": 82,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onBlur.html"
+	},
 	{	"id": "element_onclick",
 		"name": "<i>&lt;Element&gt;</i>.<b>onClick</b>",
 		"type": "prototype",
@@ -162,15 +191,16 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onFocus.html"
 	},
-	{	"id": "element_onblur",
-		"name": "<i>&lt;Element&gt;</i>.<b>onBlur</b>",
+	{	"id": "element_onsubmit",
+		"name": "<i>&lt;Element&gt;</i>.<b>onSubmit</b>",
 		"type": "prototype",
-		"desc": "Attaches an event handler to the 'blur' event.",
-		"file": "Element.onBlur.min.js",
+		"desc": "Attaches an event handler to the 'submit' event of a <form> element.",
+		"file": "Element.onSubmit.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;Element&gt;</i>.<b>onSubmit</b>(callback <i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the 'blur' event of the Element.",
+			"note": "This function can only be attached to <form> elements.",
 			"flags": [],
 			"param": [
 			  {
@@ -186,9 +216,9 @@
 			}
 		  }
 		],
-		"size": 82,
+		"size": 213,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onBlur.html"
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onSubmit.html"
 	}
 ]

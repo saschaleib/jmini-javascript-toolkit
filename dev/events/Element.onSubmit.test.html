@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;Element&gt;.onSubmit() — jMini Test</title>
+		<script src="../events/Element.onSubmit.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Element&gt;</i>.onSubmit()</h1>
+		<main>
+			<h2><span>Attach event:</span></h2>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>onSubmit</b>(callback <i>&lt;Function&gt;</i>)</code>
+			</p>
+			<p>
+				Note: This is just a shorthand for the <a href="Element.on.test.html">.on()</a> function for attaching to the &quot;submit&quot; event. It adds a check for a valid parent element, though.
+			</p>
+			
+			<p>Note: click the submit button to submit a form:</p>
+			<form id="myForm">
+				<button type="submit">Submit</button>
+			</form>
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.onSubmit()');
+
+			/* read some attributes from target1: */
+
+			let frm = document.getElementById('myForm');
+			
+			let func = function(e) {
+				console.log(e);
+				e.preventDefault();
+				alert('OnSubmit event captured.');
+			}
+			
+			frm.onSubmit( func );
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>
