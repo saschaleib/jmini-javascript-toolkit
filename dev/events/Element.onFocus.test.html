@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;Element&gt;.onFocus() — jMini Test</title>
+		<script src="../events/Element.onFocus.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Element&gt;</i>.onFocus()</h1>
+		<main>
+			<h2><span>Attach event:</span></h2>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>onFocus</b>(callback <i>&lt;Function&gt;</i>)</code>
+			</p>
+			<p>
+				Note: This is just a shorthand for the <a href="Element.on.test.html">.on()</a> function for attaching to the &quot;focus&quot; event.
+			</p>
+			
+			<p>Note: click into the text field to set the focus:</p>
+			<input type="text" id="target1" />
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.onFocus()');
+
+			/* read some attributes from target1: */
+
+			let trg1 = document.getElementById('target1');
+			
+			let func = function(e) {
+				console.log(e);
+				alert('Focus event captured.');
+			}
+			
+			trg1.onFocus( func );
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

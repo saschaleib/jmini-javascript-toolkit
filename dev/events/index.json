@@ -128,9 +128,67 @@
 			}
 		  }
 		],
-		"size": 81,
+		"size": 85,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onClick.html"
+	},
+	{	"id": "element_onfocus",
+		"name": "<i>&lt;Element&gt;</i>.<b>onFocus</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'focus' event.",
+		"file": "Element.onFocus.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>onFocus</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'focus' event of the Element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "callback",
+				"type": "<i>&lt;Function&gt;</i>",
+				"desc": "The callback function to attach.",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The (modified) parent Element."
+			}
+		  }
+		],
+		"size": 84,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onFocus.html"
+	},
+	{	"id": "element_onblur",
+		"name": "<i>&lt;Element&gt;</i>.<b>onBlur</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'blur' event.",
+		"file": "Element.onBlur.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;Element&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'blur' event of the Element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "callback",
+				"type": "<i>&lt;Function&gt;</i>",
+				"desc": "The callback function to attach.",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
+				"desc": "The (modified) parent Element."
+			}
+		  }
+		],
+		"size": 82,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onBlur.html"
 	}
 ]

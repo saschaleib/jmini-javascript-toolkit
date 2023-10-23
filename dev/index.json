@@ -6,14 +6,14 @@
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
-			"size": 593
+			"size": 635
 		},
 		{
 			"id": "events",
 			"title": "Events",
 			"desc": "Everything related to event handling.",
 			"path": "events/",
-			"size": 241
+			"size": 500
 		},
 		{
 			"id": "numbers",
