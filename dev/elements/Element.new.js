@@ -1,13 +1,13 @@
-/* creates a new Element */
-/* parameter: name (String) the name of the element, */
-/* parent object: Element */
-/* returns: the value of the attribute (String) if no value is set, */
-/* returns: the parent element (Object) if value is set */
+/* appends a new child element to the parent. */
+/* parameter: (String, required) name of the new child element */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
-Element.new = function(n) {
+HTMLElement.prototype.new = function(n) {
 	var r = null;
 	try {
 		r = document.createElement(n);
+		this.appendChild(r);
 	} catch(e) {
 		console.error(e);
 	}

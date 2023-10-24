@@ -1,33 +1,4 @@
 [
-	{	"id": "htmlelement_cls_new",
-		"name": "HTMLElement.<b>new</b>",
-		"type": "static",
-		"desc": "Creates a new HTMLElement.",
-		"file": "Element_cls.new.min.js",
-		"variants": [
-		  {
-			"sig": "HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Factory method to create a new HTMLElement with the passed name.",
-			"flags": ["static"],
-			"param": [
-			  {
-				"name": "Name",
-				"type": "String",
-				"desc": "The name of the HTMLElement to create",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;HTMLElement&gt;</i>)",
-				"desc": "The newly created HTMLElement (or <i>null</i> if the HTMLElement could not be created)"
-			}
-		  }
-		],
-		"size": 103,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
-	},
 	{	"id": "htmlelement_append",
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
 		"type": "prototype",
@@ -109,34 +80,45 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/attr.html"
 	},
-	{	"id": "htmlelement_html",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
+	{	"id": "htmlelement_new",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>new</b>",
 		"type": "prototype",
-		"desc": "Gets or sets the HTML content of an HTMLElement",
-		"file": "Element.html.min.js",
+		"desc": "Appends a new HTMLElement",
+		"file": "Element.new.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>()",
-			"desc": "Returns the HTML content the HTMLElement.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>new</b>()",
+			"desc": "Creates a new HTMLElement and appends it to the parent.",
 			"flags": [],
 			"param": [],
 			"returns": {
 				"type": "String",
-				"desc": "The inner HTML of the HTMLElement as String."
+				"desc": "The name of the HTMLElement to be created."
 			}
-		  },
+		  }
+		],
+		"size": 140,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
+	},
+	{	"id": "htmlelement_append",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
+		"type": "prototype",
+		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
+		"file": "Element.append.min.js",
+		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
-			"desc": "Sets the HTML content of the HTMLElement.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>(e <i>&lt;HTMLElement&gt;</i>)",
+			"desc": "Appends the passed HTMLElement to the inside of the parent HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
-				"name": "xhtml",
-				"type": "String",
-				"desc": "The HTML code to interpret and assign to the HTMLElement content.",
-				"note": "The parser is strict and requires valid XHTML!",
+				"name": "element",
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The HTMLElement to append to the parent",
 				"required": true
-				}
+			  }
 			],
 			"returns": {
 				"type": "<i>&lt;HTMLElement&gt;</i>",
@@ -144,10 +126,10 @@
 			}
 		  }
 		],
-		"size": 202,
+		"size": 121,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
 	},
 	{	"id": "htmlelement_text",
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>text</b>",
@@ -187,5 +169,34 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/text.html"
+	},
+	{	"id": "htmlelement_cls_new",
+		"name": "HTMLElement.<b>new</b>",
+		"type": "static",
+		"desc": "Creates a new HTMLElement.",
+		"file": "Element_cls.new.min.js",
+		"variants": [
+		  {
+			"sig": "HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>)",
+			"desc": "Factory method to create a new HTMLElement with the passed name.",
+			"flags": ["static"],
+			"param": [
+			  {
+				"name": "Name",
+				"type": "String",
+				"desc": "The name of the HTMLElement to create",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;HTMLElement&gt;</i>)",
+				"desc": "The newly created HTMLElement (or <i>null</i> if the HTMLElement could not be created)"
+			}
+		  }
+		],
+		"size": 103,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new_static.html"
 	}
 ]
