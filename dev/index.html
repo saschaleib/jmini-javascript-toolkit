@@ -10,18 +10,36 @@
 				display: grid;
 				grid-template-columns: max-content auto;
 				background-color: #FFF;
+				font-family: Arial, Helvetica, sans-serif;
 			}
 			#sidebar {
 				background-color: #BBB;
-				padding: 0 .75em 0 .25em;
+				padding: 0 .5em 0 .25em;
 				overflow: auto;
+			}
+			#sidebar details {
+				margin: .5em 0 .25em 0;
 			}
 			#sidebar summary {
 				font-weight: bold;
 				cursor: pointer;
 			}
 			#sidebar ul {
-				padding-left: 1.25em;
+				padding-left: 1em;
+				margin: 0;
+			}
+			#sidebar ul li .parent {
+				font-family: "Arial Narrow", sans-serif;
+			}
+			#sidebar ul a:link,
+			#sidebar ul a:visited {
+				display: block;
+				padding: .125em 0;
+				color: #000;
+				text-decoration: none;
+			}
+			#sidebar ul a:hover {
+				text-decoration: underline;
 			}
 			iframe {
 				width: 100%;
@@ -41,19 +59,20 @@
 			</details>
 			<details open><summary>Classes</summary>
 				<ul>
-					<li><a href="classes/Element.addClass.test.html" target="main">&lt;Element&gt;.<b>addClass</b>()</a></li>
-					<li><a href="classes/Element.removeClass.test.html" target="main">&lt;Element&gt;.<b>removeClass</b>()</a></li>
-					<li><a href="classes/Element.toggleClass.test.html" target="main">&lt;Element&gt;.<b>toggleClass</b>()</a></li>
-					<li><a href="classes/Element.hasClass.test.html" target="main">&lt;Element&gt;.<b>hasClass</b>()</a></li>
+					<li><a href="classes/Element.addClass.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>addClass</b>()</a></li>
+					<li><a href="classes/Element.removeClass.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>removeClass</b>()</a></li>
+					<li><a href="classes/Element.toggleClass.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>toggleClass</b>()</a></li>
+					<li><a href="classes/Element.hasClass.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>hasClass</b>()</a></li>
 				</ul>
 			</details>
 			<details open><summary>Elements</summary>
 				<ul>
-					<li><a href="elements/Element.append.test.html" target="main">&lt;Element&gt;.<b>append</b>()</a></li>
-					<li><a href="elements/Element.attr.test.html" target="main">&lt;Element&gt;.<b>attr</b>()</a></li>
-					<li><a href="elements/Element.html.test.html" target="main">&lt;Element&gt;.<b>html</b>()</a></li>
-					<li><a href="elements/Element.new.test.html" target="main">&lt;Element&gt;.<b>new</b>()</a></li>
-					<li><a href="elements/Element.text.test.html" target="main">&lt;Element&gt;.<b>text</b>()</a></li>
+					<li><a href="elements/Element.append.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>append</b>()</a></li>
+					<li><a href="elements/Element.attr.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>attr</b>()</a></li>
+					<li><a href="elements/Element.html.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>html</b>()</a></li>
+					<li><a href="elements/Element.new.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>new</b>()</a></li>
+					<li><a href="elements/Element.getText.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>getText</b>()</a></li>
+					<li><a href="elements/Element.setText.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>setText</b>()</a></li>
 				</ul>
 				<ul>
 					<li><a href="elements/Element_cls.new.test.html" target="main"><b>Element.new</b>()</a></li>
@@ -61,20 +80,20 @@
 			</details>
 			<details open><summary>Events</summary>
 				<ul>
-					<li><a href="events/Element.on.test.html" target="main">&lt;Element&gt;.<b>on</b>()</a></li>
-					<li><a href="events/Element.once.test.html" target="main">&lt;Element&gt;.<b>once</b>()</a></li>
-					<li><a href="events/Element.off.test.html" target="main">&lt;Element&gt;.<b>off</b>()</a></li>
-					<li><a href="events/Element.onClick.test.html" target="main">&lt;Element&gt;.<b>onClick</b>()</a></li>
+					<li><a href="events/Element.on.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>on</b>()</a></li>
+					<li><a href="events/Element.once.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>once</b>()</a></li>
+					<li><a href="events/Element.off.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>off</b>()</a></li>
+					<li><a href="events/Element.onClick.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>onClick</b>()</a></li>
 				</ul>
 			</details>
 			<details open><summary>Number</summary>
 				<ul>
-					<li><a href="number/Number.toBytesString.test.html" target="main">&lt;Number&gt;.<b>toBytesString</b>()</a></li>
+					<li><a href="number/Number.toBytesString.test.html" target="main"><span class="parent">&lt;Number&gt;</span>.<b>toBytesString</b>()</a></li>
 				</ul>
 			</details>
-			<details><summary><abbr>XHR</abbr></summary>
+			<details open><summary>Traversal</summary>
 				<ul>
-					<li>TODO</li>
+					<li><a href="traversal/Element.parent.test.html" target="main"><span class="parent">&lt;Element&gt;</span>.<b>parent</b>()</a></li>
 				</ul>
 			</details>
 		</div>

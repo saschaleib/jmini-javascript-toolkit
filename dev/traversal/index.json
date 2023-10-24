@@ -1,0 +1,24 @@
+[
+	{	"id": "element_parent",
+		"name": "<i>&lt;HTMLElement&gt;</i>.parent",
+		"type": "prototype",
+		"desc": "Returns the parent of the Element.",
+		"file": "Element.parent.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>parent</b>()",
+			"desc": "Returns the immediate parent of the Element.",
+			"flags": [],
+			"param": [],
+			"returns": {
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The parent element (or null, if the Element was the <html> element)"
+			}
+		  }
+		],
+		"size": 277,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/traversal/parent.html"
+	}
+]

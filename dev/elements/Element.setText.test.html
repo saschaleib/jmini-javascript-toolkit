@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.setText() — jMini Test</title>
+		<script src="Element.setText.js" type="text/javascript"></script>
+		<script src="Element.html.js" type="text/javascript"></script>
+		<script src="Element.append.js" type="text/javascript"></script>
+		<script src="Element_cls.new.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.setText()</h1>
+		<main>
+
+			<h2><span>Set text content:</span></h2>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>setText</b>(txt <i>&lt;String&gt;</i>)</code>
+			</p>
+
+			<p>A list of items will be added to the (initially empty) list below:</p>
+			<ul id="target2"></ul>
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.setText()');
+
+			/* create a list */
+			let src = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixt', 'Seventh', 'Eight', 'Nineth', 'Tenth'];
+
+		
+			let trg2 = document.getElementById('target2');
+			src.forEach( (it) => {
+				trg2.append(HTMLElement.new('li').setText(it));
+			});
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

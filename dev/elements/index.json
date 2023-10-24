@@ -102,21 +102,21 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
 	},
-	{	"id": "htmlelement_append",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
+	{	"id": "htmlelement_html",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
 		"type": "prototype",
-		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
-		"file": "Element.append.min.js",
+		"desc": "Parses XHTML code and inserts it inside of an existing HTMLElement.",
+		"file": "Element.html.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>(e <i>&lt;HTMLElement&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
 			"desc": "Appends the passed HTMLElement to the inside of the parent HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
-				"name": "element",
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The HTMLElement to append to the parent",
+				"name": "xhtml",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The XHTML code to be parsed.",
 				"required": true
 			  }
 			],
@@ -129,16 +129,15 @@
 		"size": 121,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
 	},
-	{	"id": "htmlelement_text",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>text</b>",
+	{	"id": "htmlelement_gettext",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>getText</b>",
 		"type": "prototype",
-		"desc": "Gets or sets the text node of an HTMLElement",
-		"file": "Element.text.min.js",
+		"desc": "Returns the text content of an HTMLElement",
+		"file": "Element.getText.min.js",
 		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>text</b>()",
+		  { "sig": "<i>&lt;HTMLElement&gt;</i>.<b>getText</b>()",
 			"desc": "Returns the text content the HTMLElement.",
 			"flags": [],
 			"param": [],
@@ -146,9 +145,20 @@
 				"type": "String",
 				"desc": "The text value of the attribute (as returned by <i>textContent</i>)"
 			}
-		  },
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>(text <i>&lt;String&gt;</i>)",
+		  }
+		],
+		"size": 106,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/gettext.html"
+	},
+	{	"id": "htmlelement_settext",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>setText</b>",
+		"type": "prototype",
+		"desc": "Sets the text content of an HTMLElement",
+		"file": "Element.setText.min.js",
+		"variants": [
+		  { "sig": "<i>&lt;HTMLElement&gt;</i>.<b>setText</b>(text <i>&lt;String&gt;</i>)",
 			"desc": "Sets the text content of the HTMLElement.",
 			"flags": [],
 			"param": [
@@ -168,7 +178,7 @@
 		"size": 106,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/text.html"
+		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/settext.html"
 	},
 	{	"id": "htmlelement_cls_new",
 		"name": "HTMLElement.<b>new</b>",

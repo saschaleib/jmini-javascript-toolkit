@@ -3,7 +3,7 @@
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement.",
-		"file": "HTMLElement.on.min.js",
+		"file": "Element.on.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",

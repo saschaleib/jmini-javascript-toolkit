@@ -3,7 +3,7 @@
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
 		"type": "prototype",
 		"desc": "Adds a class to the parent HTMLElement.",
-		"file": "HTMLElement.addClass.min.js",
+		"file": "Element.addClass.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>(class <i>&lt;String&gt;</i>)",
@@ -23,7 +23,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 78,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/addClass.html"
@@ -32,7 +32,7 @@
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>",
 		"type": "prototype",
 		"desc": "Removes a class from the parent HTMLElement.",
-		"file": "HTMLElement.removeClass.min.js",
+		"file": "Element.removeClass.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>(class <i>&lt;String&gt;</i>)",
@@ -52,7 +52,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 84,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/removeClass.html"
@@ -61,7 +61,7 @@
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>",
 		"type": "prototype",
 		"desc": "Toggles a class at the parent HTMLElement.",
-		"file": "HTMLElement.toggleClass.min.js",
+		"file": "Element.toggleClass.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>(class <i>&lt;String&gt;</i>)",
@@ -81,7 +81,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 84,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/toggleClass.html"
@@ -90,7 +90,7 @@
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>",
 		"type": "prototype",
 		"desc": "Checks is a class is assigned to the parent HTMLElement.",
-		"file": "HTMLElement.hasClass.min.js",
+		"file": "Element.hasClass.min.js",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>(class <i>&lt;String&gt;</i>)",
@@ -110,7 +110,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 78,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/hasClass.html"

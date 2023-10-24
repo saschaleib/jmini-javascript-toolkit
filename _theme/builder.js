@@ -52,7 +52,7 @@ let $P = {
 		make: {
 			checkbox: function(scope, name, checked = true, ref = null) {
 			
-				let cb = Element.new('input')
+				let cb = HTMLElement.new('input')
 					.attr('data-scope', scope)
 					.attr('type', 'checkbox')
 					.attr('name', name)
@@ -74,7 +74,7 @@ let $P = {
 			
 			start: function() {
 				$P.gui.busy._count += 1;
-				console.info('gui.busy.start() - count: ' + $P.gui.busy._count);
+				//console.info('gui.busy.start() - count: ' + $P.gui.busy._count);
 				if ($P.gui.busy._count <= 1) {
 					let anims = document.getElementsByClassName('loading-anim');
 					if (anims.lengt >= 1) {
@@ -84,7 +84,7 @@ let $P = {
 			},
 			end: function() {
 				$P.gui.busy._count -= 1;
-				console.info('gui.busy.end() - count: ' + $P.gui.busy._count);
+				//console.info('gui.busy.end() - count: ' + $P.gui.busy._count);
 				if ($P.gui.busy._count <= 0) {
 					let anims = document.getElementsByClassName('loading-anim');
 					if (anims.lengt >= 1) {
@@ -233,7 +233,7 @@ let $P = {
 
 				/* store the calculated size: */
 				topic.size = total;
-				if (topic._sizefield) { topic._sizefield.text($P.list._formatBytes(total, 2)); }
+				if (topic._sizefield) { topic._sizefield.setText($P.list._formatBytes(total, 2)); }
 				
 				/* calculate the new topic checkbox status: */
 				if (checked >= topic._function.length) {
@@ -275,7 +275,7 @@ let $P = {
 			if (cCount < 1) { cStatus = 0; }
 
 			/* update the size field: */
-			$P.data._head._sizefield.text($P.list._formatBytes(total, 2));
+			$P.data._head._sizefield.setText($P.list._formatBytes(total, 2));
 			
 			/* update the checkbox: */
 			if (cStatus < 0) {
@@ -319,7 +319,7 @@ let $P = {
 			console.info(code);
 			
 			/* prepare the download woraround: */
-			let tmpLink = Element.new('a')
+			let tmpLink = HTMLElement.new('a')
 				.attr('download', 'jmini.js')
 				.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code))
 			;
@@ -350,33 +350,33 @@ let $P = {
 			$P.data._head._checkbox = checkbox;
 
 			/* store header data field info in the model: */
-			let sizefield = Element.new('span')
+			let sizefield = HTMLElement.new('span')
 				.attr('id', 'downloadSize')
-				.text('—')
+				.setText('—')
 			$P.data._head._sizefield = sizefield;
 			
-			let loadingAnim = Element.new('div')
-				.attr('class', 'loading-anim')
+			let loadingAnim = HTMLElement.new('div')
+				.addClass('loading-anim')
 				.attr('style', 'display:none')
-				.append(Element.new('div'))
-				.append(Element.new('div'))
-				.append(Element.new('div'));
+				.append(HTMLElement.new('div'))
+				.append(HTMLElement.new('div'))
+				.append(HTMLElement.new('div'));
 				
-			let lbl = Element.new('span')
-				.attr('class', 'label')
-			//	.text("jMini Download")
+			let lbl = HTMLElement.new('span')
+				.addClass('label')
+				.setText("jMini Download")
 				.append(loadingAnim);
 
 			/* create the form target: */
-			let form = Element.new('form')
-				.append(Element.new('header')
-					.append(Element.new('p')
+			let form = HTMLElement.new('form')
+				.append(HTMLElement.new('header')
+					.append(HTMLElement.new('p')
 						.append(lbl)
 						.append(sizefield)
 						.append(checkbox)
 					)
 				);
-			let section = Element.new('section')
+			let section = HTMLElement.new('section')
 				.attr('id', 'topics-list')
 				.append(form);
 					
@@ -389,22 +389,22 @@ let $P = {
 				topic._checked = 1;
 				
 				/* create the size field and store a reference in the data model: */
-				let sizefield = Element.new('span')
-					.attr('class', 'groupSize')
-					.text($P.list._formatBytes(topic.size, 2));
+				let sizefield = HTMLElement.new('span')
+					.addClass('groupSize')
+					.setText($P.list._formatBytes(topic.size, 2));
 				topic._sizefield = sizefield;
 
 				/* the target sublist */
-				let sublist = Element.new('div').attr('class', 'sub-items');
+				let sublist = HTMLElement.new('div').addClass('sub-items');
 				topic._sublist = sublist;
 
-				let details = Element.new('details')
+				let details = HTMLElement.new('details')
 					.attr('open', 'open')
-					.append(Element.new('summary')
-						.append(Element.new('span')
-							.attr('class', 'label')
+					.append(HTMLElement.new('summary')
+						.append(HTMLElement.new('span')
+							.addClass('label')
 							.attr('title', topic.desc)
-							.text(topic.title)
+							.setText(topic.title)
 						)
 						.append(sizefield)
 						.append(checkbox)
@@ -420,11 +420,11 @@ let $P = {
 			});
 
 			/* add the footer items: */
-			let footer = Element.new('footer')
-				.append(Element.new('button')
+			let footer = HTMLElement.new('footer')
+				.append(HTMLElement.new('button')
 					.on('click', $P.list.download)
 					.attr('type', 'submit')
-					.text('Download')
+					.setText('Download')
 				)
 			;
 			form.append(footer);
@@ -466,61 +466,65 @@ let $P = {
 				func._checkbox = checkbox;
 				func._checked = 1;
 				
-				let sizefield = Element.new('span')
-					.attr('class', 'funcSize')
-					.text($P.list._formatBytes(func.size));
+				let sizefield = HTMLElement.new('span')
+					.addClass('funcSize')
+					.setText($P.list._formatBytes(func.size));
 				func._sizefield = sizefield;
 
 				/* create the other elements: */
-				let summary = Element.new('summary')
-					.append(Element.new('span')
-						.attr('class', 'funcName')
-						.attr('title', func.desc)
+				let summary = HTMLElement.new('summary')
+					.append(HTMLElement.new('span')
 						.html(func.name)
+						.addClass('funcName')
+						.attr('title', func.desc)
 					)
-					.append(Element.new('span')
-						.attr('class', 'desc')
-						.text(func.desc)
+					.append(HTMLElement.new('span')
+						.addClass('desc')
+						.setText(func.desc)
 					)
 					.append(sizefield)
 					.append(checkbox);
 									
-				let ol = Element.new('ol').attr('class', 'variants');
+				let ol = HTMLElement.new('ol').addClass('variants');
 				func.variants.forEach( (it) => {
-					ol.append(Element.new('li')
+					ol.append(HTMLElement.new('li')
 						.html(it.sig)
 					);
 				});
 				
-				let item = Element.new('details')
+				let item = HTMLElement.new('details')
 					.attr('data-itemtype', ( func.type ? func.type : 'unknown') )
 					.append(summary)
-					.append(Element.new('p')
-						.attr('class', 'description')
-						.text(func.desc)
+					.append(HTMLElement.new('p')
+						.addClass('description')
+						.setText(func.desc)
 					)
 					.append(ol)
 				;
 				
 				/* add "requires" names, if applicable: */
 				if (func.requires && func.requires.length > 0) {
-					let dl = Element.new('dl')
-						.attr('class', 'requires')
-						.append(Element.new('dt')
-							.text('Requires: ')
+					let dl = HTMLElement.new('dl')
+						.addClass('requires')
+						.append(HTMLElement.new('dt')
+							.setText('Requires: ')
 						)
 					;
 					func.requires.forEach((n) => {
-						dl.append(Element.new('dd').html($P.data.findFunctionName(n)))
+						dl.append(HTMLElement.new('dd').html($P.data.findFunctionName(n)))
 					})
 					item.append(dl);
 				}
 				
 				/* add moreinfo link if applicable: */
 				if (func.moreinfo && func.moreinfo !== '') {
-					item.append(Element.new('p')
-						.attr('class', 'moreinfo')
-						.append('<a href="' + func.moreinfo + '" target="_blank">More information</a>')
+					item.append(HTMLElement.new('p')
+						.addClass('moreinfo')
+						.append(HTMLElement.new('a')
+							.attr('href', func.moreinfo)
+							.attr('target', '_blank')
+							.setText("More information")
+						)
 					)
 				}
 				
@@ -533,7 +537,7 @@ let $P = {
 					if (code.length !== func.size) {
 						func.size = code.length;
 						if (func._sizefield) {
-							func._sizefield.text($P.list._formatBytes(func.size));
+							func._sizefield.setText($P.list._formatBytes(func.size));
 						}
 					}
 				}, func, (e) => {
@@ -545,7 +549,7 @@ let $P = {
 					func.size = 0;
 					if (func._sizefield) {
 						func._status = 'error';
-						func._sizefield.text('[error]').attr('class', 'funcSize error');
+						func._sizefield.setText('[error]').addClass('error');
 						func._checkbox.checked = false;
 						func._checkbox.attr('disabled', 'disabled');
 						func._checked = 0;
@@ -570,7 +574,7 @@ let $P = {
 
 			$P.gui.busy.start();
 
-			console.info("Loading from: " + path);
+			//console.info("Loading from: " + path);
 			try {
 				let response = await fetch(path);
 				if (!response.ok) {	throw new Error(`HTTP error! Status: ${response.status}`); }

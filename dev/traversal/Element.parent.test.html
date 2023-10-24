@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.parent() — jMini Test</title>
+		<script src="Element.parent.js" type="text/javascript"></script>
+		<script src="../events/Element.onClick.js" type="text/javascript"></script>
+		<script src="../classes/Element.addClass.js" type="text/javascript"></script>
+		<style>
+			.redBorder { border: red dotted 2px; padding: .25em; }
+		</style>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.parent()</h1>
+		<main data-itemid="main-item">
+			<h2>Find the parent:</h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>parent</b>()</code>
+			</p>
+			
+			<div>
+				<button id="actionBtn">Click me</button>
+			</div>
+			
+			<p>Note: when clicked, the script finds the enclosing <code>&lt;div&gt;</code> and assigns a class.</p>
+			
+		<footer>
+			<p>See console for any errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+
+			console.group('Tests: <HTMLElement>.parent()');
+		
+			let btn = document.getElementById('actionBtn');
+			
+			btn.onClick( (e) => {
+				let button = e.target;
+				let div = button.parent();
+				
+				div.addClass('redBorder');
+			});
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

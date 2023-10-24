@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>HTMLElement.new() — jMini Test</title>
-		<script src="./Element_cls.new.js" type="text/javascript"></script>
-		<script src="./Element.append.js" type="text/javascript"></script>
-		<script src="./Element.text.js" type="text/javascript"></script>
-		<script src="./Element.attr.js" type="text/javascript"></script>
+		<script src="Element_cls.new.js" type="text/javascript"></script>
+		<script src="Element.append.js" type="text/javascript"></script>
+		<script src="Element.setText.js" type="text/javascript"></script>
+		<script src="Element.attr.js" type="text/javascript"></script>
 		<style>
 			#target1, #target2 { border: red dotted 1px; }
 			#target1 > *, #target2 > * { border: blue dashed 1px; }
@@ -35,9 +35,9 @@
 		
 			/* create some objects and append them to target1: */
 			document.getElementById('target1')
-				.append(HTMLElement.new('div').text('Newly created DIV'))
-				.append(HTMLElement.new('p').text('New paragraph with nestled strong element: ')
-				.append(HTMLElement.new('strong').text('Strong')))
+				.append(HTMLElement.new('div').setText('Newly created DIV'))
+				.append(HTMLElement.new('p').setText('New paragraph with nestled strong element: ')
+				.append(HTMLElement.new('strong').setText('Strong')))
 			;
 
 			/* create a list */
@@ -47,7 +47,7 @@
 				document.getElementById('target2')
 					.append(HTMLElement.new('li')
 						.attr('data-num' , n+1)
-						.text(s)
+						.setText(s)
 					)
 				;
 			});
