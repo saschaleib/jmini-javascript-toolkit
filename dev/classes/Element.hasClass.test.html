@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.hasClass() — jMini Test</title>
+		<script src="./Element.hasClass.js" type="text/javascript"></script>
+		<script src="./Element.toggleClass.js" type="text/javascript"></script>
+		<script src="../events/Element.on.js" type="text/javascript"></script>
+		<style>
+			.redOutline {
+				border: red dotted 2px;
+				padding: .25em;
+				}
+		</style>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.hasClass()</h1>
+		<main>
+			<h2><span>Toggle class:</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>(class <i>&lt;String&gt;</i>)</code>
+			</p>
+			
+			<div id="target">
+				<button id="toggleBtn">Toggle Class</button>
+				<button id="checkBtn">hasClass()</button>
+			</div>
+			
+			<p>Note: Click the first button to toggle the class, then check its hasClass value with the second.</p>
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+
+			console.group('Tests: <HTMLElement>.toggleClass()');
+
+			/* read some attributes from target1: */
+
+			document.getElementById('toggleBtn')
+				.on('click', (e) => {
+					document.getElementById('target').toggleClass('redOutline');
+				})
+			;
+			document.getElementById('checkBtn')
+				.on('click', (e) => {
+					let b = document.getElementById('target').hasClass('redOutline');
+					alert("hasClass() => " + b.toString());
+				})
+			;
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

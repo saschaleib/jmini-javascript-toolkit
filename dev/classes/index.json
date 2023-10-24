@@ -2,7 +2,7 @@
 	{	"id": "htmlelement_addclass",
 		"name": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
 		"type": "prototype",
-		"desc": "Adds a class to the HTMLElement.",
+		"desc": "Adds a class to the parent HTMLElement.",
 		"file": "HTMLElement.addClass.min.js",
 		"variants": [
 		  {
@@ -27,5 +27,92 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/addClass.html"
+	},
+	{	"id": "htmlelement_removeclass",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>",
+		"type": "prototype",
+		"desc": "Removes a class from the parent HTMLElement.",
+		"file": "HTMLElement.removeClass.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>(class <i>&lt;String&gt;</i>)",
+			"desc": "Removes a class from the internal classes list of the element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "class",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The name of the class to remove",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
+			}
+		  }
+		],
+		"size": 77,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/removeClass.html"
+	},
+	{	"id": "htmlelement_toggleclass",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>",
+		"type": "prototype",
+		"desc": "Toggles a class at the parent HTMLElement.",
+		"file": "HTMLElement.toggleClass.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>(class <i>&lt;String&gt;</i>)",
+			"desc": "Toggles a class in the internal classes list of the element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "class",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The name of the class to toggle",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
+			}
+		  }
+		],
+		"size": 77,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/toggleClass.html"
+	},
+	{	"id": "htmlelement_hasclass",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>",
+		"type": "prototype",
+		"desc": "Checks is a class is assigned to the parent HTMLElement.",
+		"file": "HTMLElement.hasClass.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>(class <i>&lt;String&gt;</i>)",
+			"desc": "Checks if a class is in the internal classes list of the element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "class",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The name of the class to check for",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;Boolean&gt;</i>",
+				"desc": "true, if the class is present, false, if not."
+			}
+		  }
+		],
+		"size": 77,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/hasClass.html"
 	}
 ]
