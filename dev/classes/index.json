@@ -1,0 +1,31 @@
+[
+	{	"id": "htmlelement_addclass",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
+		"type": "prototype",
+		"desc": "Adds a class to the HTMLElement.",
+		"file": "HTMLElement.addClass.min.js",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>(class <i>&lt;String&gt;</i>)",
+			"desc": "Adds a class to the internal classes list of the element.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "class",
+				"type": "<i>&lt;String&gt;</i>",
+				"desc": "The name of the class to add",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
+			}
+		  }
+		],
+		"size": 77,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/addClass.html"
+	}
+]

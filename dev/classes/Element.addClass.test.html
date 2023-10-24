@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.addClass() — jMini Test</title>
+		<script src="./Element.addClass.js" type="text/javascript"></script>
+		<script src="../events/Element.on.js" type="text/javascript"></script>
+		<style>
+			.redOutline {
+				border: red dotted 2px;
+				padding: .25em;
+				}
+		</style>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.addClass()</h1>
+		<main>
+			<h2><span>Detach event:</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>addClass</b>(class <i>&lt;String&gt;</i>)</code>
+			</p>
+			
+			<div id="target">
+				<button id="actionBtn">Click me</button>
+			</div>
+			
+			<p>Note: Clicking this button should add a class to its parent element, which assigns a red dotted border to it.</p>
+
+		</main>
+		<footer>
+			<p>See console for events and errors.</p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.addClass()');
+
+			/* read some attributes from target1: */
+
+			document.getElementById('target')
+				.on('click', (e) => {
+					document.getElementById('target').addClass('redOutline');
+				})
+			;
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

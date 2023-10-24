@@ -1,6 +1,13 @@
 {
-	"version": "2023-10-22",
+	"version": "2023-10-24",
 	"topics": [
+		{
+			"id": "classes",
+			"title": "Classes",
+			"desc": "Everything related to classes.",
+			"path": "number/",
+			"size": 277
+		},
 		{
 			"id": "elements",
 			"title": "Elements",
