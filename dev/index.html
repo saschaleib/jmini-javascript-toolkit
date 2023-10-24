@@ -8,13 +8,20 @@
 				margin: 0; padding: 0;
 				min-height: 100dvh;
 				display: grid;
-				grid-template-columns: min-content auto;
+				grid-template-columns: max-content auto;
 				background-color: #FFF;
 			}
 			#sidebar {
 				background-color: #BBB;
-				padding: 0 .5em 0 .25em;
+				padding: 0 .75em 0 .25em;
 				overflow: auto;
+			}
+			#sidebar summary {
+				font-weight: bold;
+				cursor: pointer;
+			}
+			#sidebar ul {
+				padding-left: 1.25em;
 			}
 			iframe {
 				width: 100%;
@@ -27,34 +34,49 @@
 	<body>
 		<div id="sidebar">
 			<h1>JMini Tests</h1>
-			<h2>Classes</h2>
-			<ul>
-				<li><a href="classes/Element.addClass.test.html" target="main">&lt;Element&gt;.<b>addClass</b>()</a></li>
-				<li><a href="classes/Element.removeClass.test.html" target="main">&lt;Element&gt;.<b>removeClass</b>()</a></li>
-				<li><a href="classes/Element.toggleClass.test.html" target="main">&lt;Element&gt;.<b>toggleClass</b>()</a></li>
-				<li><a href="classes/Element.hasClass.test.html" target="main">&lt;Element&gt;.<b>hasClass</b>()</a></li>
-			</ul>
-			<h2>Elements</h2>
-			<ul>
-				<li><a href="elements/Element.append.test.html" target="main">&lt;Element&gt;.<b>append</b>()</a></li>
-				<li><a href="elements/Element.attr.test.html" target="main">&lt;Element&gt;.<b>attr</b>()</a></li>
-				<li><a href="elements/Element.html.test.html" target="main">&lt;Element&gt;.<b>html</b>()</a></li>
-				<li><a href="elements/Element.new.test.html" target="main">&lt;Element&gt;.<b>new</b>()</a></li>
-				<li><a href="elements/Element.text.test.html" target="main">&lt;Element&gt;.<b>text</b>()</a></li>
-			</ul>
-			<ul>
-				<li><a href="elements/Element_cls.new.test.html" target="main"><b>Element.new</b>()</a></li>
-			</ul>
-			<h2>Events</h2>
-			<ul>
-				<li><a href="events/Element.on.test.html" target="main">&lt;Element&gt;.<b>on</b>()</a></li>
-				<li><a href="events/Element.once.test.html" target="main">&lt;Element&gt;.<b>once</b>()</a></li>
-				<li><a href="events/Element.off.test.html" target="main">&lt;Element&gt;.<b>off</b>()</a></li>
-				<li><a href="events/Element.onClick.test.html" target="main">&lt;Element&gt;.<b>onClick</b>()</a></li>
-			</ul>
-			<h2>Number</h2>
-			<ul>
-				<li><a href="number/Number.toBytesString.test.html" target="main">&lt;Number&gt;.toBytesString()</a></li>
+			<details><summary><abbr>CSS</abbr></summary>
+				<ul>
+					<li>TODO</li>
+				</ul>
+			</details>
+			<details open><summary>Classes</summary>
+				<ul>
+					<li><a href="classes/Element.addClass.test.html" target="main">&lt;Element&gt;.<b>addClass</b>()</a></li>
+					<li><a href="classes/Element.removeClass.test.html" target="main">&lt;Element&gt;.<b>removeClass</b>()</a></li>
+					<li><a href="classes/Element.toggleClass.test.html" target="main">&lt;Element&gt;.<b>toggleClass</b>()</a></li>
+					<li><a href="classes/Element.hasClass.test.html" target="main">&lt;Element&gt;.<b>hasClass</b>()</a></li>
+				</ul>
+			</details>
+			<details open><summary>Elements</summary>
+				<ul>
+					<li><a href="elements/Element.append.test.html" target="main">&lt;Element&gt;.<b>append</b>()</a></li>
+					<li><a href="elements/Element.attr.test.html" target="main">&lt;Element&gt;.<b>attr</b>()</a></li>
+					<li><a href="elements/Element.html.test.html" target="main">&lt;Element&gt;.<b>html</b>()</a></li>
+					<li><a href="elements/Element.new.test.html" target="main">&lt;Element&gt;.<b>new</b>()</a></li>
+					<li><a href="elements/Element.text.test.html" target="main">&lt;Element&gt;.<b>text</b>()</a></li>
+				</ul>
+				<ul>
+					<li><a href="elements/Element_cls.new.test.html" target="main"><b>Element.new</b>()</a></li>
+				</ul>
+			</details>
+			<details open><summary>Events</summary>
+				<ul>
+					<li><a href="events/Element.on.test.html" target="main">&lt;Element&gt;.<b>on</b>()</a></li>
+					<li><a href="events/Element.once.test.html" target="main">&lt;Element&gt;.<b>once</b>()</a></li>
+					<li><a href="events/Element.off.test.html" target="main">&lt;Element&gt;.<b>off</b>()</a></li>
+					<li><a href="events/Element.onClick.test.html" target="main">&lt;Element&gt;.<b>onClick</b>()</a></li>
+				</ul>
+			</details>
+			<details open><summary>Number</summary>
+				<ul>
+					<li><a href="number/Number.toBytesString.test.html" target="main">&lt;Number&gt;.<b>toBytesString</b>()</a></li>
+				</ul>
+			</details>
+			<details><summary><abbr>XHR</abbr></summary>
+				<ul>
+					<li>TODO</li>
+				</ul>
+			</details>
 		</div>
 		<iframe src="data:text/html,%3C!DOCTYPE html%3E%3Chtml%3E%3Cbody%3E%3Cp%3E&%23x2190; Select a function from the list.%3C/p%3E%3C/body%3E%3C/html%3E" name="main"></iframe>
 	</body>

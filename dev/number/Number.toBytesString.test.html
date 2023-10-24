@@ -3,9 +3,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>&lt;Number&gt;.toBytesString() — jMini Test</title>
-		<script src="Number.toBytesString.js" type="text/javascript"></script>
-		<script src="../elements/Element.new.js" type="text/javascript"></script>
-		<script src="../elements/Element.html.js" type="text/javascript"></script>
+		<script src="./Number.toBytesString.js" type="text/javascript"></script>
+		<script src="../elements/Element_cls.new.js" type="text/javascript"></script>
 		<script src="../elements/Element.append.js" type="text/javascript"></script>
 		<script src="../elements/Element.text.js" type="text/javascript"></script>
 		<style>
@@ -47,11 +46,14 @@
 		
 			/* function to log to screen: */
 			let listLog = function(trg, a, b, c = undefined, d = undefined) {
-				let tr = Element.new('tr');
-				tr.append(Element.new('td').text(a));
-				tr.append(Element.new('td').text(b));
-				if (c) tr.append(Element.new('td').text(c));
-				if (d) tr.append(Element.new('td').text(d));
+			
+			
+				let tr = HTMLElement.new('tr')
+					.append(HTMLElement.new('td').text(a))
+					.append(HTMLElement.new('td').text(b))
+				;
+				if (c) tr.append(HTMLElement.new('td').text(c));
+				if (d) tr.append(HTMLElement.new('td').text(d));
 					
 				document.getElementById(trg).append(tr);
 			};
