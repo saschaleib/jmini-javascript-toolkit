@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>&lt;HTMLElement&gt;.append() — jMini Test</title>
-		<script src="./Element.append.js" type="text/javascript"></script>
+		<title>HTMLElement.new() — jMini Test</title>
 		<script src="./Element_cls.new.js" type="text/javascript"></script>
+		<script src="./Element.append.js" type="text/javascript"></script>
 		<script src="./Element.text.js" type="text/javascript"></script>
 		<script src="./Element.attr.js" type="text/javascript"></script>
 		<style>
@@ -13,12 +13,12 @@
 		</style>
 	</head>
 	<body>
-		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.append()</h1>
+		<h1>Tests: HTMLElement.new()</h1>
 		<main>
-			<h2><span>Append object:</span></h2>
-			<p>Note: these are largely the same test as for <a href="Element_cls.new.test.html">HTMLElement.new()</a>.</p>
+			<h2><span>Create new objects:</span></h2>
+			<p>Note: these are largely the same test as for <a href="Element.append.test.html"><i>&lt;Element&gt;</i>.append()</a>.</p>
 			<p>
-				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>append</b>(obj <i>&lt;HTMLElement&gt;</i>)</code>
+				Usage: <code>HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>)</code>
 			</p>
 			<div id="target1"></div>
 			
@@ -30,9 +30,9 @@
 		</footer>
 		
 		<script type="text/javascript">
-		
-			console.group('Tests: <Element>.append()');
 
+			console.group('Tests: HTMLElement.new()');
+		
 			/* create some objects and append them to target1: */
 			document.getElementById('target1')
 				.append(HTMLElement.new('div').text('Newly created DIV'))

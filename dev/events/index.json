@@ -1,13 +1,13 @@
 [
-	{	"id": "element_on",
-		"name": "<i>&lt;Element&gt;</i>.<b>on</b>",
+	{	"id": "htmlelement_on",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
 		"type": "prototype",
-		"desc": "Attaches an event handler to an Element.",
-		"file": "Element.on.min.js",
+		"desc": "Attaches an event handler to an HTMLElement.",
+		"file": "HTMLElement.on.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>on</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the element for the named event.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the HTMLElement for the named event.",
 			"flags": [],
 			"param": [
 			  {
@@ -24,8 +24,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -34,14 +34,14 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
 	},
-	{	"id": "element_once",
-		"name": "<i>&lt;Element&gt;</i>.<b>once</b>",
+	{	"id": "htmlelement_once",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>",
 		"type": "prototype",
-		"desc": "Attaches an event handler to an Element that will be called at most one time.",
+		"desc": "Attaches an event handler to an HTMLElement that will be called at most one time.",
 		"file": "Element.once.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>once</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the element for the named event.",
 			"flags": [],
 			"param": [
@@ -59,24 +59,24 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
 		"size": 91,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
+		"moreinfo": "http://code.kolmio.com/jmini/docs/events/once.html"
 	},
-	{	"id": "element_off",
-		"name": "<i>&lt;Element&gt;</i>.<b>off</b>",
+	{	"id": "htmlelement_off",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>",
 		"type": "prototype",
-		"desc": "Removes an event handler from an Element.",
+		"desc": "Removes an event handler from an HTMLElement.",
 		"file": "Element.off.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>off</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
 			"desc": "Removes the callback function from the element for the named event.",
 			"flags": [],
 			"param": [
@@ -94,8 +94,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -104,15 +104,15 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
 	},
-	{	"id": "element_onblur",
-		"name": "<i>&lt;Element&gt;</i>.<b>onBlur</b>",
+	{	"id": "htmlelement_onblur",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'blur' event.",
 		"file": "Element.onBlur.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'blur' event of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'blur' event of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -123,8 +123,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -133,15 +133,15 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onBlur.html"
 	},
-	{	"id": "element_onclick",
-		"name": "<i>&lt;Element&gt;</i>.<b>onClick</b>",
+	{	"id": "htmlelement_onclick",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'click' event.",
 		"file": "Element.onClick.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>onClick</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'click' event of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'click' event of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -152,8 +152,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -162,15 +162,15 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onClick.html"
 	},
-	{	"id": "element_onfocus",
-		"name": "<i>&lt;Element&gt;</i>.<b>onFocus</b>",
+	{	"id": "htmlelement_onfocus",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'focus' event.",
 		"file": "Element.onFocus.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>onFocus</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'focus' event of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'focus' event of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -181,8 +181,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -191,15 +191,15 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onFocus.html"
 	},
-	{	"id": "form_onsubmit",
-		"name": "<i>&lt;Form&gt;</i>.<b>onSubmit</b>",
+	{	"id": "htmlformelement_onsubmit",
+		"name": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'submit' event of a <form> element.",
 		"file": "Form.onSubmit.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Form&gt;</i>.<b>onSubmit</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'blur' event of the Element.",
+			"sig": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>(callback <i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'blur' event of the form.",
 			"note": "This function can only be attached to <form> elements.",
 			"flags": [],
 			"param": [
@@ -211,8 +211,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLFormElement&gt;</i>",
+				"desc": "The (modified) parent <form> Element."
 			}
 		  }
 		],

@@ -3,7 +3,7 @@
 /* parent object: Element */
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
-Element.prototype.text = function(txt = undefined) {
+HTMLElement.prototype.text = function(txt = undefined) {
 	if (typeof txt !== 'undefined') {
 		this.textContent = txt.toString();
 		return this;

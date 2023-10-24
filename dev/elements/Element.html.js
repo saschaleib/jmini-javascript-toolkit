@@ -3,7 +3,7 @@
 /* parent object: Element */
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
-Element.prototype.html = function(xhtml = null) {
+HTMLElement.prototype.html = function(xhtml = null) {
 	if (xhtml) {
 		let parser = new DOMParser();
 		let doc = parser.parseFromString('<div>' + xhtml + '</div>', 'application/xml');

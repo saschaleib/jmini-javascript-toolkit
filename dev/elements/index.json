@@ -1,25 +1,25 @@
 [
-	{	"id": "element_new",
-		"name": "Element.<b>new</b>",
+	{	"id": "htmlelement_cls_new",
+		"name": "HTMLElement.<b>new</b>",
 		"type": "static",
-		"desc": "Creates a new Element.",
-		"file": "Element.new.min.js",
+		"desc": "Creates a new HTMLElement.",
+		"file": "Element_cls.new.min.js",
 		"variants": [
 		  {
-			"sig": "Element.<b>new</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Factory method to create a new Element with the passed name.",
+			"sig": "HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>)",
+			"desc": "Factory method to create a new HTMLElement with the passed name.",
 			"flags": ["static"],
 			"param": [
 			  {
 				"name": "Name",
 				"type": "String",
-				"desc": "The name of the Element to create",
+				"desc": "The name of the HTMLElement to create",
 				"required": true
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The newly created Element (or <i>null</i> if the Element could not be created)"
+				"type": "<i>&lt;Object&gt;</i> (<i>&lt;HTMLElement&gt;</i>)",
+				"desc": "The newly created HTMLElement (or <i>null</i> if the HTMLElement could not be created)"
 			}
 		  }
 		],
@@ -28,44 +28,44 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
 	},
-	{	"id": "element_append",
-		"name": "<i>&lt;Element&gt;</i>.<b>append</b>",
+	{	"id": "htmlelement_append",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
 		"type": "prototype",
-		"desc": "Appends an Element inside of an existing Element (at the end).",
+		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
 		"file": "Element.append.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>append</b>(e <i>&lt;Element&gt;</i>)",
-			"desc": "Appends the passed Element to the inside of the parent Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>(e <i>&lt;HTMLElement&gt;</i>)",
+			"desc": "Appends the passed HTMLElement to the inside of the parent HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
-				"name": "Element",
-				"type": "<i>&lt;Element&gt;</i>",
-				"desc": "The element to append to the parent",
+				"name": "element",
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The HTMLElement to append to the parent",
 				"required": true
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Element&gt;</i>",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
 		"size": 121,
-		"requires": ["element_html"],
+		"requires": [],
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
 	},
-	{	"id": "element_attr",
-		"name": "<i>&lt;Element&gt;</i>.<b>attr</b>",
+	{	"id": "htmlelement_attr",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>",
 		"type": "prototype",
-		"desc": "Gets or sets an attribute of an Element.",
+		"desc": "Gets or sets an attribute of an HTMLElement.",
 		"file": "Element.attr.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>)",
-			"desc": "Returns the value of an attribute of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>)",
+			"desc": "Returns the value of an attribute of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -81,8 +81,8 @@
 			}
 		  },
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>, value <i>&lt;String&gt;</i>)",
-			"desc": "Returns the value of an attribute of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>(name <i>&lt;String&gt;</i>, value <i>&lt;String&gt;</i>)",
+			"desc": "Returns the value of an HTMLElement attribute.",
 			"flags": [],
 			"param": [
 			  {
@@ -99,8 +99,8 @@
 			  }
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -109,38 +109,38 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/attr.html"
 	},
-	{	"id": "element_html",
-		"name": "<i>&lt;Element&gt;</i>.<b>html</b>",
+	{	"id": "htmlelement_html",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
 		"type": "prototype",
-		"desc": "Gets or sets the HTML content of an element",
+		"desc": "Gets or sets the HTML content of an HTMLElement",
 		"file": "Element.html.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>()",
-			"desc": "Returns the HTML content the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>()",
+			"desc": "Returns the HTML content the HTMLElement.",
 			"flags": [],
 			"param": [],
 			"returns": {
 				"type": "String",
-				"desc": "The inner HTML of the Element as String."
+				"desc": "The inner HTML of the HTMLElement as String."
 			}
 		  },
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
-			"desc": "Sets the HTML content of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>(xhtml <i>&lt;String&gt;</i>)",
+			"desc": "Sets the HTML content of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
 				"name": "xhtml",
 				"type": "String",
-				"desc": "The HTML code to interpret and assign to the Element content.",
+				"desc": "The HTML code to interpret and assign to the HTMLElement content.",
 				"note": "The parser is strict and requires valid XHTML!",
 				"required": true
 				}
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
@@ -149,15 +149,15 @@
 		"conflics": [],
 		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
 	},
-	{	"id": "element_text",
-		"name": "<i>&lt;Element&gt;</i>.<b>text</b>",
+	{	"id": "htmlelement_text",
+		"name": "<i>&lt;HTMLElement&gt;</i>.<b>text</b>",
 		"type": "prototype",
-		"desc": "Gets or sets the text node of an Element",
+		"desc": "Gets or sets the text node of an HTMLElement",
 		"file": "Element.text.min.js",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>text</b>()",
-			"desc": "Returns the text content the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>text</b>()",
+			"desc": "Returns the text content the HTMLElement.",
 			"flags": [],
 			"param": [],
 			"returns": {
@@ -166,8 +166,8 @@
 			}
 		  },
 		  {
-			"sig": "<i>&lt;Element&gt;</i>.<b>attr</b>(text <i>&lt;String&gt;</i>)",
-			"desc": "Sets the text content of the Element.",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>(text <i>&lt;String&gt;</i>)",
+			"desc": "Sets the text content of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -178,8 +178,8 @@
 				}
 			],
 			"returns": {
-				"type": "<i>&lt;Object&gt;</i> (<i>&lt;Element&gt;</i>)",
-				"desc": "The (modified) parent Element."
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
 			}
 		  }
 		],
