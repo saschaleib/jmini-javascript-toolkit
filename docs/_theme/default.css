@@ -116,7 +116,7 @@ code.block {
 	border-color: #72A796;
 }
 #pre-header ul li a:link,
-#pre-header ul li a:link {
+#pre-header ul li a:visited {
 	display: inline-block;
 	margin: 0; padding: .25em .5em;
 	color: #ECEFF1;
@@ -157,8 +157,27 @@ code.block {
 	margin: auto;
 	display: grid;
 	grid-template-columns: min-content auto;
-	gap: .5rem;
+	gap: 1em;
 }
+
+/* properties pseudo-table */
+dl.properties {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: .5em;
+}
+dl.properties dt {
+	grid-column: 1;
+	margin: .25em 0;
+}
+dl.properties dd {
+	grid-column: 2;
+	margin: .25em 0;
+}
+dl.properties dd ol {
+	margin: 0; padding: 0 0 0 1em;
+}
+
 
 /* SIDEBAR */
 #sidebar-nav {
@@ -209,6 +228,8 @@ code.block {
 }
 #footer-layout > footer p {
 	padding: 0; margin: 0 0 .5em 0;
+	font-size: small;
+	text-align: center;
 }
 
 #footer-layout a:link,

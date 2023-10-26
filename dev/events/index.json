@@ -1,6 +1,7 @@
 [
 	{	"id": "htmlelement_on",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
+		"name": ".on",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement.",
 		"file": "Element.on.min.js",
@@ -32,10 +33,11 @@
 		"size": 77,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
+		"moreinfo": "docs/events/on.html"
 	},
 	{	"id": "htmlelement_once",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>",
+		"name": ".once",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement that will be called at most one time.",
 		"file": "Element.once.min.js",
@@ -67,10 +69,11 @@
 		"size": 91,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/once.html"
+		"moreinfo": "docs/events/once.html"
 	},
 	{	"id": "htmlelement_off",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>",
+		"name": ".off",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>",
 		"type": "prototype",
 		"desc": "Removes an event handler from an HTMLElement.",
 		"file": "Element.off.min.js",
@@ -102,10 +105,11 @@
 		"size": 81,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/on.html"
+		"moreinfo": "docs/events/on.html"
 	},
 	{	"id": "htmlelement_onblur",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>",
+		"name": ".onBlur",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'blur' event.",
 		"file": "Element.onBlur.min.js",
@@ -131,10 +135,11 @@
 		"size": 82,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onBlur.html"
+		"moreinfo": "docs/events/onBlur.html"
 	},
 	{	"id": "htmlelement_onclick",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>",
+		"name": ".onClick",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'click' event.",
 		"file": "Element.onClick.min.js",
@@ -160,10 +165,11 @@
 		"size": 85,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onClick.html"
+		"moreinfo": "docs/events/onClick.html"
 	},
 	{	"id": "htmlelement_onfocus",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
+		"name": ".onFocus",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'focus' event.",
 		"file": "Element.onFocus.min.js",
@@ -189,10 +195,11 @@
 		"size": 84,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onFocus.html"
+		"moreinfo": "docs/events/onFocus.html"
 	},
 	{	"id": "htmlformelement_onsubmit",
-		"name": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>",
+		"name": ".onSubmit",
+		"namehtml": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'submit' event of a <form> element.",
 		"file": "Form.onSubmit.min.js",
@@ -219,6 +226,6 @@
 		"size": 213,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/events/onSubmit.html"
+		"moreinfo": "docs/events/onSubmit.html"
 	}
 ]

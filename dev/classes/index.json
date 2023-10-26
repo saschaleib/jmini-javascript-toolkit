@@ -1,6 +1,7 @@
 [
 	{	"id": "htmlelement_addclass",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
+		"name": ".addClass",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
 		"type": "prototype",
 		"desc": "Adds a class to the parent HTMLElement.",
 		"file": "Element.addClass.min.js",
@@ -26,10 +27,11 @@
 		"size": 78,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/addClass.html"
+		"moreinfo": "docs/classes/addClass.html"
 	},
 	{	"id": "htmlelement_removeclass",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>",
+		"name": ".removeClass",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>",
 		"type": "prototype",
 		"desc": "Removes a class from the parent HTMLElement.",
 		"file": "Element.removeClass.min.js",
@@ -55,10 +57,11 @@
 		"size": 84,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/removeClass.html"
+		"moreinfo": "docs/classes/removeClass.html"
 	},
 	{	"id": "htmlelement_toggleclass",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>",
+		"name": ".toggleClass",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>",
 		"type": "prototype",
 		"desc": "Toggles a class at the parent HTMLElement.",
 		"file": "Element.toggleClass.min.js",
@@ -84,10 +87,11 @@
 		"size": 84,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/toggleClass.html"
+		"moreinfo": "docs/classes/toggleClass.html"
 	},
 	{	"id": "htmlelement_hasclass",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>",
+		"name": ".hasClass",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>",
 		"type": "prototype",
 		"desc": "Checks is a class is assigned to the parent HTMLElement.",
 		"file": "Element.hasClass.min.js",
@@ -113,6 +117,6 @@
 		"size": 78,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/classes/hasClass.html"
+		"moreinfo": "docs/classes/hasClass.html"
 	}
 ]

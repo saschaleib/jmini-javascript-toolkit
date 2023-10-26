@@ -1,6 +1,7 @@
 [
 	{	"id": "htmlelement_append",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
+		"name": ".append",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
 		"type": "prototype",
 		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
 		"file": "Element.append.min.js",
@@ -26,10 +27,11 @@
 		"size": 121,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/append.html"
+		"moreinfo": "docs/elements/append.html"
 	},
 	{	"id": "htmlelement_attr",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>",
+		"name": ".attr",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>attr</b>",
 		"type": "prototype",
 		"desc": "Gets or sets an attribute of an HTMLElement.",
 		"file": "Element.attr.min.js",
@@ -78,10 +80,11 @@
 		"size": 103,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/attr.html"
+		"moreinfo": "docs/elements/attr.html"
 	},
 	{	"id": "htmlelement_new",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>new</b>",
+		"name": ".new",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>new</b>",
 		"type": "prototype",
 		"desc": "Appends a new HTMLElement",
 		"file": "Element.new.min.js",
@@ -100,10 +103,11 @@
 		"size": 140,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new.html"
+		"moreinfo": "docs/elements/new.html"
 	},
 	{	"id": "htmlelement_html",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
+		"name": ".html",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
 		"type": "prototype",
 		"desc": "Parses XHTML code and inserts it inside of an existing HTMLElement.",
 		"file": "Element.html.min.js",
@@ -129,10 +133,11 @@
 		"size": 121,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/html.html"
+		"moreinfo": "docs/elements/html.html"
 	},
 	{	"id": "htmlelement_gettext",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>getText</b>",
+		"name": ".getText",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>getText</b>",
 		"type": "prototype",
 		"desc": "Returns the text content of an HTMLElement",
 		"file": "Element.getText.min.js",
@@ -150,10 +155,11 @@
 		"size": 106,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/gettext.html"
+		"moreinfo": "docs/elements/gettext.html"
 	},
 	{	"id": "htmlelement_settext",
-		"name": "<i>&lt;HTMLElement&gt;</i>.<b>setText</b>",
+		"name": ".setText",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>setText</b>",
 		"type": "prototype",
 		"desc": "Sets the text content of an HTMLElement",
 		"file": "Element.setText.min.js",
@@ -178,10 +184,11 @@
 		"size": 106,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/settext.html"
+		"moreinfo": "docs/elements/settext.html"
 	},
 	{	"id": "htmlelement_cls_new",
-		"name": "HTMLElement.<b>new</b>",
+		"name": ".new",
+		"namehtml": "HTMLElement.<b>new</b>",
 		"type": "static",
 		"desc": "Creates a new HTMLElement.",
 		"file": "Element_cls.new.min.js",
@@ -207,6 +214,6 @@
 		"size": 103,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "http://code.kolmio.com/jmini/docs/elements/new_static.html"
+		"moreinfo": "docs/elements/new_static.html"
 	}
 ]
