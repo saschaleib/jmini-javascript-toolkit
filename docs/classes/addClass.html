@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>.addClass – jMini Documentation</title>
+		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
+		<script src="../../jmini.js" type="text/javascript"></script>
+		<script src="../_theme/docs.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#263832" />
+	</head>
+	<body data-pageid="classes:addClass">
+		<nav id="pre-header">
+			<div>
+				<span class="label">jMini:</span>
+				<ul>
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../download.html">Download</a></li>
+					<li class="active"><a href="../index.html">Documentation</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="header-layout">
+		</div>
+		<div id="header-layout">
+			<header>
+				<h1><a href="../index.html">jMini Documentation</a></h1>
+			</header>
+		</div>
+		<div id="main-layout">
+			<div id="main-sb-layout">
+				<nav id="sidebar-nav">
+					<h2>Documentation</h2>
+					<details open>
+						<summary>Classes</summary>
+						<ul>
+							<li><a href="addClass.html">.<b>addClass</b>()</a></li>
+							<li><a href="hasClass.html">.<b>hasClass</b>()</a></li>
+							<li><a href="removeClass.html">.<b>removeClass</b>()</a></li>
+							<li><a href="toggleClass.html">.<b>toggleClass</b>()</a></li>
+						</ul>
+					</details>
+				</nav>
+				<main>
+					<h2><tt>.addClass</tt></h2>
+
+					<p>Attaches a class to an <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</p>
+											
+					<h3>Usage:</h3>
+					
+					<p><code><i>&lt;HTMLElement&gt;</i>.<b>addClass</b>(className <i>&lt;String&gt;</i>)</code></p>
+					
+					<p>Where:</p>
+					<ul>
+						<li><code><i>&lt;HTMLElement&gt;</i></code> is any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a></li>
+						<li><code>className <i>&lt;String&gt;</i></code> is the name of the class to add as String object, or quoted string</li>
+					</ul>
+					
+					<p>
+						<strong>Note:</strong>
+						This function is a simple wrapper for the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" class="ext mdn" target="_blank">classList</a>.add()</code> function. The only difference is that this function returns the HTMLElement and thus allows chaining other functions for neater and/or more compact code.
+					</p>
+
+					<h3>Examples</h3>
+					<h4>Simple example:</h4>
+						
+<code class="block javascript">let trg = document.getElementById('target');
+trg.<b>addClass</b>('redOutline');</code>
+						
+					<h4>Chaining example:</h4>
+
+					<p>Chaining allows for very compact code:</p>
+
+<code class="block javascript">document.getElementById('target').<b>addClass</b>('redOutline').attr('data-value', 'something');</code>
+
+					<p>&hellip;&nbsp;but also allows for very neat and readable code:</p>
+
+<code class="block javascript">document.getElementById('target')
+	.<b>addClass</b>('redOutline')
+	.attr('data-value', 'something')
+;</code>
+					
+					<h3>See also:</h3>
+					<ul>
+						<li><a href="removeClass.html">.removeClass()</a></li>
+						<li><a href="toggleClass.html">.toggleClass()</a></li>
+						<li><a href="hasClass.html">.hasClass()</a></li>
+					</ul>
+				</main>
+			</div>
+		</div>
+		<div id="footer-layout">
+			<footer>
+				<p>jMini is licensed under the <a href="https://github.com/saschaleib/jMini/blob/main/LICENSE" class="ext github" target="_blank">GPL-3.0 license</a>. For more information, please see this project’s <a href="https://github.com/saschaleib/jMini" class="ext github" target="_blank">GitHub Repository</a>.</p>
+			</footer>
+		</div>
+	</body>
+</html>
