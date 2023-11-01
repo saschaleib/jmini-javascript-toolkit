@@ -1,13 +1,13 @@
 [
 	{	"id": "number_tobytesstring",
 		"name": ".toBytesString",
-		"namehtml": "<i>&lt;Number&gt;</i>.toBytesString",
+		"namehtml": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>",
 		"type": "prototype",
 		"desc": "Converts a number to a formatted bytes sting using KiB, MiB, etc.",
-		"file": "Number.toBytesString.min.js",
+		"file": "Number.toBytesString",
 		"variants": [
 		  {
-			"sig": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i> = 2, locale <i>&lt;String&gt;</i> = &quot;en-US&quot;)",
+			"sig": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>(<i>&lt;Number&gt;</i> = 2, <i>&lt;String&gt;</i> = &quot;en-US&quot;)",
 			"desc": "Converts the Number to a formatted String with suitable unit.",
 			"flags": [],
 			"param": [

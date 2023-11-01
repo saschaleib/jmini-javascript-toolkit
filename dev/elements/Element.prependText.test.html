@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.prependText() — jMini Test</title>
+		<script src="Element.prependText.js" type="text/javascript"></script>
+		<script src="Element.prependNew.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.prependText()</h1>
+		<main>
+			<p>
+				Usage: <code><i>&lt;Element&gt;</i>.<b>prependText</b>(txt <i>&lt;String&gt;</i>)</code>
+			</p>
+
+			<p>A list will be added to a paragraph below, in reverse order:</p>
+			
+			<p id="target"></p>
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.prependText()');
+
+			/* create a list */
+			let src = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixt', 'Seventh', 'Eight', 'Nineth', 'Tenth'];
+
+		
+			let trg2 = document.getElementById('target');
+			src.forEach( (it) => {
+				trg2.prependText(it).prependNew('br')
+				;
+			});
+			
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

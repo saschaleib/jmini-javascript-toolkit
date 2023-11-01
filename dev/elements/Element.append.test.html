@@ -4,9 +4,9 @@
 		<meta charset="utf-8" />
 		<title>&lt;HTMLElement&gt;.append() — jMini Test</title>
 		<script src="Element.append.js" type="text/javascript"></script>
-		<script src="Element_cls.new.js" type="text/javascript"></script>
+		<script src="HTMLElement.new.js" type="text/javascript"></script>
 		<script src="Element.setText.js" type="text/javascript"></script>
-		<script src="Element.attr.js" type="text/javascript"></script>
+		<script src="Element.setAttr.js" type="text/javascript"></script>
 		<style>
 			#target1, #target2 { border: red dotted 1px; }
 			#target1 > *, #target2 > * { border: blue dashed 1px; }
@@ -46,7 +46,7 @@
 			src.forEach( (s, n) => {
 				document.getElementById('target2')
 					.append(HTMLElement.new('li')
-						.attr('data-num' , n+1)
+						.setAttr('data-num' , n+1)
 						.setText(s)
 					)
 				;

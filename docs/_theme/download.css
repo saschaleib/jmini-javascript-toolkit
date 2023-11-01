@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/* Stylesheet for the jMini Documentation pages
+ * File name: docs.css
+ */
+ 
+/* Color overrides */
+html, body { background-color: #263238; }
+*:focus { outline-color: #EF6C00; }
+a:hover { text-decoration-color: #BF360C; }
+a:link, a:visited { color: #00695C; }
+
+main code { background-color: #FFF; }
+main code.block {
+	border-left-color: #00695C;
+	border-right-color: #CCC;
+}
+#header-layout { background-color: #546E7A; }
+#pre-header {
+	background-color: #263238;
+	color: #CFD8DC;
+}
+#pre-header ul li.active { border-color: #ECEFF1; }
+#pre-header ul li a:link,
+#pre-header ul li a:visited { color: #ECEFF1; }
+#pre-header ul li a:hover {
+	background-color: #ECEFF1;
+	color: #37474F;
+}
+#header-layout > header h1 a:link,
+#header-layout > header h1 a:visited { color: #F5F5F5; }
+#main-layout { background-color: #F5F5F5; }
+#sidebar-nav summary { color: #00695C; }
+#footer-layout {
+	background-color: #546E7A;
+	color: #ECEFF1;
+}
+#footer-layout a:link,
+#footer-layout a:visited {
+	color: #CFD8DC;
+}
+#footer-layout a:hover {
+	text-decoration-color: #ECEFF1;
+}

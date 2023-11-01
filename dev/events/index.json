@@ -4,10 +4,10 @@
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement.",
-		"file": "Element.on.min.js",
+		"file": "Element.on",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the HTMLElement for the named event.",
 			"flags": [],
 			"param": [
@@ -30,7 +30,7 @@
 			}
 		  }
 		],
-		"size": 77,
+		"size": 79,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
@@ -40,10 +40,10 @@
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement that will be called at most one time.",
-		"file": "Element.once.min.js",
+		"file": "Element.once",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the element for the named event.",
 			"flags": [],
 			"param": [
@@ -76,10 +76,10 @@
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>",
 		"type": "prototype",
 		"desc": "Removes an event handler from an HTMLElement.",
-		"file": "Element.off.min.js",
+		"file": "Element.off",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>(name <i>&lt;String&gt;</i>, callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
 			"desc": "Removes the callback function from the element for the named event.",
 			"flags": [],
 			"param": [
@@ -102,7 +102,7 @@
 			}
 		  }
 		],
-		"size": 81,
+		"size": 83,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
@@ -112,10 +112,10 @@
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'blur' event.",
-		"file": "Element.onBlur.min.js",
+		"file": "Element.onBlur",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>(callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>(<i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the 'blur' event of the HTMLElement.",
 			"flags": [],
 			"param": [
@@ -132,7 +132,7 @@
 			}
 		  }
 		],
-		"size": 82,
+		"size": 86,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onBlur.html"
@@ -142,41 +142,11 @@
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'click' event.",
-		"file": "Element.onClick.min.js",
+		"file": "Element.onClick",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>(callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>(<i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the 'click' event of the HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to attach.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 85,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "docs/events/onClick.html"
-	},
-	{	"id": "htmlelement_onfocus",
-		"name": ".onFocus",
-		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
-		"type": "prototype",
-		"desc": "Attaches an event handler to the 'focus' event.",
-		"file": "Element.onFocus.min.js",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>(callback <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'focus' event of the HTMLElement.",
 			"flags": [],
 			"param": [
 			  {
@@ -195,6 +165,36 @@
 		"size": 84,
 		"requires": [],
 		"conflics": [],
+		"moreinfo": "docs/events/onClick.html"
+	},
+	{	"id": "htmlelement_onfocus",
+		"name": ".onFocus",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'focus' event.",
+		"file": "Element.onFocus",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>(<i>&lt;Function&gt;</i>)",
+			"desc": "Attaches the callback function to the 'focus' event of the HTMLElement.",
+			"flags": [],
+			"param": [
+			  {
+				"name": "callback",
+				"type": "<i>&lt;Function&gt;</i>",
+				"desc": "The callback function to attach.",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "<i>&lt;HTMLElement&gt;</i>",
+				"desc": "The (modified) parent HTMLElement."
+			}
+		  }
+		],
+		"size": 88,
+		"requires": [],
+		"conflics": [],
 		"moreinfo": "docs/events/onFocus.html"
 	},
 	{	"id": "htmlformelement_onsubmit",
@@ -202,10 +202,10 @@
 		"namehtml": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>",
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'submit' event of a <form> element.",
-		"file": "Form.onSubmit.min.js",
+		"file": "Form.onSubmit",
 		"variants": [
 		  {
-			"sig": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>(callback <i>&lt;Function&gt;</i>)",
+			"sig": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>(<i>&lt;Function&gt;</i>)",
 			"desc": "Attaches the callback function to the 'blur' event of the form.",
 			"note": "This function can only be attached to <form> elements.",
 			"flags": [],
@@ -223,7 +223,7 @@
 			}
 		  }
 		],
-		"size": 213,
+		"size": 94,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onSubmit.html"

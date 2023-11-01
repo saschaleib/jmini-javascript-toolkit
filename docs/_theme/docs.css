@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* Stylesheet for the jMini Documentation pages
+ * File name: docs.css
+ */
+ 
+/* Color overrides */
+html, body { background-color: #263832; }
+*:focus { outline-color: #E65100; }
+a:hover { text-decoration-color: #BF360C; }
+a:link, a:visited { color: #00695C; }
+
+main code { background-color: #FFF; }
+main code.block {
+	border-left-color: #00695C;
+	border-right-color: #CCC;
+}
+#header-layout { background-color: #00695C; }
+#pre-header {
+	background-color: #263832;
+	color: #72A796;
+}
+#pre-header ul li.active { border-color: #72A796; }
+#pre-header ul li a:link,
+#pre-header ul li a:visited { color: #ECEFF1; }
+#pre-header ul li a:hover {
+	background-color: #72A796;
+	color: #263832;
+}
+#header-layout > header h1 a:link,
+#header-layout > header h1 a:visited { color: #F5F5F5; }
+#main-layout { background-color: #F5F5F5; }
+#sidebar-nav summary { color: #00695C; }
+#footer-layout {
+	background-color: #00695C;
+	color: #FFF;
+}
+#footer-layout a:link,
+#footer-layout a:visited {
+	color: #C8DBD5;
+}
+#footer-layout a:hover {
+	text-decoration-color: #FFF;
+}
+
+/* properties pseudo-table */
+dl.properties {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: .5em;
+}
+dl.properties dt {
+	grid-column: 1;
+	margin: .25em 0;
+}
+dl.properties dd {
+	grid-column: 2;
+	margin: .25em 0;
+}
+dl.properties dd ol {
+	margin: 0; padding: 0 0 0 1em;
+}

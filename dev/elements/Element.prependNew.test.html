@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>&lt;HTMLElement&gt;.new() — jMini Test</title>
-		<script src="Element.new.js" type="text/javascript"></script>
+		<title>&lt;HTMLElement&gt;.prependNew() — jMini Test</title>
+		<script src="Element.prependNew.js" type="text/javascript"></script>
 		<script src="Element.setText.js" type="text/javascript"></script>
 		<style>
 			#target1, #target2 { border: red dotted 1px; }
@@ -11,15 +11,16 @@
 		</style>
 	</head>
 	<body>
-		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.new()</h1>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.prependNew()</h1>
 		<main>
-			<h2><span>Append new object:</span></h2>
-			<p>Note: these are largely the same test as for <a href="Element.new.test.html"><i>&lt;HTMLElement&gt;</i>.new()</a>.</p>
+			<h2><span>Prepend new object:</span></h2>
+			<p>Note: these are largely the same test as for <a href="Element_cls.new.test.html"><i>&lt;HTMLElement&gt;</i>.new()</a>.</p>
 			<p>
-				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>new</b>(name <i>&lt;String&gt;</i>)</code>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>prependNew</b>(name <i>&lt;String&gt;</i>)</code>
 			</p>
 			<p>List:</p>
 			<ul id="target"></ul>
+			<p>Info: as we are <em>pre</em>pending, the items should appear in reverse order.</p>
 			
 		</main>
 		<footer>
@@ -35,7 +36,7 @@
 			let ul = document.getElementById('target');
 			
 			src.forEach( (it) => {
-				ul.new('li').setText(it);
+				ul.prependNew('li').setText(it);
 			});
 
 			/* done. */

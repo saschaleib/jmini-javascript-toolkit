@@ -6,7 +6,7 @@
 		<script src="Element.setText.js" type="text/javascript"></script>
 		<script src="Element.html.js" type="text/javascript"></script>
 		<script src="Element.append.js" type="text/javascript"></script>
-		<script src="Element_cls.new.js" type="text/javascript"></script>
+		<script src="Element.appendNew.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.setText()</h1>
@@ -34,7 +34,7 @@
 		
 			let trg2 = document.getElementById('target2');
 			src.forEach( (it) => {
-				trg2.append(HTMLElement.new('li').setText(it));
+				trg2.appendNew('li').setText(it);
 			});
 			
 			/* done. */

@@ -2,14 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>&lt;HTMLElement&gt;.attr() — jMini Test</title>
-		<script src="Element.attr.js" type="text/javascript"></script>
+		<title>&lt;HTMLElement&gt;.getAttr() — jMini Test</title>
+		<script src="Element.getAttr.js" type="text/javascript"></script>
+		<script src="Element.setAttr.js" type="text/javascript"></script>
 		<script src="Element.append.js" type="text/javascript"></script>
-		<script src="Element_cls.new.js" type="text/javascript"></script>
+		<script src="HTMLElement.new.js" type="text/javascript"></script>
 		<script src="Element.setText.js" type="text/javascript"></script>
 	</head>
 	<body>
-		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.attr()</h1>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.getAttr()</h1>
 		<main>
 			<h2><span>Read attributes:</span></h2>
 			<p>
@@ -58,13 +59,13 @@
 			list1.forEach( (li) => {
 			
 				li.append(HTMLElement.new('strong')
-					.setText(" – data-num='" + li.attr('data-num') + "'")
+					.setText(" – data-num='" + li.getAttr('data-num') + "'")
 				);			
 			});
 
 			let list2 = document.querySelectorAll('#target2 li')
 			list2.forEach( (li, num) => {
-				li.attr('data-num', num);	
+				li.setAttr('data-num', num);	
 				console.log(li);
 			});
 

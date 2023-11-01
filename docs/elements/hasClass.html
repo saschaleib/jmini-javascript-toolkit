@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>.hasClass – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .hasClass function.">
+		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
+		<script src="../../jmini.js" type="text/javascript"></script>
+		<script src="../_theme/docs.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#263832" />
+	</head>
+	<body data-pageid="classes:hasClass">
+		<nav id="pre-header">
+			<div>
+				<span class="label">jMini:</span>
+				<ul>
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../download.html">Download</a></li>
+					<li class="active"><a href="../index.html">Documentation</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="header-layout">
+			<header>
+				<h1><a href="../index.html">jMini Documentation</a></h1>
+			</header>
+		</div>
+		<div id="main-layout">
+			<div id="main-sb-layout">
+				<nav id="sidebar-nav">
+					<h2>Documentation</h2>
+				</nav>
+				<main>
+					<h2><tt>.hasClass</tt></h2>
+
+					<p>Checks if an <em>HTMLElement</em> has a specific class atached.</p>
+											
+					<h3>Usage:</h3>
+					
+					<code class="block"><i>&lt;Boolean&gt;</i> = <i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>(className <i>&lt;String&gt;</i>)</code>
+					
+					<dl class="properties">
+						<dt>Member of:</dt>
+						<dd><i>&lt;HTMLElement&gt;</i>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
+
+						<dt>Parameters:</dt>
+						<dd><ol>
+							<li><strong>className</strong> – the name of the class to check for, as String object or as quoted string (required).</li>
+						</ol></dd>
+
+						<dt>Returns:</dt>
+						<dd><i>&lt;Boolean&gt;</i> – <em>true</em> if the class is attached, <em>false</em> if it is not.</dd>
+					</dl>
+
+					<p>
+						<strong>Note:</strong>
+						This function is a simple wrapper for the <code><em>classList</em>.contains()</code> function and only provides a slighly more convenient way of referencing this property.
+					</p>
+
+					<h3>Examples</h3>
+					<h4>Simple example:</h4>
+
+<code class="block javascript">let foo = document.getElementById('foo');
+if (foo.<b>hasClass</b>('bar')) {
+ …
+};</code>
+
+					<h3>See also:</h3>
+					<ul>
+						<li><a href="addClass.html">.addClass()</a></li>
+						<li><a href="removeClass.html">.removeClass()</a></li>
+						<li><a href="toggleClass.html">.removeClass()</a></li>
+					</ul>
+
+					<h3>More information:</h3>
+					<ul>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a> on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" class="ext mdn" target="_blank">classList</a> on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+					</ul>
+				</main>
+			</div>
+		</div>
+		<div id="footer-layout">
+			<footer>
+				<p>jMini is licensed under the <a href="https://github.com/saschaleib/jMini/blob/main/LICENSE" class="ext github" target="_blank">GPL-3.0 license</a>. For more information, please see this project’s <a href="https://github.com/saschaleib/jMini" class="ext github" target="_blank">GitHub Repository</a>.</p>
+			</footer>
+		</div>
+	</body>
+</html>

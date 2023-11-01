@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.appendNew() — jMini Test</title>
+		<script src="Element.appendNew.js" type="text/javascript"></script>
+		<script src="Element.setText.js" type="text/javascript"></script>
+		<style>
+			#target1, #target2 { border: red dotted 1px; }
+			#target1 > *, #target2 > * { border: blue dashed 1px; }
+		</style>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.appendNew()</h1>
+		<main>
+			<h2><span>Append new object:</span></h2>
+			<p>Note: these are largely the same test as for <a href="Element_cls.new.test.html"><i>&lt;HTMLElement&gt;</i>.new()</a>.</p>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>appendNew</b>(name <i>&lt;String&gt;</i>)</code>
+			</p>
+			<p>List:</p>
+			<ul id="target"></ul>
+			
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.new()');
+
+			let src = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixt', 'Seventh', 'Eight', 'Nineth', 'Tenth'];
+
+			let ul = document.getElementById('target');
+			
+			src.forEach( (it) => {
+				ul.appendNew('li').setText(it);
+			});
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

@@ -6,14 +6,14 @@
 			"title": "Classes",
 			"desc": "Everything related to classes.",
 			"path": "classes/",
-			"size": 277
+			"size": 324
 		},
 		{
 			"id": "elements",
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
-			"size": 635
+			"size": 0
 		},
 		{
 			"id": "events",

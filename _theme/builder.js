@@ -74,7 +74,7 @@ let $P = {
 			
 			start: function() {
 				$P.gui.busy._count += 1;
-				//console.info('gui.busy.start() - count: ' + $P.gui.busy._count);
+				console.info('gui.busy.start() - count: ' + $P.gui.busy._count);
 				if ($P.gui.busy._count <= 1) {
 					let anims = document.getElementsByClassName('loading-anim');
 					if (anims.lengt >= 1) {
@@ -84,7 +84,7 @@ let $P = {
 			},
 			end: function() {
 				$P.gui.busy._count -= 1;
-				//console.info('gui.busy.end() - count: ' + $P.gui.busy._count);
+				console.info('gui.busy.end() - count: ' + $P.gui.busy._count);
 				if ($P.gui.busy._count <= 0) {
 					let anims = document.getElementsByClassName('loading-anim');
 					if (anims.lengt >= 1) {
@@ -290,7 +290,9 @@ let $P = {
 		
 	list: {
 		init: function() {
-			$P.list._loadJSONFile('dev/index.json', $P.list.buildRoot);
+			console.info('$P.list.init()');
+			//$P.list._loadJSONFile('./dev/index.json', $P.list.buildRoot);
+			$P.list._loadJSONFile('http://code.kolmio.com/jmini/dev/index.json', $P.list.buildRoot);
 		},
 
 		/* generate a single download file */
@@ -335,6 +337,7 @@ let $P = {
 		/* build the root level of the list */
 		buildRoot: function(json) {
 			
+			console.info('$P.list.buildRoot()');
 			let version = json.version;
 			console.info("Index file version: " + version);
 			
@@ -474,7 +477,7 @@ let $P = {
 				/* create the other elements: */
 				let summary = HTMLElement.new('summary')
 					.append(HTMLElement.new('span')
-						.html(func.name)
+						.html(func.namehtml ? func.namehtml : func.name)
 						.addClass('funcName')
 						.attr('title', func.desc)
 					)
@@ -529,7 +532,7 @@ let $P = {
 				}
 				
 				/* load the file content: */
-				let path = 'dev/' + topic.path + func.file;
+				let path = 'dev/' + topic.path + func.file + '.min.js';
 				$P.list._loadCodeFile(path, (code, func) => {
 					
 					func._code = code;

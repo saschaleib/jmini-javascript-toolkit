@@ -1,14 +1,13 @@
 @charset "UTF-8";
-/* Stylesheet for the jMini Documentation pages
- * File name: default.css
+/* Stylesheet for the jMini web pages
+ * File name: global.css
  */
 
 /* general settings */
 html, body {
 	margin: 0; padding: 0;
-	font-family: Arial, sans-serif;
+	font-family: -apple-system, Segoe UI, Roboto, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	background-color: #263832;
 }
 body {
 	overflow: hidden auto;
@@ -20,15 +19,12 @@ h1, h2, h3, h4, h5, h6 {
 	color: #333;
 }
 *:focus {
-	outline: #E65100 solid 2pt;
+	outline: #F30 solid 2pt;
 	border-radius: 2pt;
 }
 
 a:link, a:visited {
-	color: #00695C;
-}
-a:hover {
-	text-decoration-color: #BF360C;
+	color: #000;
 }
 a:focus {
 	text-decoration: none;
@@ -36,6 +32,7 @@ a:focus {
 
 /* External links: */
 a.ext {
+	text-decoration: underline dotted;
 }
 a.ext::before {
 	content: ' ';
@@ -77,23 +74,15 @@ code.block {
 	max-width: max-content;
 }
 
-/* narrow elements */
-.narrow {
-	font-family: "Arial Narrow", sans-serif;
-}
-
 /* page header */
 #header-layout {
 	width: 100%;
-	background-color: #00695C;
 }
 
 /* pre-header navigation */
 #pre-header {
 	position: fixed;
 	width: 100%;
-	background-color: #263832;
-	color: #72A796;
 	padding: 2pt 0 0 .5em;
 }
 #pre-header > div {
@@ -116,19 +105,13 @@ code.block {
 	margin: 0; padding: 0;
 	border-bottom: transparent solid 2pt;
 }
-#pre-header ul li.active {
-	border-color: #72A796;
-}
 #pre-header ul li a:link,
 #pre-header ul li a:visited {
 	display: inline-block;
 	margin: 0; padding: .25em .5em;
-	color: #ECEFF1;
 	text-decoration: none;
 }
 #pre-header ul li a:hover {
-	background-color: #72A796;
-	color: #263832;
 	text-decoration: underline;
 }
 
@@ -145,14 +128,12 @@ code.block {
 }
 #header-layout > header h1 a:link,
 #header-layout > header h1 a:visited {
-	color: #F5F5F5;
 	text-decoration: none;
 }
 
 /* MAIN */
 #main-layout {
 	width: 100%;
-	background-color: #F5F5F5;
 }
 #main-sb-layout {
 	width: 100%;
@@ -162,25 +143,6 @@ code.block {
 	grid-template-columns: min-content auto;
 	gap: 1em;
 }
-
-/* properties pseudo-table */
-dl.properties {
-	display: grid;
-	grid-template-columns: max-content auto;
-	gap: .5em;
-}
-dl.properties dt {
-	grid-column: 1;
-	margin: .25em 0;
-}
-dl.properties dd {
-	grid-column: 2;
-	margin: .25em 0;
-}
-dl.properties dd ol {
-	margin: 0; padding: 0 0 0 1em;
-}
-
 
 /* SIDEBAR */
 #sidebar-nav {
@@ -198,7 +160,6 @@ dl.properties dd ol {
 #sidebar-nav summary {
 	font-weight: bold;
 	font-family: Bahnschrift, DIN Alternate, Arial Bold, sans-serif;
-	color: #00695C;
 	font-size: 1.1rem;
 	cursor: pointer;
 	padding: .25em 0 .25em .25em;
@@ -212,16 +173,17 @@ dl.properties dd ol {
 #sidebar-nav ul a:link,
 #sidebar-nav ul a:visited {
 	display: block;
-	color: #00695C;
 	text-decoration: none;
 	padding: .25em 1em;
 }
+
 #sidebar-nav p.error {
-	background-color: #F8F9DD;
-	border: #DEE0C7 solid 1px;
-	color: #970C64;
+	border: #666 solid 1px;
 	padding: .5em;
 	font-size: small;
+	background-color: #F8F9DD;
+	border-color: #DEE0C7;
+	color: #970C64;
 }
 #sidebar-nav p.error:before {
 	content: '';
@@ -229,11 +191,10 @@ dl.properties dd ol {
 	width: 1em; height: 1em;
 	background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4,1C2.89,1 2,1.89 2,3V7C2,8.11 2.89,9 4,9H1V11H13V9H10C11.11,9 12,8.11 12,7V3C12,1.89 11.11,1 10,1H4M4,3H10V7H4V3M14,13C12.89,13 12,13.89 12,15V19C12,20.11 12.89,21 14,21H11V23H23V21H20C21.11,21 22,20.11 22,19V15C22,13.89 21.11,13 20,13H14M3.88,13.46L2.46,14.88L4.59,17L2.46,19.12L3.88,20.54L6,18.41L8.12,20.54L9.54,19.12L7.41,17L9.54,14.88L8.12,13.46L6,15.59L3.88,13.46M14,15H20V19H14V15Z' style='fill:%23970C64' /%3E%3C/svg%3E") center no-repeat;
 }
+
 /* FOOTER */
 #footer-layout {
 	width: 100%;
-	background-color: #00695C;
-	color: #FFF;
 }
 #footer-layout > footer {
 	width: 100%;
@@ -249,9 +210,8 @@ dl.properties dd ol {
 
 #footer-layout a:link,
 #footer-layout a:visited {
-	color: #C8DBD5;
 	text-decoration: none;
 }
 #footer-layout a:hover {
-	text-decoration: underline #FFF;
+	text-decoration: underline;
 }

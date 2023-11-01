@@ -1,15 +1,15 @@
-/* appends a new child element to the parent. */
+/* appends a new child HTMLElement to the parent. */
 /* parameter: (String, required) name of the new child element */
 /* parent object: HTMLElement */
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.new = function(n, cb) {
-	var r = null;
+HTMLElement.prototype.appendNew = function(n, cb) {
+	var o = null;
 	try {
-		r = document.createElement(n);
-		this.appendChild(r);
+		o = document.createElement(n);
+		this.appendChild(o);
 	} catch(e) {
 		console.error(e);
 	}
-	return r;
+	return o;
 }

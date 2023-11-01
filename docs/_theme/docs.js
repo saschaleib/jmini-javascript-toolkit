@@ -119,6 +119,11 @@ let $P = {
 
 			} catch (error) {
 				console.error("Could not load navigation index:", error);
+				let err = HTMLElement.new('p')
+					.addClass('error')
+					.setText(error)
+				;
+				document.getElementById('sidebar-nav').append(err);
 			}
 		}
 	}

@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Classes (Topic) – jMini Documentation</title>
-		<meta name="description" content="jMini Documentation page for the Classes topic.">
+		<title>Events (Topic) – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the Events topic.">
 		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
 		<script src="../../jmini.js" type="text/javascript"></script>
 		<script src="../_theme/docs.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#263832" />
 	</head>
-	<body data-pageid="classes:index">
+	<body data-pageid="elements:index">
 		<nav id="pre-header">
 			<div>
 				<span class="label">jMini:</span>
@@ -32,34 +32,42 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2>Classes (Topic)</h2>
+					<h2>Events (Topic)</h2>
 
 					<p>This topic contains all functions that are directly related to
-					<em>Classes</em>:</p>
+					<em>Events</em>:</p>
 					
-					<h3>Add/remove</h3>
+					<h3>Attatch/remove</h3>
 					<ul>
 						<li>
-							<a href="addClass.html">.<b>addClass</b>()</a> – attach a class to an HTMLElement.
+							<a href="on.html">.<b>on</b>()</a> – attaches an event handler to an element.
 						</li>
 						<li>
-							<a href="removeClass.html">.<b>removeClass</b>()</a> – removes a class from an HTMLElement.
+							<a href="once.html">.<b>once</b>()</a> – same as <b>.on</b>, but the handler will be detached automatically once it was called.
 						</li>
 						<li>
-							<a href="toggleClass.html">.<b>toggleClass</b>()</a> – toggles (attaches or removes) a class of an HTMLElement.
+							<a href="off.html">.<b>off</b>()</a> – detaches an event handler from an element.
 						</li>
 					</ul>
-
-					<h3>Checking</h3>
+					<h3>Shorthand functions</h3>
 					<ul>
 						<li>
-							<a href="hasClass.html">.<b>hasClass</b>()</a> – Checks if an HTMLElement has a specific class assigned.
+							<a href="onBlur.html">.<b>onBlur</b>()</a> – attaches an event handler to the “blur” event of any element.
+						</li>
+						<li>
+							<a href="onClick.html">.<b>onClick</b>()</a> – attaches an event handler to the “click” event of any element.
+						</li>
+						<li>
+							<a href="onFocus.html">.<b>onFocus</b>()</a> – attaches an event handler to the “focus” event of any element.
+						</li>
+						<li>
+							<a href="onSubmit.html">.<b>onSubmit</b>()</a> – attaches an event handler to the “submit” event of a <code>&lt;form&gt;</code> element..
 						</li>
 					</ul>
 
 					<!--h3>See also</h3>
 					
-					<p>The following functions may also be related to classes, but are in a different topic.</p>
+					<p>The following functions may also be related to Events, but are in a different topic.</p>
 					
 					<ul>
 						<li>TODO</li>
@@ -67,7 +75,7 @@
 					
 					<h3>More information</h3>
 					<ul>
-						<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" class="ext mdn" target="_blank">Classes</a> on <abbr title="Mozilla Develper Network">MDN</abbr>.</li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a> on <abbr title="Mozilla Develper Network">MDN</abbr>.</li>
 					</ul>
 				</main>
 			</div>
