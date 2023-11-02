@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.prependChild() — jMini Test</title>
+		<script src="Element.prependChild.js" type="text/javascript"></script>
+		<script src="HTMLElement.new.js" type="text/javascript"></script>
+		<script src="Element.setText.js" type="text/javascript"></script>
+		<script src="Element.setAttr.js" type="text/javascript"></script>
+		<style>
+			#target1, #target2 { border: red dotted 1px; }
+			#target1 > *, #target2 > * { border: blue dashed 1px; }
+		</style>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.prependChild()</h1>
+		<main>
+			<h2><span>Prepend object:</span></h2>
+			<p>Note: these are largely the same test as for <a href="Element.new.test.html">HTMLElement.new()</a>.</p>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>prependChild</b>(obj <i>&lt;HTMLElement&gt;</i>)</code>
+			</p>
+			<div id="target1"></div>
+			
+			<p>List:</p>
+			<ul id="target2"></ul>
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <Element>.append()');
+
+			/* create some objects and prepend them to target1: */
+			document.getElementById('target1')
+				.prependChild(HTMLElement.new('div').setText('Newly created DIV'))
+				.prependChild(HTMLElement.new('p').setText('New paragraph with nestled strong element: ')
+				.prependChild(HTMLElement.new('strong').setText('Strong')))
+			;
+
+			/* create a list */
+			let src = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixt', 'Seventh', 'Eight', 'Nineth', 'Tenth'];
+			
+			src.forEach( (s, n) => {
+				document.getElementById('target2')
+					.prependChild(HTMLElement.new('li')
+						.setAttr('data-num' , n+1)
+						.setText(s)
+					)
+				;
+			});
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

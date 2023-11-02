@@ -16,8 +16,8 @@ Number.prototype.toBytesString = function(digits = 2, loc = 'en-US') {
 		p += 1;
 	}
 	let f = new Intl.NumberFormat(loc, {
-			maximumSignificantDigits: digits
-			});
+		maximumSignificantDigits: digits
+	});
 
 	return f.format(n2) + '\u202F' + units[p];
 }

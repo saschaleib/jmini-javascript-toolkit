@@ -13,7 +13,7 @@
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
-			"size": 0
+			"size": 1208
 		},
 		{
 			"id": "events",

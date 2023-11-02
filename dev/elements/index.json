@@ -30,7 +30,7 @@
 		"moreinfo": "docs/elements/new_static.html"
 	},
 	{	"id": "htmlelement_getattr",
-		"name": ".attr",
+		"name": ".getAttr",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>getAttr</b>",
 		"type": "prototype",
 		"desc": "Returns an attribute value from an HTMLElement.",
@@ -60,7 +60,7 @@
 		"moreinfo": "docs/elements/getAttr.html"
 	},
 	{	"id": "htmlelement_setAttr",
-		"name": ".attr",
+		"name": ".setAttr",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>setAttr</b>",
 		"type": "prototype",
 		"desc": "Sets an attribute value on an HTMLElement.",
@@ -222,36 +222,6 @@
 		"conflics": [],
 		"moreinfo": "docs/elements/append.html"
 	},
-	{	"id": "htmlelement_prepend",
-		"name": ".prepend",
-		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>prepend</b>",
-		"type": "prototype",
-		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
-		"file": "Element.prepend",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>(<i>&lt;HTMLElement&gt;</i>)",
-			"desc": "Appends the passed HTMLElement as the last item inside of the parent HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "element",
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The HTMLElement to append to the parent",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 76,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "docs/elements/prepend.html"
-	},
 	{	"id": "htmlelement_appendnew",
 		"name": ".appendNew",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>appendNew</b>",
@@ -277,7 +247,7 @@
 		  }
 		],
 		"size": 145,
-		"requires": [],
+		"requires": ["htmlelement_new"],
 		"conflics": [],
 		"moreinfo": "docs/elements/appendNew.html"
 	},
@@ -306,16 +276,16 @@
 		  }
 		],
 		"size": 142,
-		"requires": [],
+		"requires": ["htmlelement_new"],
 		"conflics": [],
 		"moreinfo": "docs/elements/prependNew.html"
 	},
-	{	"id": "htmlelement_html",
-		"name": ".html",
-		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>",
+	{	"id": "htmlelement_sethtml",
+		"name": ".setHtml",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>setHtml</b>",
 		"type": "prototype",
 		"desc": "Parses XHTML code and inserts it inside of an existing HTMLElement (possibly replacing existing child nodes).",
-		"file": "Element.html",
+		"file": "Element.setHtml",
 		"variants": [
 		  {
 			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>html</b>(<i>&lt;String&gt;</i>)",
@@ -338,6 +308,29 @@
 		"size": 204,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/Element.html"
+		"moreinfo": "docs/elements/setHtml"
+	},
+	{	"id": "htmlelement_gethtml",
+		"name": ".getHtml",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>getHtml</b>",
+		"type": "prototype",
+		"desc": "Returns the inner HTML of the HTMLElement (including that from child nodes).",
+		"file": "Element.getHtml",
+		"variants": [
+		  {
+			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>getHtml</b>()",
+			"desc": "Returns the inner HTML of the parent element.",
+			"flags": [],
+			"param": [],
+			"returns": {
+				"type": "String",
+				"desc": "The inner HTML as String."
+			}
+		  }
+		],
+		"size": 204,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/elements/getHtml"
 	}
 ]

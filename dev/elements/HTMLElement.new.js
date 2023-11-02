@@ -1,13 +1,18 @@
 /* creates a new Element */
-/* parameter: name (String) the name of the element, */
 /* parent object: Element */
-/* returns: the value of the attribute (String) if no value is set, */
-/* returns: the parent element (Object) if value is set */
+/* parameter: name (String) the name of the element (required) */
+/* parameter: attr (Object) a list of attributes to be added, */
+/* returns: the newly created HTMLElement */
 /* Support: DOM Level 1 (1998) */
-HTMLElement.new = function(n) {
+HTMLElement.new = function(name, atlist = undefined) {
 	var r = null;
 	try {
-		r = document.createElement(n);
+		r = document.createElement(name);
+		if (atlist) {
+			for (let attr in atlist) {
+				r.setAttribute(attr, atlist[attr]);
+			}
+		}
 	} catch(e) {
 		console.error(e);
 	}

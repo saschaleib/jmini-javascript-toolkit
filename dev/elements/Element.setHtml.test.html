@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.setHtml() — jMini Test</title>
+		<script src="Element.setHtml.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Element&gt;</i>.setHtml()</h1>
+		<main>
+			<h2><span>Set node content XHTML code:</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>setHtml</b>(xhtml)</code>
+			</p>
+			
+			<p>The HTML source code to add:</p>
+
+<textarea id="htmlcode" cols="64" rows="11"><ul>
+	<li>First</li>
+	<li>Second</li>
+	<li>Third</li>
+	<li>Fourth</li>
+	<li>Fifth</li>
+	<li>Sixt</li>
+	<li>Seventh</li>
+	<li>Eight</li>
+	<li>Nineth</li>
+	<li>Tenth</li>
+</ul></textarea>
+
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>setHtml</b>(xhtml <i>&lt;String&gt;</i>)</code>
+			</p>
+
+			<p>The source code from the text field will be applied here:</p>
+			<div id="target"></div>
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+
+			console.group('Tests: <HTMLElement>.setHtml()');
+		
+			/* read some attributes from target1: */
+			let src = document.getElementById('htmlcode');
+			let html = src.value;
+
+			let trg = document.getElementById('target');
+			trg.setHtml(html);
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>HTMLElement.new() — jMini Test</title>
-		<script src="Element.new.js" type="text/javascript"></script>
-		<script src="Element.append.js" type="text/javascript"></script>
+		<script src="HTMLElement.new.js" type="text/javascript"></script>
 		<script src="Element.setText.js" type="text/javascript"></script>
+		<script src="Element.append.js" type="text/javascript"></script>
 		<script src="Element.setAttr.js" type="text/javascript"></script>
 		<style>
 			#target1, #target2 { border: red dotted 1px; }
@@ -15,8 +15,7 @@
 	<body>
 		<h1>Tests: HTMLElement.new()</h1>
 		<main>
-			<h2><span>Create new objects:</span></h2>
-			<p>Note: these are largely the same test as for <a href="Element.append.test.html"><i>&lt;Element&gt;</i>.append()</a>.</p>
+			<h2><span>Create new HTMLElements:</span></h2>
 			<p>
 				Usage: <code>HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>)</code>
 			</p>
@@ -24,6 +23,13 @@
 			
 			<p>List:</p>
 			<ul id="target2"></ul>
+			
+			<h2><span>Create new element with attributes:</span></h2>
+			<p>
+				Usage: <code>HTMLElement.<b>new</b>(name <i>&lt;String&gt;</i>, attributelist <i>&lt;Object&gt;</i>)</code>
+			</p>
+			<p id="target3">Link: </p>
+
 		</main>
 		<footer>
 			<p><mark>See console for any errors.</mark></p>
@@ -51,10 +57,18 @@
 					)
 				;
 			});
+			
+			/* create a link: */
+			let t3 = document.getElementById('target3');
+			let link = HTMLElement.new('a', {
+				'href': 'http://code.kolmio.com/jmini/',
+				'class': 'ext kolmio',
+				'target': '_blank'
+			}).setText('code.kolmio.com');
+			t3.append(link);
 
 			/* done. */
 			console.groupEnd();
-
 		</script>
 	</body>
 </html>

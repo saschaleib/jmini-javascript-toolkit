@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>&lt;HTMLElement&gt;.appendNew() — jMini Test</title>
+		<script src="HTMLElement.new.js" type="text/javascript"></script>
 		<script src="Element.appendNew.js" type="text/javascript"></script>
 		<script src="Element.setText.js" type="text/javascript"></script>
 		<style>
@@ -13,13 +14,16 @@
 	<body>
 		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.appendNew()</h1>
 		<main>
-			<h2><span>Append new object:</span></h2>
-			<p>Note: these are largely the same test as for <a href="Element_cls.new.test.html"><i>&lt;HTMLElement&gt;</i>.new()</a>.</p>
+			<h2><span>Simple example</span></h2>
 			<p>
 				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>appendNew</b>(name <i>&lt;String&gt;</i>)</code>
 			</p>
 			<p>List:</p>
 			<ul id="target"></ul>
+
+			<h2><span>Element with attributes:</span></h2>
+			
+			<p id="target3">Added link: </p>
 			
 		</main>
 		<footer>
@@ -37,6 +41,16 @@
 			src.forEach( (it) => {
 				ul.appendNew('li').setText(it);
 			});
+
+			/* create a link: */
+			let t3 = document.getElementById('target3');
+			let link = HTMLElement.new('a', {
+				'href': 'http://code.kolmio.com/jmini/',
+				'class': 'ext kolmio',
+				'target': '_blank'
+			}).setText('code.kolmio.com');
+			t3.append(link);
+
 
 			/* done. */
 			console.groupEnd();
