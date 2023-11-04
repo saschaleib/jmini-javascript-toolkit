@@ -4,5 +4,6 @@
 /* returns: the value of the attribute (String) */
 /* Support: DOM Level 1 (1998) */
 HTMLElement.prototype.getAttr = function(n) {
-	return this.getAttribute(n);
+	let a = this.getAttribute(n);
+	return ( a ? a : '');
 }

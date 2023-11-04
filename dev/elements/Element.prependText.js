@@ -4,7 +4,6 @@
 /* returns: the (modified) parent object */
 /* Support: DOM Level 1 (1998) */
 HTMLElement.prototype.prependText = function(txt) {
-	let t = document.createTextNode(txt);
-	this.prepend(t);
+	this.prepend(document.createTextNode(txt));
 	return this;
 }

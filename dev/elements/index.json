@@ -8,13 +8,36 @@
 		"variants": [
 		  {
 			"sig": "HTMLElement.<b>new</b>(<i>&lt;String&gt;</i>)",
-			"desc": "Factory method to create a new HTMLElement with the passed name.",
+			"desc": "Create a new HTMLElement with the passed name.",
 			"flags": ["static"],
 			"param": [
 			  {
 				"name": "Name",
 				"type": "String",
 				"desc": "The name of the HTMLElement to create",
+				"required": true
+			  }
+			],
+			"returns": {
+				"type": "HTMLElement",
+				"desc": "The newly created HTMLElement (or <i>null</i> if the HTMLElement could not be created)"
+			}
+		  },
+		  {
+			"sig": "HTMLElement.<b>new</b>(<i>&lt;String&gt;</i>, <i>&lt;Object&gt;</i>)",
+			"desc": "Create a new HTMLElement with the passed name and with a set of attributes.",
+			"flags": ["static"],
+			"param": [
+			  {
+				"name": "Name",
+				"type": "String",
+				"desc": "The name of the HTMLElement to create",
+				"required": true
+			  },
+			  {
+				"name": "Attributes",
+				"type": "Object",
+				"desc": "List of attributes (name-value pairs) to add to the HTMLElement",
 				"required": true
 			  }
 			],
@@ -59,7 +82,7 @@
 		"conflics": [],
 		"moreinfo": "docs/elements/getAttr.html"
 	},
-	{	"id": "htmlelement_setAttr",
+	{	"id": "htmlelement_setattr",
 		"name": ".setAttr",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>setAttr</b>",
 		"type": "prototype",
@@ -115,7 +138,7 @@
 		"size": 106,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/gettext.html"
+		"moreinfo": "docs/elements/appendText.html"
 	},
 	{	"id": "htmlelement_prependtext",
 		"name": ".prependText",
@@ -123,7 +146,7 @@
 		"type": "prototype",
 		"desc": "Sets the text content of an HTMLElement (overwriting any possible existing child nodes)",
 		"note": "This function does not attempt to parse HTML content. If you need this, see .html instead.",
-		"file": "Element.setText",
+		"file": "Element.prependText",
 		"variants": [
 		  { "sig": "<i>&lt;HTMLElement&gt;</i>.<b>appendText</b>(<i>&lt;String&gt;</i>)",
 			"desc": "Prepends a new text node at the beginning of the HTMLElement’s content.",
@@ -138,7 +161,7 @@
 		"size": 85,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/settext.html"
+		"moreinfo": "docs/elements/prependText.html"
 	},
 	{	"id": "htmlelement_gettext",
 		"name": ".getText",
@@ -191,36 +214,6 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/elements/settext.html"
-	},
-	{	"id": "htmlelement_append",
-		"name": ".append",
-		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>",
-		"type": "prototype",
-		"desc": "Appends an HTMLElement inside of an existing HTMLElement (at the end).",
-		"file": "Element.append",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>append</b>(<i>&lt;HTMLElement&gt;</i>)",
-			"desc": "Appends the passed HTMLElement as the last item inside of the parent HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "element",
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The HTMLElement to append to the parent",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 74,
-		"requires": [],
-		"conflics": [],
-		"moreinfo": "docs/elements/append.html"
 	},
 	{	"id": "htmlelement_appendnew",
 		"name": ".appendNew",
@@ -308,7 +301,7 @@
 		"size": 204,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/setHtml"
+		"moreinfo": "docs/elements/setHtml.html"
 	},
 	{	"id": "htmlelement_gethtml",
 		"name": ".getHtml",
@@ -331,6 +324,6 @@
 		"size": 204,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/getHtml"
+		"moreinfo": "docs/elements/getHtml.html"
 	}
 ]

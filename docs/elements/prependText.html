@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>.setHtml – jMini Documentation</title>
-		<meta name="description" content="jMini Documentation page for the .html function.">
+		<title>.prependText – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .prependText function.">
 		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
 		<script src="../../jmini.js" type="text/javascript"></script>
 		<script src="../_theme/docs.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#263832" />
 	</head>
-	<body data-pageid="elements:sethtml">
+	<body data-pageid="elements:prependNew">
 		<nav id="pre-header">
 			<div>
 				<span class="label">jMini:</span>
@@ -32,13 +32,13 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2><tt>.setHtml</tt></h2>
+					<h2><tt>.prependText</tt></h2>
 
-					<p>Parses <abbr>XHTML</abbr> code into a <span class="all-caps">DOM</span> structure and attaches it inside an <em>HTMLElement</em>.</p>
+					<p>Prepends a new <em>Text node</em> to the parent element (as the <em>first</em> child element).</p>
 											
 					<h3>Usage:</h3>
 					
-					<code class="block">[<i>&lt;HTMLElement&gt;</i> =&nbsp;] <i>&lt;HTMLElement&gt;</i>.<b>setHtml</b>(xhtml <i>&lt;String&gt;</i>)</code>
+					<code class="block"><i>&lt;HTMLElement&gt;</i> = <i>&lt;HTMLElement&gt;</i>.<b>prependText</b>(txt <i>&lt;String&gt;</i>)</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
@@ -46,33 +46,38 @@
 
 						<dt>Parameters:</dt>
 						<dd><ol>
-							<li><strong>xhtml</strong> – any valid <abbr>XHTML</abbr> code (required).</li>
+							<li><strong>txt</strong> – the text to add (<i>&lt;String&gt;</i>, required).</li>
 						</ol></dd>
 
 						<dt>Returns:</dt>
-						<dd>The same <i>&lt;HTMLElement&gt;</i> that it was called on, thus allowing for command chaining.</dd>
+						<dd>The parent <i>&lt;HTMLElement&gt;</i>, allowing for command chaining.</dd>
 					</dl>
+					
+					<p>
+						<strong>Note:</strong>
+						This function encodes <abbr>HTML</abbr> special characters (<code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code> and <code>&apos;</code>) before creating the text node, thus <abbr>HTML</abbr> code passed as parameter will be displayed as text, not <em>parsed</em> into a <abbr>DOM</abbr> structure.
+						If you want to parse <abbr>HTML</abbr> code, please use the <a href="setHtml.html">.setHtml</a> function instead.
+					</p>
 
 					<h3>Examples</h3>
 					<h4>Simple example:</h4>
-						
+
 <code class="block javascript">let foo = document.getElementById('foo');
-foo.<b>setHtml</b>('&lt;a href="/" target="_blank"&gt;&lt;strong&gt;Homepage&lt;/strong&gt;&lt;/a&gt;');</code>
+foo.<b>prependText</b>('Hello world!');</code>
 
 					<h3>See also:</h3>
 					<ul>
-						<li><a href="getHtml.html">.getHtml()</a></li>
+						<li><a href="appendText.html">.appendText</a></li>
+						<li><a href="setHtml.html">.setHtml</a></li>
 					</ul>
 
 					<h3>More information:</h3>
 					<ul>
-						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString" class="ext mdn" target="_blank">
-								DOMParser: parseFromString() method</a>
-							on <abbr title="Mozilla Develper Network">MDN</abbr>
-						</li>
 						<li>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">
-								HTMLElement</a>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend" class="ext mdn" target="_blank">Node: prepend() method</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode" class="ext mdn" target="_blank">Document: createTextNode() method</a>
 							on <abbr title="Mozilla Develper Network">MDN</abbr>
 						</li>
 					</ul>
