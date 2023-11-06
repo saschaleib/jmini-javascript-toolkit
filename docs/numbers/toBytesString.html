@@ -32,17 +32,17 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2><tt>.toBytesString</tt></h2>
+					<h2><span class="narrow">&lt;Number&gt;</span><tt>.toBytesString</tt>(…)</h2>
 
 					<p>Formats a number as Bytes multiplies string.</p>
 											
 					<h3>Usage:</h3>
 					
-					<code class="block"><i>&lt;String&gt;</i> = <i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i> = 2, locale <i>&lt;String&gt;</i>/<i>&lt;Intl.Locale&gt;</i> = 'en-US')</code>
+					<code class="block"><span class="narrow">&lt;String&gt;</span> = <span class="narrow">&lt;Number&gt;</span>.<b>toBytesString</b>(digits <span class="narrow">&lt;Number&gt;</span> = 2, locale <span class="narrow">&lt;String&gt;</span>|<span class="narrow">&lt;Intl.Locale&gt;</span> = 'en-US')</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
-						<dd><i>&lt;Number&gt;</i>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="ext mdn" target="_blank">Number</a>.</dd>
+						<dd><span class="narrow">&lt;Number&gt;</span>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="ext mdn" target="_blank">Number</a>.</dd>
 
 						<dt>Parameters:</dt>
 						<dd><ol>
@@ -51,19 +51,26 @@
 						</ol></dd>
 
 						<dt>Returns:</dt>
-						<dd>A <i>&lt;String&gt;</i> with the formated .</dd>
+						<dd>A <span class="narrow">&lt;String&gt;</span> representing the number of bytes, shown in an appropriate unit and locale.</dd>
 					</dl>
 
-					<p>
-						<strong>Note:</strong>
-						This function uses base-1024 <abbr>IEC</abbr> units (KiB, MiB) for output. The maximum unit magnitude supported is YiB (Yobibyte)
-					</p>
-					<p>
-						<strong>Note 2:</strong>
-						This function places a <em>narrow no-break space</em> (U+202F) between the number and the unit.
-					</p>
+					<h3>Notes:</h3>
+					<ol>
+						<li>
+							This function uses base-1024 <abbr>IEC</abbr> units (KiB, MiB) for output. The maximum unit magnitude supported is YiB (Yobibyte)
+						</li>
+						<li>
+							The switch to the next higher unit happens at around 0.90 of the higher unit (see examples below). 
+						</li>
+						<li>
+							This function places a <em>narrow no-break space</em> (U+202F) between the number and the unit.
+						</li>
+						<li>
+							JavaScript interprets a period in numerals as decimal point. To directly call this function on number literals, please enclose them in brackets (see below).
+						</li>
+					</ol>
 
-					<h3>Examples</h3>
+					<h3>Examples:</h3>
 					<h4>Example with default values:</h4>
 
 <code class="block javascript">console.log (1010).<b>toBytesString</b>();&nbsp;<span style="color:#999"> //&nbsp;Output: &quot;0.99&#x202F;KiB&quot;</span></code>

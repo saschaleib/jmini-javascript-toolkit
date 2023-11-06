@@ -32,22 +32,22 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2><tt>.appendNew</tt></h2>
+					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.appendNew</tt>(…)</h2>
 
-					<p>Appends a new <em>HTMLElement</em> to the parent element.</p>
+					<p>Appends a new <span class="narrow">&lt;HTMLElement&gt;</span> to the parent element.</p>
 											
 					<h3>Usage:</h3>
 					
-					<code class="block"><i>&lt;HTMLElement&gt;</i> = <i>&lt;HTMLElement&gt;</i>.<b>appendNew</b>(name <i>&lt;String&gt;</i>, attrlist <i>&lt;Object&gt;</i>)</code>
+					<code class="block"><span class="narrow">&lt;HTMLElement&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>appendNew</b>(name <span class="narrow">&lt;String&gt;</span>, attrlist <span class="narrow">&lt;Object&gt;</span>)</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
-						<dd><i>&lt;HTMLElement&gt;</i>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
+						<dd><span class="narrow">&lt;HTMLElement&gt;</span>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
 
 						<dt>Parameters:</dt>
 						<dd><ol>
-							<li><strong>name</strong> – the name of the HTMLElement to create (required).</li>
-							<li><strong>attrlist</strong> – an Object containing names and values of attributes to add (optional).</li>
+							<li><strong>name</strong> – the name of the <em>HTMLElement</em> to create (required).</li>
+							<li><strong>attrlist</strong> – a flat <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="ext mdn" target="_blank">Object</a> list, containing names and values of attributes to add (optional).</li>
 						</ol></dd>
 
 						<dt>Returns:</dt>
@@ -75,8 +75,9 @@ foo.<b>appendNew</b>('div');</code>
 <code class="block javascript">document.getElementById('foo')
   .<b>appendNew</b>('a', {
     'href': 'http://code.kolmio.com/jmini/',
-    'class': 'ext kolmio',
-    'target': '_blank'
+    'class': 'bar',
+    'target': '_blank',
+    'hreflang': 'en'
   }
 );</code>
 
