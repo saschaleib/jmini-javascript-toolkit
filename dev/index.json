@@ -2,6 +2,13 @@
 	"version": "2023-10-24",
 	"topics": [
 		{
+			"id": "app",
+			"title": "App",
+			"desc": "The jMini app framework.",
+			"path": "app/",
+			"size": 0
+		},
+		{
 			"id": "classes",
 			"title": "Classes",
 			"desc": "Everything related to classes.",

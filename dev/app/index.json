@@ -1,0 +1,22 @@
+[
+	{	"id": "app_core",
+		"name": "(core)",
+		"namehtml": "<tt>$app</tt>",
+		"type": "framework",
+		"desc": "Core framework for a web application",
+		"file": "app",
+		"variants": [
+		  {
+			"sig": "$app",
+			"desc": "Web application core",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  }
+		],
+		"size": 237,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/app/core.html"
+	}
+]
