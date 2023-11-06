@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>.setAttr – jMini Documentation</title>
-		<meta name="description" content="jMini Documentation page for the .setAttr function.">
+		<title>.getText – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .getText function.">
 		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
 		<script src="../../jmini.js" type="text/javascript"></script>
 		<script src="../_theme/docs.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#263832" />
 	</head>
-	<body data-pageid="elements:getAttr">
+	<body data-pageid="elements:getText">
 		<nav id="pre-header">
 			<div>
 				<span class="label">jMini:</span>
@@ -32,45 +32,48 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.setAttr</tt>(…)</h2>
+					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.getText</tt>()</h2>
 
-					<p>
-						Sets an attribute value of an <em>HTMLElement</em>.
-						If the attribute does not exist, it will be created.
-					</p>
+					<p>Returns the <em>text content</em> of the <span class="narrow">&lt;HTMLElement&gt;</span> (including from sub-elements).</p>
 											
 					<h3>Usage:</h3>
 					
-					<code class="block"><span class="narrow">&lt;HTMLElement&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>setAttr</b>(attrName <span class="narrow">&lt;String&gt;</span>, attrValue <span class="narrow">&lt;String&gt;</span>)</code>
+					<code class="block"><span class="narrow">&lt;String&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>getText</b>()</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
 						<dd><span class="narrow">&lt;HTMLElement&gt;</span>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
 
 						<dt>Parameters:</dt>
-						<dd><ol>
-							<li><strong>attrName</strong> – the name of the attribute to set/change (<span class="narrow">&lt;String&gt;</span>, required).</li>
-							<li><strong>attrValue</strong> – the value to set (<span class="narrow">&lt;String&gt;</span>, required).</li>
-						</ol></dd>
+						<dd><i>none</i></dd>
 
 						<dt>Returns:</dt>
-						<dd><span class="narrow">&lt;HTMLElement&gt;</span> – the parent HTMLElement (for chaining).</dd>
+						<dd>The <em>text content</em> of the parent <span class="narrow">&lt;HTMLElement&gt;</span> as <span class="narrow">&lt;String&gt;</span>.</dd>
 					</dl>
 
+					<p>
+						<strong>Note:</strong>
+						This is just a simple wrapper for the JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" class="ext mdn" target="_blank">.textContent</a> method.
+					</p>
+
+					
 					<h3>Examples</h3>
 					<h4>Simple example:</h4>
-
-<code class="block javascript">console.log document.getElementById('foo').<b>setAttr</b>('bar');</code>
+						
+<code class="block javascript">console.log document.getElementById('foo').<b>getText</b>();</code>
 
 					<h3>See also:</h3>
 					<ul>
-						<li><a href="getAttr.html">.getAttr</a></li>
-						<li><a href="hasAttr.html">.hasAttr</a></li>
+						<li><a href="getHtml.html">.getHtml()</a></li>
+						<li><a href="setText.html">.setText()</a></li>
 					</ul>
 
 					<h3>More information:</h3>
 					<ul>
-						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" class="ext mdn" target="_blank">Element: setAttribute() method</a> on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" class="ext mdn" target="_blank">Node: textContent property</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr>
+						</li>
 					</ul>
 				</main>
 			</div>

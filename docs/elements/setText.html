@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>.setAttr – jMini Documentation</title>
-		<meta name="description" content="jMini Documentation page for the .setAttr function.">
+		<title>.setText – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .setText function.">
 		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
 		<script src="../../jmini.js" type="text/javascript"></script>
 		<script src="../_theme/docs.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#263832" />
 	</head>
-	<body data-pageid="elements:getAttr">
+	<body data-pageid="elements:setText">
 		<nav id="pre-header">
 			<div>
 				<span class="label">jMini:</span>
@@ -32,16 +32,13 @@
 					<h2>Documentation</h2>
 				</nav>
 				<main>
-					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.setAttr</tt>(…)</h2>
+					<h2><tt>.setText</tt></h2>
 
-					<p>
-						Sets an attribute value of an <em>HTMLElement</em>.
-						If the attribute does not exist, it will be created.
-					</p>
+					<p>Sets the text content of the HTMLElement it is called on, possibly overriding any existing text or element nodes.</p>
 											
 					<h3>Usage:</h3>
 					
-					<code class="block"><span class="narrow">&lt;HTMLElement&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>setAttr</b>(attrName <span class="narrow">&lt;String&gt;</span>, attrValue <span class="narrow">&lt;String&gt;</span>)</code>
+					<code class="block"><span class="narrow">&lt;HTMLElement&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>setHtml</b>(text <span class="narrow">&lt;String&gt;</span>)</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
@@ -49,28 +46,38 @@
 
 						<dt>Parameters:</dt>
 						<dd><ol>
-							<li><strong>attrName</strong> – the name of the attribute to set/change (<span class="narrow">&lt;String&gt;</span>, required).</li>
-							<li><strong>attrValue</strong> – the value to set (<span class="narrow">&lt;String&gt;</span>, required).</li>
+							<li><strong>text</strong> – the text content to set (<span class="narrow">&lt;String&gt;</span>, required).</li>
 						</ol></dd>
 
 						<dt>Returns:</dt>
-						<dd><span class="narrow">&lt;HTMLElement&gt;</span> – the parent HTMLElement (for chaining).</dd>
+						<dd>The same <span class="narrow">&lt;HTMLElement&gt;</span> that it was called on, thus allowing for command chaining.</dd>
 					</dl>
+					
+					<p>
+						<strong>Note:</strong>
+						This function encodes <abbr>HTML</abbr> special characters (<code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code> and <code>&apos;</code>) before creating the text node, thus <abbr>HTML</abbr> code passed as parameter will be displayed as text, not <em>parsed</em> into a <abbr>DOM</abbr> structure.
+						If you want to parse <abbr>HTML</abbr> code, please use the <a href="setHtml.html">.setHtml</a> function instead.
+					</p>
 
 					<h3>Examples</h3>
 					<h4>Simple example:</h4>
-
-<code class="block javascript">console.log document.getElementById('foo').<b>setAttr</b>('bar');</code>
+						
+<code class="block javascript">let foo = document.getElementById('foo');
+foo.<b>setText</b>('Hello, world!');</code>
 
 					<h3>See also:</h3>
 					<ul>
-						<li><a href="getAttr.html">.getAttr</a></li>
-						<li><a href="hasAttr.html">.hasAttr</a></li>
+						<li><a href="setHtml.html">.setHtml()</a></li>
+						<li><a href="appendText.html">.appendText()</a></li>
+						<li><a href="prependText.html">.prependText()</a></li>
 					</ul>
 
 					<h3>More information:</h3>
 					<ul>
-						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute" class="ext mdn" target="_blank">Element: setAttribute() method</a> on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" class="ext mdn" target="_blank">Node: textContent property</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr>
+						</li>
 					</ul>
 				</main>
 			</div>

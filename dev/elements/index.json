@@ -183,7 +183,7 @@
 		"size": 66,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/gettext.html"
+		"moreinfo": "docs/elements/getText.html"
 	},
 	{	"id": "htmlelement_settext",
 		"name": ".setText",
@@ -213,7 +213,7 @@
 		"size": 85,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/settext.html"
+		"moreinfo": "docs/elements/setText.html"
 	},
 	{	"id": "htmlelement_appendnew",
 		"name": ".appendNew",

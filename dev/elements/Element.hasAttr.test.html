@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.hasAttr() — jMini Test</title>
+		<script src="Element.hasAttr.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.hasAttr()</h1>
+		<main>
+			
+			<ul>
+				<li id="first" class="test">First</li>
+				<li id="second">Second</li>
+				<li id="third" hidden>Third</li>
+			</ul>
+			
+		</main>
+		<footer>
+			<p><mark>See console for results.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.hasAttr()');
+
+			let first = document.getElementById('first');
+			console.info("The first li has a class: " + first.hasAttr('class'));
+
+			let second = document.getElementById('second');
+			console.info("The second li has a data-id attribute: " + second.hasAttr('data-id'));
+
+			let third = document.getElementById('third');
+			console.info("The third li has an empty 'hidden' attribute: " + third.hasAttr('hidden'));
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

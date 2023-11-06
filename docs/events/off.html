@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>.off – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .off function.">
+		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
+		<script src="../../jmini.js" type="text/javascript"></script>
+		<script src="../_theme/docs.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#263832" />
+	</head>
+	<body data-pageid="events:off">
+		<nav id="pre-header">
+			<div>
+				<span class="label">jMini:</span>
+				<ul>
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../../download.html">Download</a></li>
+					<li class="active"><a href="../index.html">Documentation</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="header-layout">
+			<header>
+				<h1><a href="../index.html">jMini Documentation</a></h1>
+			</header>
+		</div>
+		<div id="main-layout">
+			<div id="main-sb-layout">
+				<nav id="sidebar-nav">
+					<h2>Documentation</h2>
+				</nav>
+				<main>
+					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.off</tt>(…)</h2>
+
+					<p>Removes a previously attached event callback function from an HTMLElement.</p>
+											
+					<h3>Usage:</h3>
+					
+					<code class="block"><span class="narrow">&lt;HTMLElement&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>on</b>(name <span class="narrow">&lt;String&gt;</span>, callback <span class="narrow">&lt;Function&gt;</span>)</code>
+					
+					<dl class="properties">
+						<dt>Member of:</dt>
+						<dd><span class="narrow">&lt;HTMLElement&gt;</span>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
+
+						<dt>Parameters:</dt>
+						<dd><ol>
+							<li><strong>name</strong> – the name of the event to remove the handler from (<span class="narrow">&lt;String&gt;</span>, required).</li>
+							<li><strong>callback</strong> – a reference to the function that should be removed (<span class="narrow">&lt;Function&gt;</span>, required).</li>
+						</ol></dd>
+
+						<dt>Returns:</dt>
+						<dd>The same <span class="narrow">&lt;HTMLElement&gt;</span> that it was called on, thus allowing for command chaining.</dd>
+					</dl>
+
+					<h3>Notes</h3>
+					<ol>
+						<li>
+							This is just a simple wrapper for the JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener" class="ext mdn" target="_blank">.removeEventListener</a> method, which also allows to use more specific options.
+						</li>
+						<li>
+							The function reference needs to be the same as was previously attached using the <a href="on.html">.on</a>, or any of the shortcut functions. This implies that such a reference must be available, which means that <em>anonymous</em> functions can not be detached.
+						</li>
+					</ol>
+
+					<h3>Example</h3>
+					
+<code class="block javascript">let callback = function(e) {
+  console.log(e);
+}
+let foo document.getElementById('foo');
+foo.on('click', callback);  <span style="color:#666"> //&nbsp;attaches the callback function</span>
+
+…
+
+foo.<b>off</b>('click', callback);  <span style="color:#666"> //&nbsp;removes the function again.</span>
+</code>
+
+					<h3>See also:</h3>
+					<ul>
+						<li><a href="on.html">.on()</a></li>
+						<li><a href="once.html">.once()</a></li>
+					</ul>
+
+					<h3>More information:</h3>
+					<ul>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="ext mdn" target="_blank">Function</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr>
+						</li>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener" class="ext mdn" target="_blank">EventTarget: removeEventListener() method</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr>
+					</ul>
+				</main>
+			</div>
+		</div>
+		<div id="footer-layout">
+			<footer>
+				<p>jMini is licensed under the <a href="https://github.com/saschaleib/jMini/blob/main/LICENSE" class="ext github" target="_blank">GPL-3.0 license</a>. For more information, please see this project’s <a href="https://github.com/saschaleib/jMini" class="ext github" target="_blank">GitHub Repository</a>.</p>
+			</footer>
+		</div>
+	</body>
+</html>
