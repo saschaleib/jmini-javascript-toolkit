@@ -4,6 +4,19 @@
 		<meta charset="utf-8" />
 		<title>$app (core) — jMini Test</title>
 		<script src="app_core.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			
+			$app.init = function() {
+				console.info('$app.init()');
+			}
+			
+			$app.test = {
+				_init: function() {
+					console.info('$app.test._init()');
+				}
+			}
+			
+		</script>
 	</head>
 	<body>
 		<h1>Tests: $app (core)</h1>

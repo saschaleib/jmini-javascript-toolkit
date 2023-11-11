@@ -6,9 +6,6 @@ let $app = {
 	_init: function() {
 		console.info('$app._init()');
 		
-		/* call user init, if it exists: */
-		if ($app.init) $app.init;
-		
 		/* call sub-sections, as they were added: */
 		Object.keys($app).forEach( (key,index) => {
 			let sub = $app[key];
@@ -16,6 +13,9 @@ let $app = {
 				sub._init();
 			}
 		});
+		
+		/* call user init, if it exists: */
+		if ($app.init) $app.init();
 	}
 }
 document.addEventListener("DOMContentLoaded", (e) => {
