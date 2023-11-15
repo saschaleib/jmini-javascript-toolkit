@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.getAncestors() — jMini Test</title>
+		<script src="Element.getAncestors.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.getAncestors()</h1>
+		<main>
+			<h2><span>List ancestor elements</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>getAncestors</b>(callback <i>&lt;Function&gt;</i> = <i>undefined</i>)</code>
+			</p>
+			
+			<p>Nestled lists::</p>
+			<ul>
+				<li>First
+				<ul>
+					<li>Second
+					<ul>
+						<li id="target">Third</li>
+					</ul></li>
+				</ul></li>
+			</ul>
+		</main>
+		<footer>
+			<p><mark>See console for results or errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.getSiblings()');
+
+			/*  list all siblings */
+			let trg = document.getElementById('target')
+			let list = trg.getAncestors();
+			
+			console.log(list);
+			
+			/* another test which only looks for <ul> elements */
+			let ulist = trg.getAncestors( function(it) {
+				return it.nodeName == 'UL';
+			});
+			
+			console.log(ulist);
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

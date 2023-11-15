@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>.getAncestors – jMini Documentation</title>
+		<meta name="description" content="jMini Documentation page for the .getAncestors function.">
+		<link rel="stylesheet" type="text/css" media="all" href="../_theme/default.css" />
+		<script src="../../jmini.js" type="text/javascript"></script>
+		<script src="../_theme/docs.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#263832" />
+	</head>
+	<body data-pageid="traversal:getAncestors">
+		<nav id="pre-header">
+			<div>
+				<span class="label">jMini:</span>
+				<ul>
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../../download.html">Download</a></li>
+					<li class="active"><a href="../index.html">Documentation</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="header-layout">
+			<header>
+				<h1><a href="../index.html">jMini Documentation</a></h1>
+			</header>
+		</div>
+		<div id="main-layout">
+			<div id="main-sb-layout">
+				<nav id="sidebar-nav">
+					<h2>Documentation</h2>
+				</nav>
+				<main>
+					<h2><span class="narrow">&lt;HTMLElement&gt;</span><tt>.getAncestors</tt>(…)</h2>
+
+					<p>Get an array of the Element‘s ancestors, starting from the parent, up to the <code>&lt;html&gt;</code> element, optionally filtered by a callback function.</p>
+											
+					<h3>Usage:</h3>
+					
+					<code class="block"><span class="narrow">&lt;Array&gt;</span> = <span class="narrow">&lt;HTMLElement&gt;</span>.<b>getAncestors</b>(callback <span class="narrow">&lt;Function&gt;</span> = <i>undefined</i>)</code>
+					
+					<dl class="properties">
+						<dt>Member of:</dt>
+						<dd><span class="narrow">&lt;HTMLElement&gt;</span>, any valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="ext mdn" target="_blank">HTMLElement</a>.</dd>
+
+						<dt>Parameters:</dt>
+						<dd><ol>
+							<li><strong>callback</strong> – a function that returns <em>true</em>, if an item should be added (<span class="narrow">&lt;Function&gt;</span>, optional).</li>
+						</ol></dd>
+
+						<dt>Returns:</dt>
+						<dd>An <span class="narrow">&lt;Array&gt;</span> of <span class="narrow">&lt;HTMLElement&gt;</span>s.</dd>
+					</dl>
+
+					<h3>Notes:</h3>
+					<ol>
+						<li>
+							The resulting list will only contain <span class="narrow">&lt;HTMLElement&gt;</span>s,
+							i.e. it will not contain the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement" class="ext mdn" target="_blank">documentElement</a>.
+							This is an important difference to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement" class="ext mdn" target="_blank">parentNode</a> property.
+						</li>
+						<li>
+							The last item in the resulting Array is always the <code>&lt;HTML&gt;</code> element, unless it is called on the <code>&lt;HTML&gt;</code> element itself, in which case this function returns an empty Array.
+						</li>
+					</ol>
+
+					<h3>Examples:</h3>
+
+					<p>A simple example could look like this:</p>
+
+<code class="block javascript">document.getElementById('foo')
+  .<b>getAncestors</b>()
+  .forEach( (item) => {
+    <span style="color:#999">…</span>
+});</code>
+
+					<p>By using a filtering function, e.g. to only collect ancestors which are <code>&lt;LI&gt;</code> elements:</p>
+
+<code class="block javascript">let list = document.getElementById('foo')
+  .<b>getAncestors</b>( (element) => {
+    return (element.nodeName == 'LI');
+  });</code>
+
+					<p>Note that the <code>.nodeName</code> property always contains the element name in uppercase letters!</p>
+
+					<h3>More information:</h3>
+					<ul>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling" class="ext mdn" target="_blank">Node: nextSibling property</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+					</ul>
+				</main>
+			</div>
+		</div>
+		<div id="footer-layout">
+			<footer>
+				<p>jMini is licensed under the <a href="https://opensource.org/license/mit/" class="ext osi" target="_blank"><abbr>MIT</abbr> license</a>. For more information, please see this project’s <a href="https://github.com/saschaleib/jMini" class="ext github" target="_blank">GitHub Repository</a>.</p>
+			</footer>
+		</div>
+	</body>
+</html>

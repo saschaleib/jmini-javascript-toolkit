@@ -1,0 +1,56 @@
+[
+	{	"id": "element_getAncestors",
+		"name": ".getAncestors",
+		"namehtml": "<tt>HTMLElement.getAncestors()</tt>",
+		"type": "prototype",
+		"desc": "Get the first element of an array",
+		"file": "Array.first",
+		"variants": [
+		  {
+			"sig": "element_getAncestors",
+			"desc": "Gets a list of the ancestors of the element, up to the document element",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  },
+		  {
+			"sig": "element_getAncestors-callback",
+			"desc": "Gets a list of the ancestors of the element, filtered by a callback function",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  }
+		],
+		"size": 0,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/traversal/getAncestors.html"
+	},
+	{	"id": "element_getSiblings",
+		"name": ".getSiblings",
+		"namehtml": "<tt>HTMLElement.getSiblings()</tt>",
+		"type": "prototype",
+		"desc": "Get the last element of an array",
+		"file": "Array.last",
+		"variants": [
+		  {
+			"sig": "element_getSiblings",
+			"desc": "Get a list of the siblings of the elements",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  },
+		  {
+			"sig": "element_getSiblings-callback",
+			"desc": "Gets a list of the siblings of the element, filtered by a callback function",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  }
+		],
+		"size": 0,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/traversal/getSiblings.html"
+	}
+]

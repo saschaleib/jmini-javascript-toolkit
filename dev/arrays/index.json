@@ -1,0 +1,42 @@
+[
+	{	"id": "array_first",
+		"name": "<Array>.first()",
+		"namehtml": "<tt>Aray.first()</tt>",
+		"type": "prototype",
+		"desc": "Get the first element of an array",
+		"file": "Array.first",
+		"variants": [
+		  {
+			"sig": "array_first",
+			"desc": "Get the first element of an array",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  }
+		],
+		"size": 237,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/arrays/Array.first.html"
+	},
+	{	"id": "array_last",
+		"name": "<Array>.last()",
+		"namehtml": "<tt>Aray.last()</tt>",
+		"type": "prototype",
+		"desc": "Get the last element of an array",
+		"file": "Array.last",
+		"variants": [
+		  {
+			"sig": "array_last",
+			"desc": "Get the last element of an array",
+			"flags": [],
+			"param": [],
+			"returns": {}
+		  }
+		],
+		"size": 237,
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/arrays/Array.last.html"
+	}
+]

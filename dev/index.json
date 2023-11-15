@@ -2,13 +2,6 @@
 	"version": "2023-10-24",
 	"topics": [
 		{
-			"id": "app",
-			"title": "App",
-			"desc": "The jMini app framework.",
-			"path": "app/",
-			"size": 0
-		},
-		{
 			"id": "classes",
 			"title": "Classes",
 			"desc": "Everything related to classes.",
@@ -35,6 +28,20 @@
 			"desc": "Everything related to numbers.",
 			"path": "number/",
 			"size": 277
+		},
+		{
+			"id": "traversal",
+			"title": "Traversal",
+			"desc": "Functions to traverse the DOM tree",
+			"path": "traversal/",
+			"size": 0
+		},
+		{
+			"id": "page",
+			"title": "Page framework",
+			"desc": "A simple JS framework for web page functionality",
+			"path": "page/",
+			"size": 0
 		}
 	]
 }

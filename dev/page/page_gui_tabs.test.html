@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>$p.gui.tabs — jMini Test</title>
+		<script src="../events/Element.onClick.js" type="text/javascript"></script>
+		<script src="../traversal/Element.getAncestors.js" type="text/javascript"></script>
+		<script src="../arrays/Array.first.js" type="text/javascript"></script>
+		<script src="page_core.js" type="text/javascript"></script>
+		<script src="page_gui_core.js" type="text/javascript"></script>
+		<script src="page_gui_tabs.js" type="text/javascript"></script>
+		<script src="../elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="../elements/Element.setAttr.js" type="text/javascript"></script>
+		<script src="../elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="../elements/Element.setText.js" type="text/javascript"></script>
+		<style>
+			ul[role=tablist] {
+				display: flex;
+				list-style: none inside;
+				padding: 0;
+				margin: 1em 0 0 0;
+			}
+			ul[role=tablist] li {
+				border: #EEE solid 2pt;
+				border-bottom-width: 0;
+				margin: 0 .25em;
+			}
+			ul[role=tablist] a[role=tab] {
+				display: inline-block;
+				padding: .25em .5em;
+				text-decoration: none;
+				color: #000;
+			}
+			ul[role=tablist] a[role=tab][aria-selected=true] {
+				font-weight: bold;
+				background-color: #EEE;
+			}
+			
+			section {
+				padding: 1em;
+				background-color: #EEE;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>Tests: $p.gui.tabs</h1>
+		<main>
+			<h2>Existing structure:</h2>
+			
+			<p>The following tab interface already exists in the DOM. It should be added automatically when the script is loaded:</p>
+			
+			<ul role="tablist">
+				<li role="presentation">
+					<a role="tab" href="#panel1" aria-controls="panel1" aria-selected="true">First</a>
+				</li>
+				<li role="presentation">
+					<a role="tab" href="#panel2" aria-controls="panel2" aria-selected="false">Second</a>
+				</li>
+				<li role="presentation">
+					<a role="tab" href="#panel3" aria-controls="panel3" aria-selected="false">Third</a>
+				</li>
+				<li role="presentation">
+					<a role="tab" href="#panel4" aria-controls="panel4" aria-selected="false">Fourth</a>
+				</li>
+				<li role="presentation">
+					<a role="tab" href="#panel5" aria-controls="panel5" aria-selected="false">Fifth</a>
+				</li>
+			</ul>
+			
+			<section id="panel1">
+				<h3>First Panel</h3>
+			</section>
+			<section id="panel2" hidden>
+				<h3>Second Panel</h3>
+			</section>
+			<section id="panel3" hidden>
+				<h3>Third Panel</h3>
+			</section>
+			<section id="panel4" hidden>
+				<h3>Fourth Panel</h3>
+			</section>
+			<section id="panel5" hidden>
+				<h3>Fifth Panel</h3>
+			</section>
+
+			<h2>Dynamic structure:</h2>
+			
+			<p>The following tab interface created dynamically after the dom was loaded. It has to be added by calling the <code>.add()</code> method:</p>
+
+			<div id="target"></div>
+
+		</main>
+		<footer>
+			<p><mark>See console for more information or errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+
+			console.group('Tests: $p (page core)');
+
+			$p.init = function() {
+				console.log('$p.init()');
+
+				/* create another tab header with two tabs: */
+				let ul = HTMLElement.new('ul').setAttr('role','tablist');
+				
+				ul.appendNew('li')
+					.setAttr('role', 'presentation')
+					.appendNew('a')
+						.setAttr('role', 'tab')
+						.setAttr('href', '#panelB1')
+						.setAttr('aria-controls', 'panelB1')
+						.setAttr('aria-selected', 'true')
+						.setText('First');
+
+				ul.appendNew('li')
+					.setAttr('role', 'presentation')
+					.appendNew('a')
+						.setAttr('role', 'tab')
+						.setAttr('href', '#panelB2')
+						.setAttr('aria-controls', 'panelB2')
+						.setAttr('aria-selected', 'false')
+						.setText('Second');
+				
+				/* create two tab pabels: */
+				// TODO!
+				
+				/* add to tabs handler: */
+				$p.gui.tabs.add(ul);
+				
+				/* attach the new interface to the page: */
+				document.getElementById('target')
+					.appendChild(ul);
+				
+			}
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

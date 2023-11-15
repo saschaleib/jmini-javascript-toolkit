@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.getSiblings() — jMini Test</title>
+		<script src="Element.getSiblings.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.getSiblings()</h1>
+		<main>
+			<h2><span>List sibling elements</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>getSiblings</b>(name <i>&lt;String&gt;</i> = <i>undefined</i>)</code>
+			</p>
+			
+			<p>Mixed list:</p>
+			<ul id="target1">
+				<li data-num="1">First</li>
+				<li data-num="2">Second</li>
+				<li data-num="3">Third</li>
+				<li data-num="4">Fourth</li>
+				<li data-num="5" id="target">Fifth</li>
+				<li data-num="6">Sixt</li>
+				<li data-num="7">Seventh</li>
+				<li data-num="8">Eight</li>
+				<li data-num="9">Nineth</li>
+				<li data-num="10">Tenth</li>
+				<span>None</span>
+			</ul>
+			
+		</main>
+		<footer>
+			<p><mark>See console for results or errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.getSiblings()');
+
+			/*  list all siblings */
+			let trg = document.getElementById('target')
+			let siblings = trg.getSiblings();
+			
+			console.log(siblings);
+			
+			/* another test which only looks for <span> elements */
+			let spanSiblings = trg.getSiblings( function(it) {
+				return it.nodeName == 'SPAN';
+			});
+			
+			console.log(spanSiblings);
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

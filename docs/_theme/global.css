@@ -8,6 +8,7 @@ html, body {
 	margin: 0; padding: 0;
 	font-family: -apple-system, Segoe UI, Roboto, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-size: 16px;
+	scrollbar-color: #aaaaaa #fbfaf9;
 }
 body {
 	overflow: hidden auto;
@@ -44,6 +45,9 @@ a.ext::before {
 }
 a.ext.mdn::before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.3499999 6.3500002'%3E%3Cg%3E%3Ccircle style='fill:%23000000;stroke-width:25.0082' cx='3.175' cy='3.175' r='3.175' /%3E%3Cpath d='M 2.5104774,1.2399668 1.314171,5.1387209 H 0.8247729 L 2.0168964,1.2399668 Z m 0.4350207,0 V 5.1387209 H 2.5104774 V 1.2399668 Z m 1.6857044,0 L 3.439079,5.1387209 H 2.9496808 L 4.1418045,1.2399668 Z m 0.4350205,0 V 5.1387209 H 4.6312025 V 1.2399668 Z' style='fill:%238cb4ff;'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+a.ext.osi::before {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.924,15.927c1.721,-0.637 2.618,-1.866 2.618,-3.978c0,-2.112 -1.779,-3.978 -4.007,-3.978c-2.343,-0 -4.122,1.866 -4.093,3.978c0.029,2.126 1.041,3.529 2.661,4.05l-2.864,7.059c-3.833,-0.998 -7.739,-5.526 -7.739,-11.095c0,-6.611 5.309,-11.963 11.963,-11.963c6.654,0 12.05,5.352 12.05,11.963c-0,5.671 -3.862,10.126 -7.797,11.124l-2.792,-7.16Z' style='fill:%23C8DBD5;'/%3E%3C/svg%3E");
 }
 a.ext.github::before {
 	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z' fill='%23C8DBD5'/%3E%3C/svg%3E");
@@ -82,7 +86,7 @@ code.block {
 /* pre-header navigation */
 #pre-header {
 	position: fixed;
-	width: 100%;
+	width: calc(100% - .5em);
 	padding: 2pt 0 0 .5em;
 }
 #pre-header > div {
@@ -117,7 +121,7 @@ code.block {
 
 /* the header headline */
 #header-layout > header {
-	width: 100%;
+	width: calc(100% - 1rem);
 	max-width: 1200px;
 	margin: 0 auto;
 	padding-top: 2em;
@@ -142,6 +146,11 @@ code.block {
 	display: grid;
 	grid-template-columns: min-content auto;
 	gap: 1em;
+}
+#main-layout > main {
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
 }
 
 /* SIDEBAR */
@@ -197,7 +206,7 @@ code.block {
 	width: 100%;
 }
 #footer-layout > footer {
-	width: 100%;
+	width: calc(100% - 1rem);
 	max-width: 1200px;
 	margin: auto;
 	padding: .5rem;
