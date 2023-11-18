@@ -14,7 +14,7 @@ main code.block {
 	border-left-color: #00695C;
 	border-right-color: #CCC;
 }
-#header-layout { background-color: #0097A7; }
+#header-layout { background-color: #00818F; }
 #pre-header {
 	background-color: #006064;
 	color: #B2EBF2;
@@ -31,13 +31,63 @@ main code.block {
 #main-layout { background-color: #F5F5F5; }
 #sidebar-nav summary { color: #00695C; }
 #footer-layout {
-	background-color: #0097A7;
+	background-color: #00818F;
 	color: #FFF;
 }
 #footer-layout a:link,
 #footer-layout a:visited {
-	color: #C8DBD5;
+	color: #FFF;
 }
 #footer-layout a:hover {
 	text-decoration-color: #FFF;
+}
+
+/* sidebar overrides */
+#sidebar-nav h2 {
+	font-size: 1.0rem;
+	color: #006064;
+}
+
+/* homepage grid view */
+#homegrid {
+	margin: 1em 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1em;
+}
+#homegrid article h3 {
+	font-size: 1.25rem;
+	margin: 0 0 .5rem 0;
+	color: #006064;
+}
+#homegrid article p {
+	margin: 0 0 .5em 0;
+}
+#homegrid article dl {
+	margin: 0;
+}
+#homegrid article dl dt {
+	font-weight: bold;
+}
+#homegrid article dl dd {
+	margin: .25em 0 .25em 1em;
+}
+#homegrid article {
+	border: #006064 solid 1.5pt;
+	border-radius: 1em;
+	padding: 1em;
+}
+#homegrid #hg-intro {
+	grid-column: 1 / span 3;
+	font-size: 1.2rem;
+	line-height: 150%;
+	border-color: transparent;
+}
+#homegrid #hg-stats {
+	background-color: #C7E6E9;
+	border-color: #006064;
+	color: #006064;
+}
+#homegrid #hg-download {
+	grid-column: 2 / span 2;
 }

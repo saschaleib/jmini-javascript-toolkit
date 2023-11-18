@@ -1,5 +1,5 @@
 [
-	{	"id": "htmlelement_addclass",
+	{	"id": "element_addclass",
 		"name": ".addClass",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>",
 		"type": "prototype",
@@ -29,7 +29,7 @@
 		"conflics": [],
 		"moreinfo": "docs/classes/addClass.html"
 	},
-	{	"id": "htmlelement_removeclass",
+	{	"id": "element_removeclass",
 		"name": ".removeClass",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>",
 		"type": "prototype",
@@ -59,7 +59,7 @@
 		"conflics": [],
 		"moreinfo": "docs/classes/removeClass.html"
 	},
-	{	"id": "htmlelement_toggleclass",
+	{	"id": "element_toggleclass",
 		"name": ".toggleClass",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>",
 		"type": "prototype",
@@ -89,7 +89,7 @@
 		"conflics": [],
 		"moreinfo": "docs/classes/toggleClass.html"
 	},
-	{	"id": "htmlelement_hasclass",
+	{	"id": "element_hasclass",
 		"name": ".hasClass",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>",
 		"type": "prototype",

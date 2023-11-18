@@ -1,5 +1,5 @@
 [
-	{	"id": "htmlelement_on",
+	{	"id": "element_on",
 		"name": ".on",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>",
 		"type": "prototype",
@@ -35,7 +35,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
 	},
-	{	"id": "htmlelement_once",
+	{	"id": "element_once",
 		"name": ".once",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>",
 		"type": "prototype",
@@ -71,7 +71,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/once.html"
 	},
-	{	"id": "htmlelement_off",
+	{	"id": "element_off",
 		"name": ".off",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>",
 		"type": "prototype",
@@ -107,7 +107,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
 	},
-	{	"id": "htmlelement_onblur",
+	{	"id": "element_onblur",
 		"name": ".onBlur",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>",
 		"type": "prototype",
@@ -137,7 +137,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/onBlur.html"
 	},
-	{	"id": "htmlelement_onclick",
+	{	"id": "element_onclick",
 		"name": ".onClick",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>",
 		"type": "prototype",
@@ -167,7 +167,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/onClick.html"
 	},
-	{	"id": "htmlelement_onfocus",
+	{	"id": "element_onfocus",
 		"name": ".onFocus",
 		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>",
 		"type": "prototype",
@@ -197,7 +197,7 @@
 		"conflics": [],
 		"moreinfo": "docs/events/onFocus.html"
 	},
-	{	"id": "htmlformelement_onsubmit",
+	{	"id": "formelement_onsubmit",
 		"name": ".onSubmit",
 		"namehtml": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>",
 		"type": "prototype",

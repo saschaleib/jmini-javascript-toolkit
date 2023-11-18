@@ -2,22 +2,434 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>jMini Download Builder</title>
-		<script src="./jmini.js" type="text/javascript"></script>
-		<!--script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript"></script-->
-		<script src="_theme/builder.js" type="text/javascript"></script>
-		<link rel="stylesheet" type="text/css" media="all" href="_theme/styles.css" />
+		<title>jMini Download Page</title>
+		<meta name="description" content="jMini Downloads.">
+		<link rel="stylesheet" type="text/css" media="all" href="docs/_theme/global.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="docs/_theme/download.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="docs/_theme/print.css" />
+		<!-- DEV ONLY: -->
+		<script src="dev/events/Element.on.js" type="text/javascript"></script>
+		<script src="dev/events/Element.onClick.js" type="text/javascript"></script>
+		<script src="dev/classes/Element.addClass.js" type="text/javascript"></script>
+		<script src="dev/classes/Element.removeClass.js" type="text/javascript"></script>
+		<script src="dev/elements/Element.setText.js" type="text/javascript"></script>
+		<script src="dev/elements/Element.getAttr.js" type="text/javascript"></script>
+		<script src="dev/elements/Element.setAttr.js" type="text/javascript"></script>
+		<script src="dev/elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="dev/elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="dev/traversal/Element.getAncestors.js" type="text/javascript"></script>
+		<script src="dev/arrays/Array.first.js" type="text/javascript"></script>
+		<script src="dev/page/page_core.js" type="text/javascript"></script>
+		<script src="dev/page/page_gui_core.js" type="text/javascript"></script>
+		<script src="dev/page/page_gui_tabs.js" type="text/javascript"></script>
+		<script src="dev/number/Number.toBytesString.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+			$p.init = function() {
+				console.info('$p.init()');
+			}
+			
+			/* general settings */
+			const kSettings = {
+				basePath: '/jmini/',
+				devPath: 'dev/'
+			}
+
+			$p.data = {
+
+				/* store the list of topics */
+				topics: null,
+
+				/* store the list of methods */
+				methods: [],
+
+				/* selects or deselectes a method */
+				/* params: id of the method (String), new value (0 or 1) */
+				selectMethod: function(id, v) {
+								
+					// find method definition:
+					let m = $p.data.findMethod(id);
+					if (m) {
+						if (m._selected !== v) {
+
+							// select also required items
+							if (v !== 0 && m.requires) {
+								m.requires.forEach( (dit) => {
+									$p.data.selectMethod(dit, 1);
+								});
+							}
+							
+							/* set the checkbox */
+							let cb = m._checkbox;
+							$p.gui.setCheckbox(cb, v);
+							m._selected = v;
+							
+							/* update the topic checkbox, if necessary */
+							$p.data.updateTopic(m._topic);
+						}
+
+					} else {
+						console.error("Could not find method named '" + id + "'.");
+					}
+				},
+
+				/* selects or deselectes a topic as a whole */
+				/* params: id of the topic (String), new value (0 or 1) */
+				selectTopic: function(id, v) {
+				
+					/* find the topic by ID: */
+					let topic = $p.data.findTopic(id);
+					if (topic) {
+						topic._method.forEach( (m) => {
+							$p.data.selectMethod(m.id, v);
+						});
+					}
+				},
+
+				/* select all items, e.g. by clicking on the Toolbox checkbox */
+				selectAll: function(v) {
+					$p.data.topics.forEach( (topic) => {
+						$p.data.selectTopic(topic.id, v);
+					});
+				},
+
+				/* check if the topic checkbox needs updating: */
+				updateTopic: function(id) {
+					
+					/* find the topic by ID: */
+					let topic = $p.data.findTopic(id);
+					if (topic) {
+						
+						var newVal = 0;
+						for (var i = 0; i < topic._method.length; i++) {
+							if (topic._method[i]._selected !== newVal) {
+								if  (i > 0) {
+									newVal = 2;
+									break;
+								} else {
+									newVal = topic._method[i]._selected;
+								}
+							}
+						}
+						
+						if (newVal !== topic._selected) {
+							$p.gui.setCheckbox(topic._checkbox, newVal);
+							topic._selected = newVal;
+						}
+						
+					} else {
+						console.error("Could not find topic with id '" + id + "'.");
+					}
+				},
+
+				/* finds a method definition by id (String) */
+				findMethod: function(id) {
+					for (let i = 0; i < $p.data.methods.length; i++) {
+						if ($p.data.methods[i].id == id) {
+							return $p.data.methods[i];
+						}
+					}
+					return null;
+				},
+
+				/* get a topic reference by ID */
+				findTopic: function(id) {
+					for (let i = 0; i < $p.data.topics.length; i++) {
+						if ($p.data.topics[i].id == id) {
+							return $p.data.topics[i];
+						}
+					}
+					return null;
+				},
+
+				/* pre-init, async function as it contains network requests: */
+				_init: async function() {
+					
+					/* begin the wait: */
+					$p.gui.wait.start();
+					
+					let trg = document.getElementById('topic-list');
+					//let topics = []; // TODO: collect all the topic sections and sort them before adding them!
+					
+					/* load the index */
+					let url = kSettings.basePath + kSettings.devPath + 'index.json';
+					try {
+						/* load the json from the server: */
+						let topicsReq = await fetch(url, {
+							method: 'GET',
+							mode: 'no-cors',
+							Accept: 'application/json',
+							credentials: 'omit'
+						});
+						if (!topicsReq.ok) {
+							throw new Error("Error #" + topicsReq.status + ", '" + topicsReq.statusText + "'");
+						}
+						let topicFile = await topicsReq.json();
+
+						/* keep a reference of the topics here: */
+						$p.data.topics = topicFile.topics;
+
+						/* load the sub-files and create cross-connections: */
+						$p.data.topics.forEach( async function(topic) {
+
+							topic._checkbox = $p.gui.builder.makeCheckbox(topic.id, 'tid', $p.gui.callback.onTopicCheckboxClick);
+							topic._filesize = $p.gui.builder.makeFileSizeField('tsize');
+							topic._method = []; // store ref to methods here
+							
+							let section = $p.gui.builder.makeTopicGroup(topic, topic._checkbox);
+							
+							/* load the index */
+							let url = kSettings.basePath + kSettings.devPath + topic.path + 'index.json';
+							let methodsReq = await fetch(url, {
+								method: 'GET',
+								mode: 'no-cors',
+								Accept: 'application/json',
+								credentials: 'omit'
+							});
+							if (!methodsReq.ok) {
+								throw new Error("Error #" + methodsReq.status + ", '" + methodsReq.statusText + "'");
+							}
+							let methodsFile = await methodsReq.json();
+							methodsFile.forEach( (m) => {
+								m._checkbox = $p.gui.builder.makeCheckbox(m.id, 'mid', $p.gui.callback.onMethodCheckboxClick);
+								m._filesize = $p.gui.builder.makeFileSizeField('msize');
+								m._topic = topic.id;
+								m._selected = 0;
+								topic._method.push(m);
+								$p.data.methods.push(m);
+								$p.gui.builder.addMethodItem(m, section, m._checkbox);
+								$p.data.loadCodeFile(topic, m);
+							})
+							
+							trg.appendChild(section);
+						});
+						
+						/* finally, attach a listener to the main Toolbox checkbox: */
+						document.getElementById('globalCheckbox').onClick($p.gui.callback.onToolboxCheckboxClick);
+
+					} catch(err) {
+						console.error(err);
+					}
+					$p.gui.wait.end();
+
+				},
+				
+				loadCodeFile: async function(topic, m) {
+				
+					if (m._filesize) {
+						m._filesize.addClass('loading');
+					}
+					if (topic._filesize) {
+						topic._filesize.addClass('loading');
+					}
+				
+					let url = kSettings.basePath + kSettings.devPath + topic.path + m.file + '.js';
+					let jsReq = await fetch(url, {
+						method: 'GET',
+						mode: 'no-cors',
+						Accept: 'application/javascript,text/javascript,application/x-javascript',
+						credentials: 'omit'
+					});
+					if (!jsReq.ok) {
+						m._size = -1;
+						m._file = null;
+						m._filesize.removeClass('loading').addClass('error').setText('Error [' + jsReq.status + ']');
+						m._checkbox.setAttr('disabled', '').checked = false;
+					} else {
+						let jsFile = await jsReq.text();
+						m._size = jsFile.length; /* uncompressed size */
+						m._file = jsFile; /* original file */
+						if (m._filesize) {
+							m._filesize.removeClass('loading').setText(jsFile.length.toBytesString());
+						}
+					}
+
+				
+				}
+			}
+
+			/* GUI Builder */
+			$p.gui.builder = {
+				makeCheckbox: function(id, dtype, onClick) {
+					return HTMLElement.new('input')
+						.setAttr('type', 'checkbox')
+						.setAttr('id', dtype+'-'+id)
+						.setAttr('data-'+dtype, id)
+						.onClick(onClick);
+				},
+				
+				makeFileSizeField: function(cls) {
+					return HTMLElement.new('span')
+						.addClass(cls);
+				},
+
+				makeTopicGroup: function(topic, cb) {
+					let sum = HTMLElement.new('summary');
+					sum.appendChild(cb);
+					sum.appendNew('label')
+						.setAttr('for', 'tid-'+topic.id)
+						.addClass('tname')
+						.setText(topic.title);
+					sum.appendNew('span')
+						.addClass('tdesc')
+						.setText(topic.desc);
+					sum.appendChild(topic._filesize);
+					let det = HTMLElement.new('details')
+						.addClass('topic')
+						.setAttr('data-tid', topic.id);
+					det.appendChild(sum);
+					return det;
+				},
+				
+				addMethodItem: function(m, parent, checkbox) {
+					let lbl = HTMLElement.new('label')
+						.setAttr('id', 'grp_'+m.id);
+					lbl.appendChild(checkbox);
+					lbl.appendNew('code').addClass('mname').setText(m.name);
+					lbl.appendNew('span').addClass('mdesc').setText(m.desc);
+					lbl.appendChild(m._filesize);
+					parent.appendChild(lbl);
+				}
+			}
+
+			/* set a checkbox value */
+			/* v can be: 0 = off, 1 = on, -1 = mixed */
+			$p.gui.setCheckbox = function(cb, v) {
+				cb.checked = (v !== 0);
+				cb.indeterminate = (v < 0 || v > 1);
+			};
+			
+			/* update the global Toolbox checkbox state */
+			$p.gui.updateToolboxCheckbox = function() {
+				
+				var newVal = 0;
+				for (let i = 0; i < $p.data.topics.length; i++) {
+					if ($p.data.topics[i]._selected !== newVal) {
+						if  (i > 0) {
+							newVal = 2;
+							break;
+						} else {
+							newVal = $p.data.topics[i]._selected;
+						}
+					}
+				}
+				
+				$p.gui.setCheckbox(document.getElementById('globalCheckbox'), newVal);
+			
+			},
+
+			/* makes sure the GUI waits while background processes are running... */
+			$p.gui.wait = {
+				start: function() {
+					if ($p.gui.wait._count == 0) {
+						$p.gui.wait.onLock();
+					}
+					$p.gui.wait._count += 1;
+				},
+				end: function() {
+					$p.gui.wait._count -= 1;
+					if ($p.gui.wait._count <= 0) {
+						$p.gui.wait.onRelease();
+					}
+				},
+				
+				_count: 0,
+				
+				onLock: function() {
+					console.log("Lock interface.");
+					document.getElementById('download-button').setAttribute('disabled', '')
+				},
+
+				onRelease: function() {
+					console.log("Release interface.");
+					document.getElementById('download-button').removeAttribute('disabled')
+				}
+				
+			}
+
+			/* GUI callback functions: */
+			$p.gui.callback = {
+				onMethodCheckboxClick: function(e) {
+					$p.data.selectMethod(this.getAttr('data-mid'), (this.checked ? 1 : 0 ));
+					$p.gui.updateToolboxCheckbox();
+				},
+				
+				onTopicCheckboxClick: function(e) {
+					$p.data.selectTopic(this.getAttr('data-tid'), (this.checked ? 1 : 0 ));
+					$p.gui.updateToolboxCheckbox();
+				},
+
+				onToolboxCheckboxClick: function(e) {
+					$p.data.selectAll(this.checked ? 1 : 0 );
+					$p.gui.updateToolboxCheckbox();
+				}
+			}
+
+		</script>
+		<!-- END DEV ONLY -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#263238" />
 	</head>
-	<body>
-		<header>
-			<h1>jMini Download Builder</h1>
-			<p>This page helps you to customize jMini to your needs: simply select the functions that you need for your project, and click on <q>Download</q> to get a tailor-made version with only the required functionality.</p>
-			<p><mark><strong>Note:</strong> This page is stil work in progress and is not fully functional yet.</mark></p>
-		</header>
-		<main></main>
-		<footer>
-			<p>This page is powered by jMini ... even though the toolset is not finished, it is all that is required for this page here.</p>
-			<p>For more information on jMini, please see <a href="https://github.com/saschaleib/jMini" target="_blank">the GitHub Repository</a>.</p>
-		</footer>
+	<body data-pageid="classes:addClass">
+		<nav id="pre-header">
+			<div>
+				<span class="label">jMini:</span>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="download.html">Download</a></li>
+					<li><a href="docs/index.html">Documentation</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="header-layout">
+			<header>
+				<h1><a href="download.html">jMini Download</a></h1>
+			</header>
+		</div>
+		<div id="main-layout">
+			<main id="download-tool">
+				<p class="info-box"><strong>Note:</strong> This tool is still under development and not fully functional. In the meantime, try the <a href="download.old.html">old download tool</a>.</p>
+				<header>
+					<input type="checkbox" id="globalCheckbox" title="select/unselect all">
+					<label for="globalCheckbox" class="title">jMini Toolbox</label>
+					<span id="total-dl-size" class="loading"></span>
+				</header>
+				<div id="topic-list"></div>
+				<footer>
+					<details id="footer-baking" class="active">
+						<summary><span>Baking</span></summary>
+						<ul role="tablist">
+							<li role="presentation">
+								<a role="tab" href="#baking-input" aria-controls="baking-input" id="bak-tab1" aria-selected="false">Text input</a>
+							</li>
+							<li role="presentation">
+								<a role="tab" href="#baking-upload" aria-controls="baking-upload" id="bak-tab2" aria-selected="true">File upload</a>
+							</li>
+						</ul>
+						<fieldset role="tabpanel" id="baking-input" aria-labelledby="bak-tab1" hidden>
+							<textarea id="baking-text"></textarea>
+						</fieldset>
+						<fieldset role="tabpanel" id="baking-upload" aria-labelledby="bak-tab2">
+							<input type="file">
+						</fieldset>
+					</details>
+					<details id="footer-options">
+						<summary><span>Options</span></summary>
+						<fieldset>
+							<input type="checkbox" id="chk_minify" checked="checked"><label for="chk_minify">Minify JS code</label><br>
+							<input type="checkbox" id="chk_filenames" checked="checked"><label for="chk_filenames">Add filenames</label>
+						</fieldset>
+					</details>
+					<div id="footer-buttons">
+						<button type="submit" id="download-button">Download</button>
+					</div>
+				</footer>
+			</main>
+		</div>
+		<div id="footer-layout">
+			<footer>
+				<p>jMini is licensed under the <a href="https://opensource.org/license/mit/" class="ext osi" target="_blank"><abbr>MIT</abbr> license</a>. For more information, please see this project’s <a href="https://github.com/saschaleib/jMini" class="ext github" target="_blank">GitHub Repository</a>.</p>
+			</footer>
+		</div>
 	</body>
 </html>

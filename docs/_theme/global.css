@@ -14,6 +14,11 @@ body {
 	overflow: hidden auto;
 }
 
+/* special case elements */
+.sr-only, .print-only {
+	display: none;
+}
+
 /* headline font */
 h1, h2, h3, h4, h5, h6 {
 	font-family: Bahnschrift, DIN Alternate, Arial Bold, sans-serif;
@@ -28,7 +33,7 @@ a:link, a:visited {
 	color: #000;
 }
 a:focus {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 /* External links: */
@@ -219,8 +224,5 @@ code.block {
 
 #footer-layout a:link,
 #footer-layout a:visited {
-	text-decoration: none;
-}
-#footer-layout a:hover {
 	text-decoration: underline;
 }

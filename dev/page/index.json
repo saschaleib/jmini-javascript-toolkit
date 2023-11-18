@@ -55,7 +55,7 @@
 		  }
 		],
 		"size": 0,
-		"requires": ["page_core","page_gui_core","element_onClick","element_getancestors","array_first"],
+		"requires": ["page_core","page_gui_core","element_onclick","element_getancestors","array_first"],
 		"conflics": [],
 		"moreinfo": "docs/page/gui_tabs.html"
 	}
