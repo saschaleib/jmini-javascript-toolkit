@@ -3,6 +3,6 @@
 /* parent object: Element ( */
 /* returns: HTMLDocument (passes through the parent element) */
 document.onReady = function(cb) {
-	document.addEventListener('DOMContentLoaded ', cb);
+	document.addEventListener('DOMContentLoaded', cb);
 	return document;
 }

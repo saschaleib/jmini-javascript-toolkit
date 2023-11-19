@@ -5,32 +5,6 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement.",
 		"file": "Element.on",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>on</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the HTMLElement for the named event.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "name",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the event to attach (e.g.: 'click', 'submit', etc.)",
-				"required": true
-			  },
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The function to call when the event occurs.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 79,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
@@ -41,32 +15,6 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to an HTMLElement that will be called at most one time.",
 		"file": "Element.once",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>once</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the element for the named event.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "name",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the event to attach (e.g.: 'click', 'submit', etc.)",
-				"required": true
-			  },
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The function to call when the event occurs.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 91,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/once.html"
@@ -77,32 +25,6 @@
 		"type": "prototype",
 		"desc": "Removes an event handler from an HTMLElement.",
 		"file": "Element.off",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>off</b>(<i>&lt;String&gt;</i>, <i>&lt;Function&gt;</i>)",
-			"desc": "Removes the callback function from the element for the named event.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "name",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the event to remove from (e.g.: 'click', 'submit', etc.)",
-				"required": true
-			  },
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to remove.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 83,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/on.html"
@@ -113,26 +35,6 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'blur' event.",
 		"file": "Element.onBlur",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onBlur</b>(<i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'blur' event of the HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to attach.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 86,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onBlur.html"
@@ -143,26 +45,6 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'click' event.",
 		"file": "Element.onClick",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onClick</b>(<i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'click' event of the HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to attach.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 84,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onClick.html"
@@ -173,26 +55,6 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'focus' event.",
 		"file": "Element.onFocus",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>onFocus</b>(<i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'focus' event of the HTMLElement.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to attach.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 88,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onFocus.html"
@@ -203,29 +65,18 @@
 		"type": "prototype",
 		"desc": "Attaches an event handler to the 'submit' event of a <form> element.",
 		"file": "Form.onSubmit",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLFormElement&gt;</i>.<b>onSubmit</b>(<i>&lt;Function&gt;</i>)",
-			"desc": "Attaches the callback function to the 'blur' event of the form.",
-			"note": "This function can only be attached to <form> elements.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "callback",
-				"type": "<i>&lt;Function&gt;</i>",
-				"desc": "The callback function to attach.",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLFormElement&gt;</i>",
-				"desc": "The (modified) parent <form> Element."
-			}
-		  }
-		],
-		"size": 94,
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "docs/events/onSubmit.html"
+	},
+	{	"id": "document_onready",
+		"name": ".onReady",
+		"namehtml": "document.<b>onReady</b>",
+		"type": "prototype",
+		"desc": "Attaches an event handler to the 'DOMContentLoaded' event of the document.",
+		"file": "Document.onReady",
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "docs/events/onReady.html"
 	}
 ]

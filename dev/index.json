@@ -45,7 +45,7 @@
 		},
 		{
 			"id": "page",
-			"title": "Page framework",
+			"title": "$p (page)",
 			"desc": "A simple JS framework for web page functionality",
 			"path": "page/",
 			"size": 0

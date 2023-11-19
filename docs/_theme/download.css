@@ -48,7 +48,6 @@ main .info-box {
 	padding: .25em;
 }
 
-
 /* the download tool: */
 main#download-tool {
 	padding: .5em;
@@ -113,6 +112,13 @@ main#download-tool {
 }
 #download-tool details > label .msize.error {
 	color: #800;
+}
+#download-tool details > label .msize.compressing {
+	text-decoration: underline;
+}
+#download-tool details > label .msize.compressed {
+	color: #008;
+	font-size: smaller;
 }
 
 #download-tool details > label {

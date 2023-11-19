@@ -63,12 +63,12 @@ $p.gui.tabs = {
 			aItem.setAttribute(kAriaSelected, kFalse);
 			let aId = aItem.getAttribute(kAriaControls);
 			let aObj = document.getElementById(aId);
-			if (aObj) aObj.setAttribute(kHidden, '');
+			if (aObj) aObj.hidden = true;
 		}
 		
 		/* show the new panel: */
 		let nId = this.getAttribute(kAriaControls);
 		let nObj = document.getElementById(nId);
-		if (nObj) nObj.attributes.removeNamedItem(kHidden);
+		if (nObj) nObj.hidden = false;
 	}
 }

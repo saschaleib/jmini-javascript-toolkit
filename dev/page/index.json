@@ -1,61 +1,31 @@
 [
 	{	"id": "page_core",
-		"name": "$p (page core)",
-		"namehtml": "<tt>$p</tt> (page core)",
+		"name": "$p (page)",
+		"namehtml": "<code>$p</code> (page)",
 		"type": "framework",
 		"desc": "Page framework core",
 		"file": "page_core",
-		"variants": [
-		  {
-			"sig": "$p",
-			"desc": "page core",
-			"flags": [],
-			"param": [],
-			"returns": {}
-		  }
-		],
-		"size": 0,
-		"requires": [],
+		"requires": ["document_onready"],
 		"conflics": [],
 		"moreinfo": "docs/page/core.html"
 	},
 	{	"id": "page_gui_core",
-		"name": "$p.gui (page GUI core)",
-		"namehtml": "<tt>$p.gui</tt> (page GUI core)",
+		"name": "$p.gui (GUI)",
+		"namehtml": "<code>$p.gui</code> (<abbr>GUI</abbr>)",
 		"type": "framework",
 		"desc": "Page framework, GUI core",
 		"file": "page_gui_core",
-		"variants": [
-		  {
-			"sig": "$p.gui",
-			"desc": "page core",
-			"flags": [],
-			"param": [],
-			"returns": {}
-		  }
-		],
-		"size": 0,
 		"requires": ["page_core"],
 		"conflics": [],
 		"moreinfo": "docs/page/gui_core.html"
 	},
 	{	"id": "page_gui_tabs",
 		"name": "$p.gui.tabs",
-		"namehtml": "<tt>$p.gui.tabs</tt> (tabbed interface handler)",
+		"namehtml": "<code>$p.gui.tabs</code> (tabbed interface handler)",
 		"type": "gui",
 		"desc": "Page framework, tabbed interfaces GUI handler",
 		"file": "page_gui_tabs",
-		"variants": [
-		  {
-			"sig": "$p.gui.tabs",
-			"desc": "Page gui tabs handler",
-			"flags": [],
-			"param": [],
-			"returns": {}
-		  }
-		],
-		"size": 0,
-		"requires": ["page_core","page_gui_core","element_onclick","element_getancestors","array_first"],
+		"requires": ["page_gui_core","element_onclick","element_getancestors","array_first"],
 		"conflics": [],
 		"moreinfo": "docs/page/gui_tabs.html"
 	}

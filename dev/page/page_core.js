@@ -21,6 +21,5 @@ let $p = {
 		if ($p.init) $p.init();
 	}
 }
-document.addEventListener("DOMContentLoaded", (e) => {
-	$p._init(e);
-});
+/* load when DOM is ready: */
+document.onReady($p._init);
