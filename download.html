@@ -25,45 +25,61 @@
 		<script src="dev/page/page_gui_tabs.js" type="text/javascript"></script>
 		<script src="dev/number/Number.toBytesString.js" type="text/javascript"></script>
 		<script type="text/javascript">
-		
+
 			$p.init = function() {
-				//console.info('$p.init()');
-				$p.readSettings();
+				console.info('$p.init()');
 			}
-			
-			/* checks the GUI settings and sets them to the general settings: */
-			$p.readSettings = function() {
-				let footer = document.getElementById('footer-options');
-				let cbs = footer.querySelectorAll('input[type=checkbox]');
-				cbs.forEach( cb => {
-					switch (cb.getAttr('id')) {
-						case 'chk_minify':
-							gSettings.gui.minify = cb.checked;
-							break;
-						case 'chk_license':
-							gSettings.gui.license = cb.checked;
-							break;
-						case 'chk_filename':
-							gSettings.gui.filename = cb.checked;
-							break;
-						default:
-							console.warn('Unknown option' + cb.getAttr('id'));
+
+			/* settings object */
+			$p.settings = {
+				_init: function() {
+					$p.settings.update();
+				},
+				
+				/* storage for settings */
+				value: {
+					basePath: '/jmini/',
+					devPath: 'dev/',
+					gui: {
+						minify		: false,
+						license		: false,
+						filename	: false,
+						download	: false
 					}
-				});
-				console.log(gSettings);	
-			}
-			
-			/* general settings */
-			const gSettings = {
-				basePath: '/jmini/',
-				devPath: 'dev/',
-				gui: {
-					minify		: false,
-					license		: false,
-					filename	: false,
+				},
+				
+				/* common accessors: */
+				devUrl: function() {
+					return $p.settings.value.basePath + $p.settings.value.devPath;
+				},
+				
+				/* update the settings from the GUI: */
+				update: function() {
+					let footer = document.getElementById('footer-options');
+					let cbs = footer.querySelectorAll('input[type=checkbox]');
+					let v = $p.settings.value;
+					cbs.forEach( cb => {
+						switch (cb.getAttr('id')) {
+							case 'chk_minify':
+								v.gui.minify = cb.checked;
+								break;
+							case 'chk_license':
+								v.gui.license = cb.checked;
+								break;
+							case 'chk_annotate':
+								v.gui.annotate = cb.checked;
+								break;
+							case 'chk_download':
+								v.gui.download = cb.checked;
+								break;
+							default:
+								console.warn('Unknown option' + cb.getAttr('id'));
+						}
+					});
 				}
 			}
 
+			/* everything related to the data model */
 			$p.data = {
 
 				/* store the list of topics */
@@ -143,7 +159,7 @@
 							}
 							/* count size only if selected */
 							if (m._selected == 1) {
-								size += (gSettings.gui.minify && m._minsize && m._minsize >= 0 ? m._minsize : m._size);
+								size += ($p.settings.value.gui.minify && m._minsize && m._minsize >= 0 ? m._minsize : m._size);
 							}
 						}
 						
@@ -193,7 +209,8 @@
 					//let topics = []; // TODO: collect all the topic sections and sort them before adding them!
 					
 					/* load the index */
-					let url = gSettings.basePath + gSettings.devPath + 'index.json';
+					let url = $p.settings.devUrl() + 'index.json';
+					console.info(url);
 					try {
 						/* load the json from the server: */
 						let topicsReq = await fetch(url, {
@@ -221,7 +238,8 @@
 							let section = $p.gui.builder.makeTopicGroup(topic, topic._checkbox);
 							
 							/* load the index */
-							let url = gSettings.basePath + gSettings.devPath + topic.path + 'index.json';
+							let url = $p.settings.devUrl() + topic.path + 'index.json';
+							console.info(url);
 							let methodsReq = await fetch(url, {
 								method: 'GET',
 								mode: 'no-cors',
@@ -269,7 +287,8 @@
 						m._filesize.addClass(m._status);
 					}
 
-					let url = gSettings.basePath + gSettings.devPath + topic.path + m.file + '.js';
+					let url = $p.settings.devUrl() + topic.path + m.file + '.js';
+					console.info(url);
 					let jsReq = await fetch(url, {
 						method: 'GET',
 						mode: 'no-cors',
@@ -309,7 +328,7 @@
 						m._filesize.addClass('compressing');
 					}
 
-					let url = gSettings.basePath + gSettings.devPath + topic.path + m.file + '.min.js';
+					let url = $p.settings.devUrl() + topic.path + m.file + '.min.js';
 					let jsReq = await fetch(url, {
 						method: 'GET',
 						mode: 'no-cors',
@@ -327,7 +346,7 @@
 						m._status = 'ok2';
 						if (m._filesize) {
 							m._filesize.removeClass('compressing');
-							if (gSettings.gui.minify) {
+							if ($p.settings.value.gui.minify) {
 								m._filesize.addClass('compressed').setText(jsMinFile.length.toBytesString());
 							}
 						}
@@ -335,8 +354,75 @@
 
 					$p.gui.wait.end(); /* leave background lock state */
 				
+				},
+				
+				/* compile the downloadable code file */
+				compileDownload: function() {
+				
+					let v = $p.settings.value;
+					let code = "'use strict';\n"
+					
+					/* add a license text, if configured */
+					if (v.gui.license) {
+						code += "\n/* Copyright 2023 Sascha Leib */\n\n";
+						code += "/* Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: */\n\n";
+						code += "/* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. */\n\n";
+						code += "/* THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */\n";
+					}
+
+					/* add all the code files */
+					$p.data.methods.forEach( m => {
+						if (m._selected) {
+							if (v.gui.annotate) { code += "\n/* " + m.name + " */ "; }
+							code += (v.gui.minify && m._minfile ? m._minfile : m._file + "\n");
+						}
+					});
+
+					return code;
 				}
 			}
+
+			/* GUI Buttons */
+			$p.gui.buttons = {
+			
+				_init: function() {
+				
+					document.getElementById('download-button')
+						.onClick($p.gui.buttons.callback.onDLButtonClick)
+					;
+				
+				},
+				
+				callback: {
+					onDLButtonClick: function(e) {
+						
+						/* no submit */
+						e.preventDefault();
+						
+						/* update settings from GUI: */
+						$p.settings.update();
+						
+						/* compile the download code: */
+						let code = $p.data.compileDownload();
+						
+						if ($p.settings.value.gui.download) {
+						
+							/* prepare the download woraround: */
+							let tmpLink = HTMLElement.new('a')
+								.setAttr('download', 'jmini.js')
+								.setAttr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code))
+							;
+							tmpLink.style.display = 'none';
+							document.body.append(tmpLink);
+							tmpLink.click();
+							document.body.removeChild(tmpLink);
+							
+						} else { /* show code for copying */
+							console.log(code); /* TODO! */
+						}
+					}
+				}
+			},
 
 			/* GUI Builder */
 			$p.gui.builder = {
@@ -389,7 +475,7 @@
 				cb.checked = (v !== 0);
 				cb.indeterminate = (v < 0 || v > 1);
 			};
-			
+
 			/* update the global Toolbox checkbox state */
 			$p.gui.updateToolboxCheckbox = function() {
 				
@@ -514,7 +600,8 @@
 							<legend class="sr-only">Download options</legend>
 							<input type="checkbox" id="chk_minify" checked="checked"><label for="chk_minify">Use minified code</label><br>
 							<input type="checkbox" id="chk_license" checked="checked"><label for="chk_license">Insert license</label><br>
-							<input type="checkbox" id="chk_filename" checked="checked"><label for="chk_filenames">Annotate</label>
+							<input type="checkbox" id="chk_annotate" checked="checked"><label for="chk_annotate">Annotate</label><br>
+							<input type="checkbox" id="chk_download" checked="checked"><label for="chk_download">Direct download</label>
 						</fieldset>
 					</details>
 					<div id="footer-buttons">
