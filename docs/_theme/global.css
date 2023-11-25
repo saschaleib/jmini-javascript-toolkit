@@ -83,6 +83,22 @@ code.block {
 	max-width: max-content;
 }
 
+/* textareas */
+textarea {
+	font-family: Consolas,Monaco,"Courier New",monospace;
+	font-size: .8rem;
+}
+
+/* button styles */
+button {
+	border: black solid 1px;
+	padding: .25em .5em;
+	margin: .25em;
+	background-color: lightgray;
+	color: #000;
+	cursor: pointer;
+}
+
 /* page header */
 #header-layout {
 	width: 100%;

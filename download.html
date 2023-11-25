@@ -40,6 +40,7 @@
 				value: {
 					basePath: '/jmini/',
 					devPath: 'dev/',
+					maxDLSize: 4096,
 					gui: {
 						minify		: false,
 						license		: false,
@@ -364,10 +365,11 @@
 					
 					/* add a license text, if configured */
 					if (v.gui.license) {
-						code += "\n/* Copyright 2023 Sascha Leib */\n\n";
-						code += "/* Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: */\n\n";
-						code += "/* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. */\n\n";
-						code += "/* THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */\n";
+					
+						code += "\n/* Copyright 2023 Sascha Leib\n *\n";
+						code += " * Permission is hereby granted, free of charge, to any person obtaining a copy of this software\n * and associated documentation files (the “Software”), to deal in the Software without restriction,\n * including without limitation the rights to use, copy, modify, merge, publish, distribute,\n * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n";
+						code += " * The above copyright notice and this permission notice shall be included in all copies or substantial\n * portions of the Software.\n *\n";
+						code += " * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT\n * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n */\n";
 					}
 
 					/* add all the code files */
@@ -390,7 +392,15 @@
 					document.getElementById('download-button')
 						.onClick($p.gui.buttons.callback.onDLButtonClick)
 					;
-				
+					document.getElementById('compile-button')
+						.onClick($p.gui.buttons.callback.onCompileButtonClick)
+					;
+					document.getElementById('return-button')
+						.onClick($p.gui.buttons.callback.onReturnButtonClick)
+					;
+					document.getElementById('copy-button')
+						.onClick($p.gui.buttons.callback.onCopyButtonClick)
+					;
 				},
 				
 				callback: {
@@ -405,7 +415,9 @@
 						/* compile the download code: */
 						let code = $p.data.compileDownload();
 						
-						if ($p.settings.value.gui.download) {
+						console.log("DL Size: " + code.length);
+						
+						if ($p.settings.value.gui.download && code.length <= $p.settings.value.maxDLSize) {
 						
 							/* prepare the download woraround: */
 							let tmpLink = HTMLElement.new('a')
@@ -420,9 +432,66 @@
 						} else { /* show code for copying */
 							console.log(code); /* TODO! */
 						}
+					},
+					onCompileButtonClick: function(e) {
+					
+						console.log('onCompileButtonClick');
+
+						/* no submit */
+						e.preventDefault();
+
+						/* update settings from GUI: */
+						$p.settings.update();
+
+						/* compile the download code: */
+						let code = $p.data.compileDownload();
+						console.log(code);
+
+						document.getElementById('code-field').value = code;
+						
+						$p.gui.mode.change(1);
+					},
+					onReturnButtonClick: function(e) {
+						console.log('onReturnButtonClick');
+
+						/* no submit */
+						e.preventDefault();
+						
+						$p.gui.mode.change(0);
+					},
+					onCopyButtonClick: function(e) {
+						console.log('onCopyButtonClick');
+
+						/* no submit */
+						e.preventDefault();
+						
+						/* get the text: */
+						let code = document.getElementById("code-field").value;
+						console.log(code);
+						
+						navigator.clipboard.writeText(code);
+						console.log("Code is now in clipboard!");
+						
 					}
 				}
-			},
+			};
+			
+			/* the main interface mode */
+			$p.gui.mode = {
+				change: function(tab) {
+				
+					let tab0 = document.getElementById('download-tool');
+					let tab1 = document.getElementById('code-viewer');
+				
+					if (tab == 0) {
+						tab0.removeAttribute('hidden');
+						tab1.setAttribute('hidden', '');
+					} else {
+						tab0.setAttribute('hidden', '');
+						tab1.removeAttribute('hidden');
+					}
+				}
+			};
 
 			/* GUI Builder */
 			$p.gui.builder = {
@@ -467,7 +536,7 @@
 					lbl.appendChild(m._filesize);
 					parent.appendChild(lbl);
 				}
-			}
+			};
 
 			/* set a checkbox value */
 			/* v can be: 0 = off, 1 = on, -1 = mixed */
@@ -495,7 +564,7 @@
 				
 				$p.gui.setCheckbox(document.getElementById('globalCheckbox'), newVal);
 			
-			},
+			};
 
 			/* makes sure the GUI waits while background processes are running... */
 			$p.gui.wait = {
@@ -526,7 +595,7 @@
 					document.getElementById('download-button').removeAttribute('disabled')
 				}
 				
-			}
+			};
 
 			/* GUI callback functions: */
 			$p.gui.callback = {
@@ -544,7 +613,7 @@
 					$p.data.selectAll(this.checked ? 1 : 0 );
 					$p.gui.updateToolboxCheckbox();
 				}
-			}
+			};
 
 		</script>
 		<!-- END DEV ONLY -->
@@ -568,8 +637,8 @@
 			</header>
 		</div>
 		<div id="main-layout">
-			<main id="download-tool">
-				<p class="info-box"><strong>Note:</strong> This tool is still under development and not fully functional. In the meantime, try the <a href="download.old.html">old download tool</a>.</p>
+			<main>
+			<div id="download-tool">
 				<header>
 					<input type="checkbox" id="globalCheckbox" title="select/unselect all">
 					<label for="globalCheckbox" class="title">jMini Toolbox</label>
@@ -598,16 +667,37 @@
 						<summary><span>Options</span></summary>
 						<fieldset>
 							<legend class="sr-only">Download options</legend>
-							<input type="checkbox" id="chk_minify" checked="checked"><label for="chk_minify">Use minified code</label><br>
-							<input type="checkbox" id="chk_license" checked="checked"><label for="chk_license">Insert license</label><br>
-							<input type="checkbox" id="chk_annotate" checked="checked"><label for="chk_annotate">Annotate</label><br>
-							<input type="checkbox" id="chk_download" checked="checked"><label for="chk_download">Direct download</label>
+							<p>
+								<input type="checkbox" id="chk_minify" checked="checked"><label for="chk_minify">Use minified code</label><br>
+								<small>Use the minified versions of the code (significantly reduces the file size!)</small>
+							</p>
+							<p>
+								<input type="checkbox" id="chk_license" checked="checked"><label for="chk_license">Insert license</label><br>
+								<small>Insert the MIT license text on top of the code (adds ca. 1&nbsp;KiB to the file)</small>
+							</p>
+							<p>
+								<input type="checkbox" id="chk_annotate" checked="checked"><label for="chk_annotate">Annotate</label><br>
+								<small>Add small code annotations to each include. Helpful for debugging the minified version (adds ca. <span id="annotation-size">—</span> to the file)
+							</p>
+							<p>
+								<input type="checkbox" id="chk_download"><label for="chk_download">Direct download</label><br>
+								<small>directly download the file, rather than showing the code (only available for small files, up to ca. 4&nbsp;KiB)</small>
+							</p>
 						</fieldset>
 					</details>
 					<div id="footer-buttons">
-						<button type="submit" id="download-button">Download</button>
+						<button id="download-button" hidden>Download</button>
+						<button id="compile-button">Compile</button>
 					</div>
 				</footer>
+			</div>
+			<div id="code-viewer" hidden>
+				<header>
+					<button id="return-button">Return</button>
+					<button id="copy-button">Copy</button>
+				</header>
+				<textarea id="code-field"></textarea>
+			</div>
 			</main>
 		</div>
 		<div id="footer-layout">
