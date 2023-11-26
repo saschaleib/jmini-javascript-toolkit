@@ -38,7 +38,7 @@
 											
 					<h3>Usage:</h3>
 					
-					<code class="block"><span class="narrow">&lt;String&gt;</span> = <span class="narrow">&lt;Number&gt;</span>.<b>toBytesString</b>(digits <span class="narrow">&lt;Number&gt;</span> = 2, locale <span class="narrow">&lt;String&gt;</span>|<span class="narrow">&lt;Intl.Locale&gt;</span> = 'en-US')</code>
+					<code class="block"><span class="narrow">&lt;String&gt;</span> = <span class="narrow">&lt;Number&gt;</span>.<b>toBytesString</b>(digits <span class="narrow">&lt;Number&gt;</span> = 2, locale <span class="narrow">&lt;String&gt;</span>|<span class="narrow">&lt;Intl.Locale&gt;</span> = 'en-US', overrides <span class="narrow">&lt;Object&gt;</span> = undefined)</code>
 					
 					<dl class="properties">
 						<dt>Member of:</dt>
@@ -48,6 +48,7 @@
 						<dd><ol>
 							<li><strong>digits</strong> – the number of significant digits, as used by the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" class="ext mdn" target="_blank">Intl.NumberFormat</a> function (optional, default: <code>2</code>).</li>
 							<li><strong>locale</strong> – a valid <a href="https://en.wikipedia.org/wiki/IETF_language_tag" class="ext wikipedia" target="_blank">BCP 47</a> language tag, or an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale" class="ext mdn" target="_blank">Intl.Locale</a> instance (optional, default: <code>&apos;en-US&apos;</code>).</li>
+							<li><strong>overrides</strong> – a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="ext mdn" target="_blank">Object</a> containing key-value pairs to override specific values (optional, default: <code>undefined</code>).</li>
 						</ol></dd>
 
 						<dt>Returns:</dt>
@@ -73,15 +74,23 @@
 					<h3>Examples:</h3>
 					<h4>Example with default values:</h4>
 
-<code class="block javascript">console.log (1010).<b>toBytesString</b>();&nbsp;<span style="color:#999"> //&nbsp;Output: &quot;0.99&#x202F;KiB&quot;</span></code>
+<code class="block javascript">(1010).<b>toBytesString</b>();&nbsp;<span style="color:#999"> //&nbsp;Output: &quot;0.99&#x202F;KiB&quot;</span></code>
 
-					<h4>Examples with options:</h4>
+					<h4>Example with specified digits:</h4>
 
 <code class="block javascript">(1020001).<b>toBytesString</b>(7);&nbsp;<span style="color:#999"> //&nbsp;Result: &quot;0.9727488&#x202F;MiB&quot;</span></code>
+
+					<h4>Examples with locales:</h4>
 
 <code class="block javascript">(1010).<b>toBytesString</b>(2, 'de');&nbsp;<span style="color:#999"> //&nbsp;Result: &quot;0,99&#x202F;KiB&quot;</span></code>
 
 <code class="block javascript">(256543000000).<b>toBytesString</b>(2,'ar');&nbsp;<span style="color:#999"> //&nbsp;Result: &quot;٢٤٠&#x202F;MiB&quot;</span></code>
+
+					<h4>Example with override:</h4>
+
+<code class="block javascript">(0).<b>toBytesString</b>(2, 'en', {0: '—'});&nbsp;<span style="color:#999"> //&nbsp;Result: &quot;—&quot;</span></code>
+<code class="block javascript">(1).<b>toBytesString</b>(2, 'en', {0: '—'});&nbsp;<span style="color:#999"> //&nbsp;Result: &quot;1&#x202F;Byte&quot;</span></code>
+
 
 					<h3>More information:</h3>
 					<ul>

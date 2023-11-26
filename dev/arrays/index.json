@@ -7,7 +7,7 @@
 		"file": "Array.first",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/arrays/first.html"
+		"moreinfo": "arrays/first.html"
 	},
 	{	"id": "array_last",
 		"name": ".last",
@@ -17,6 +17,6 @@
 		"file": "Array.last",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/arrays/last.html"
+		"moreinfo": "arrays/last.html"
 	}
 ]

@@ -1,6 +1,13 @@
 {
-	"version": "2023-10-24",
+	"version": "2023-12-26",
 	"topics": [
+		{
+			"id": "events",
+			"title": "Events",
+			"desc": "Everything related to event handling.",
+			"path": "events/",
+			"size": 713
+		},
 		{
 			"id": "array",
 			"title": "Array",
@@ -21,13 +28,6 @@
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
 			"size": 1208
-		},
-		{
-			"id": "events",
-			"title": "Events",
-			"desc": "Everything related to event handling.",
-			"path": "events/",
-			"size": 713
 		},
 		{
 			"id": "numbers",

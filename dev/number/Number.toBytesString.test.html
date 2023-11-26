@@ -35,6 +35,16 @@
 				</thead>
 				<tbody id="target2"></tbody>
 			</table>
+
+			<p>
+				Usage: <code><i>&lt;Number&gt;</i>.<b>toBytesString</b>(digits <i>&lt;Number&gt;</i>, locale <i>&lt;String&gt;</i>, overrides <i>&lt;Object&gt;</i>)</code>
+			</p>
+			<table border>
+				<thead>
+					<tr><th>Input</th><th>digits</th><th>locale</th><th>Result</th></tr>
+				</thead>
+				<tbody id="target3"></tbody>
+			</table>
 		</main>
 		<footer>
 			<p><mark>See console for any errors.</mark></p>
@@ -45,12 +55,13 @@
 			console.group('Tests: <Number>.toBytesString()');
 		
 			/* function to log to screen: */
-			let listLog = function(trg, a, b, c = undefined, d = undefined) {
+			let listLog = function(trg, a, b, c = undefined, d = undefined, o = undefined) {
 			
 			
 				let tr = HTMLElement.new('tr');
 				tr.appendNew('td').setText(a);
 				tr.appendNew('td').setText(b);
+				if (o) tr.appendNew('td').setText(o);
 				if (c) tr.appendNew('td').setText(c);
 				if (d) tr.appendNew('td').setText(d);
 					
@@ -82,7 +93,7 @@
 				listLog('target1', n, s);
 			});
 
-			/* advanced test */
+			/* advanced test2 */
 			let test2 = [
 				{n: 1010,           l: 'de', d: 2},
 				{n: 1020001,        l: 'es', d: 2},
@@ -95,6 +106,18 @@
 				let s = o.n.toBytesString(o.d, o.l);
 				listLog('target2', o.n, o.d, o.l, s);
 			});
+
+			/* test override values */
+
+			let test3 = [
+				{n: 0,	l: 'en', d: 2, w: { '0': '—'}},
+			];
+
+			test3.forEach( (o) => {
+				let s = o.n.toBytesString(o.d, o.l, o.w);
+				listLog('target3', o.n, o.d, o.l, s);
+			});
+
 
 			/* done. */
 			console.groupEnd();

@@ -5,34 +5,8 @@
 		"type": "prototype",
 		"desc": "Converts a number to a formatted bytes sting using KiB, MiB, etc.",
 		"file": "Number.toBytesString",
-		"variants": [
-		  {
-			"sig": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>(<i>&lt;Number&gt;</i> = 2, <i>&lt;String&gt;</i> = &quot;en-US&quot;)",
-			"desc": "Converts the Number to a formatted String with suitable unit.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "digits",
-				"type": "<i>&lt;Number&gt;</i>",
-				"desc": "The maximum number of significant digits to show (default: 2)",
-				"required": false
-			  },
-			  {
-				"name": "locale",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "A valid locale indicator to specifiy how the number should be formatted (default: 'en-US')",
-				"required": false
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The formatted number as String."
-			}
-		  }
-		],
-		"size": 277,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/numbers/toBytesString.html"
+		"moreinfo": "numbers/toBytesString.html"
 	}
 ]

@@ -44,7 +44,7 @@
 /* .onFocus */ HTMLElement.prototype.onFocus=function(t){return this.addEventListener("focus",t),this};
 /* .onSubmit */ HTMLFormElement.prototype.onSubmit=function(t){return this.addEventListener("submit",t),this};
 /* .onReady */ document.onReady=function(n){return document.addEventListener('DOMContentLoaded',n),document};
-/* .toBytesString */ Number.prototype.toBytesString=function(i=2,t="en-US"){for(units=["Bytes","KiB","MiB","GiB","TiB","PiB","EiB","ZiB","YiB","???"],n2=Math.floor(this),p=0;n2>980&&p<units.length;)n2/=1024,p+=1;return new Intl.NumberFormat(t,{maximumSignificantDigits:i}).format(n2)+" "+units[p]};
+/* .toBytesString */ Number.prototype.toBytesString=function(i=2,t="en-US"){let r=["Bytes","KiB","MiB","GiB","TiB","PiB","EiB","ZiB","YiB","???"],e=Math.floor(this);for(var n=0;e>980&&n<r.length;)e/=1024,n+=1;return new Intl.NumberFormat(t,{maximumSignificantDigits:i}).format(e)+" "+r[n]};
 /* .getAncestors */ HTMLElement.prototype.getAncestors=function(e=void 0){let t=[];for(var o=this.parentNode;o;)e&&!e(o)||t.push(o),o=o.parentNode;return t};
 /* .getSiblings */ HTMLElement.prototype.getSiblings=function(e=void 0){let t=[];if(this.parentNode)for(var i=this.parentNode.firstChild;i;)i!==this&&i.nodeType===Node.ELEMENT_NODE&&(e&&!e(i)||t.push(i)),i=i.nextSibling;return t};
 /* $p (page) */ let $p={_init:function(){console.info("$p._init()"),Object.keys($p).forEach(((i,t)=>{let n=$p[i];"object"==typeof n&&n._init&&n._init()})),$p.init&&$p.init()}};document.onReady($p._init);

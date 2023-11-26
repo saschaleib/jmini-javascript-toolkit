@@ -5,29 +5,9 @@
 		"type": "prototype",
 		"desc": "Adds a class to the parent HTMLElement.",
 		"file": "Element.addClass",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>addClass</b>(<i>&lt;String&gt;</i>)",
-			"desc": "Adds a class to the internal classes list of the element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "classname",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the class to add",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 78,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/classes/addClass.html"
+		"moreinfo": "classes/addClass.html"
 	},
 	{	"id": "element_removeclass",
 		"name": ".removeClass",
@@ -35,29 +15,9 @@
 		"type": "prototype",
 		"desc": "Removes a class from the parent HTMLElement.",
 		"file": "Element.removeClass",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>removeClass</b>(<i>&lt;String&gt;</i>)",
-			"desc": "Removes a class from the internal classes list of the element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "classname",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the class to remove",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 84,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/classes/removeClass.html"
+		"moreinfo": "classes/removeClass.html"
 	},
 	{	"id": "element_toggleclass",
 		"name": ".toggleClass",
@@ -65,29 +25,9 @@
 		"type": "prototype",
 		"desc": "Toggles a class at the parent HTMLElement.",
 		"file": "Element.toggleClass",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>toggleClass</b>(<i>&lt;String&gt;</i>)",
-			"desc": "Toggles a class in the internal classes list of the element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "classname",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the class to toggle",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;HTMLElement&gt;</i>",
-				"desc": "The (modified) parent HTMLElement."
-			}
-		  }
-		],
-		"size": 84,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/classes/toggleClass.html"
+		"moreinfo": "classes/toggleClass.html"
 	},
 	{	"id": "element_hasclass",
 		"name": ".hasClass",
@@ -95,28 +35,8 @@
 		"type": "prototype",
 		"desc": "Checks is a class is assigned to the parent HTMLElement.",
 		"file": "Element.hasClass",
-		"variants": [
-		  {
-			"sig": "<i>&lt;HTMLElement&gt;</i>.<b>hasClass</b>(<i>&lt;String&gt;</i>)",
-			"desc": "Checks if a class is in the internal classes list of the element.",
-			"flags": [],
-			"param": [
-			  {
-				"name": "classname",
-				"type": "<i>&lt;String&gt;</i>",
-				"desc": "The name of the class to check for",
-				"required": true
-			  }
-			],
-			"returns": {
-				"type": "<i>&lt;Boolean&gt;</i>",
-				"desc": "true, if the class is present, false, if not."
-			}
-		  }
-		],
-		"size": 78,
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/classes/hasClass.html"
+		"moreinfo": "classes/hasClass.html"
 	}
 ]

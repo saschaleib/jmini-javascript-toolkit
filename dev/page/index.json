@@ -7,7 +7,7 @@
 		"file": "page_core",
 		"requires": ["document_onready"],
 		"conflics": [],
-		"moreinfo": "docs/page/core.html"
+		"moreinfo": "page/core.html"
 	},
 	{	"id": "page_gui_core",
 		"name": "$p.gui (GUI)",
@@ -17,7 +17,7 @@
 		"file": "page_gui_core",
 		"requires": ["page_core"],
 		"conflics": [],
-		"moreinfo": "docs/page/gui_core.html"
+		"moreinfo": "page/gui_core.html"
 	},
 	{	"id": "page_gui_tabs",
 		"name": "$p.gui.tabs",
@@ -27,6 +27,6 @@
 		"file": "page_gui_tabs",
 		"requires": ["page_gui_core","element_onclick","element_getancestors","array_first"],
 		"conflics": [],
-		"moreinfo": "docs/page/gui_tabs.html"
+		"moreinfo": "page/gui_tabs.html"
 	}
 ]

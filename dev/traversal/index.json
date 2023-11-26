@@ -7,7 +7,7 @@
 		"file": "Element.getAncestors",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/traversal/getAncestors.html"
+		"moreinfo": "traversal/getAncestors.html"
 	},
 	{	"id": "element_getsiblings",
 		"name": ".getSiblings",
@@ -17,6 +17,6 @@
 		"file": "Element.getSiblings",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/traversal/getSiblings.html"
+		"moreinfo": "traversal/getSiblings.html"
 	}
 ]

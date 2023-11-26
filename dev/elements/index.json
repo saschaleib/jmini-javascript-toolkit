@@ -7,7 +7,7 @@
 		"file": "HTMLElement.new",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/new_static.html"
+		"moreinfo": "elements/new_static.html"
 	},
 	{	"id": "element_getattr",
 		"name": ".getAttr",
@@ -17,7 +17,7 @@
 		"file": "Element.getAttr",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/getAttr.html"
+		"moreinfo": "elements/getAttr.html"
 	},
 	{	"id": "element_setattr",
 		"name": ".setAttr",
@@ -27,7 +27,7 @@
 		"file": "Element.setAttr",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/setAttr.html"
+		"moreinfo": "elements/setAttr.html"
 	},
 	{	"id": "element_appendtext",
 		"name": ".appendText",
@@ -37,7 +37,7 @@
 		"file": "Element.appendText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/appendText.html"
+		"moreinfo": "elements/appendText.html"
 	},
 	{	"id": "element_prependtext",
 		"name": ".prependText",
@@ -48,7 +48,7 @@
 		"file": "Element.prependText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/prependText.html"
+		"moreinfo": "elements/prependText.html"
 	},
 	{	"id": "element_gettext",
 		"name": ".getText",
@@ -58,7 +58,7 @@
 		"file": "Element.getText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/getText.html"
+		"moreinfo": "elements/getText.html"
 	},
 	{	"id": "element_settext",
 		"name": ".setText",
@@ -69,7 +69,7 @@
 		"file": "Element.setText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/setText.html"
+		"moreinfo": "elements/setText.html"
 	},
 	{	"id": "element_appendnew",
 		"name": ".appendNew",
@@ -79,7 +79,7 @@
 		"file": "Element.appendNew",
 		"requires": ["htmlelement_new"],
 		"conflics": [],
-		"moreinfo": "docs/elements/appendNew.html"
+		"moreinfo": "elements/appendNew.html"
 	},
 	{	"id": "element_prependnew",
 		"name": ".prependNew",
@@ -89,7 +89,7 @@
 		"file": "Element.prependNew",
 		"requires": ["htmlelement_new"],
 		"conflics": [],
-		"moreinfo": "docs/elements/prependNew.html"
+		"moreinfo": "elements/prependNew.html"
 	},
 	{	"id": "element_sethtml",
 		"name": ".setHtml",
@@ -99,7 +99,7 @@
 		"file": "Element.setHtml",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/setHtml.html"
+		"moreinfo": "elements/setHtml.html"
 	},
 	{	"id": "element_gethtml",
 		"name": ".getHtml",
@@ -109,7 +109,7 @@
 		"file": "Element.getHtml",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/getHtml.html"
+		"moreinfo": "elements/getHtml.html"
 	},
 	{	"id": "element_empty",
 		"name": ".empty",
@@ -119,6 +119,6 @@
 		"file": "Element.empty",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "docs/elements/empty.html"
+		"moreinfo": "elements/empty.html"
 	}
 ]
