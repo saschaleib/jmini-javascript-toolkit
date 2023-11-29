@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>$p.url (URL core) — jMini Test</title>
+		<script src="../events/Document.onReady.js" type="text/javascript"></script>
+		<script src="../events/Element.onClick.js" type="text/javascript"></script>
+		<script src="page_core.js" type="text/javascript"></script>
+		<script src="page_url_core.js" type="text/javascript"></script>
+		<script src="page_url_fragment.js" type="text/javascript"></script>
+		<script type="text/javascript">
+
+		</script>
+	</head>
+	<body>
+		<h1>Tests: $p.url.fragment (page URL fragment)</h1>
+		<main>
+			<p>Try functions:</p>
+			
+			<p><button id="test1">Set fragment</button></p>
+
+			<p><button id="test2">Get fragment</button></p>
+
+		</main>
+		<footer>
+			<p><mark>See console for more information or errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+
+			console.group('Tests: $p.url.fragment (URL fragment)');
+					
+			let b1 = document.getElementById('test1');
+			b1.onClick( (e) => {
+				$p.url.fragment.set('test' + (Math.random() + 1).toString(36).substring(7));
+			});
+			
+			let b2 = document.getElementById('test2');
+			b2.onClick( (e) => {
+				let txt = $p.url.fragment.get();
+				console.log(txt);
+			});
+
+			$p.url.fragment.onChange( (e) => {
+				console.group('$p.url.fragment.onChange()');
+				console.log('new hash: "' + $p.url.fragment.get() + '"');
+				console.groupEnd();
+			});
+
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

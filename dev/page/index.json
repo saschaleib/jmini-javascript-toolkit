@@ -28,5 +28,25 @@
 		"requires": ["page_gui_core","element_onclick","element_getancestors","array_first"],
 		"conflics": [],
 		"moreinfo": "page/gui_tabs.html"
+	},
+	{	"id": "page_url_core",
+		"name": "$p.url (URL)",
+		"namehtml": "<code>$p.url</code> (<abbr>URL</abbr>)",
+		"type": "framework",
+		"desc": "Page framework, URL core",
+		"file": "page_url_core",
+		"requires": ["page_core"],
+		"conflics": [],
+		"moreinfo": "page/url_core.html"
+	},
+	{	"id": "page_url_fragment",
+		"name": "$p.url.fragment",
+		"namehtml": "<code>$p.url.fragment</code>",
+		"type": "framework",
+		"desc": "Access to the fragment part of the page URL",
+		"file": "page_url_fragment",
+		"requires": ["page_url_core"],
+		"conflics": [],
+		"moreinfo": "page/url_fragment.html"
 	}
 ]

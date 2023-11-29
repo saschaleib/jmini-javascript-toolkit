@@ -157,7 +157,7 @@
 						
 						/* set the file size: */
 						if (topic._filesize) {
-							topic._filesize.setText(size.toBytesString());
+							topic._filesize.setText( size.toBytesString(2, 'en', {0: '—'}) );
 						}
 						
 					} else {

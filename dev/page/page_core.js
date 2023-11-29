@@ -7,18 +7,26 @@ let $p = {
 
 	/* shadow init function */
 	_init: function() {
-		console.info('$p._init()');
+		//console.info('$p._init()');
 		
 		/* call sub-sections, as they were added: */
-		Object.keys($p).forEach( (key,index) => {
-			let sub = $p[key];
+		$p._callPreInit($p);
+
+		/* call user init, if it exists: */
+		if ($p.init) $p.init();
+	}, 
+	
+	_callPreInit: function(obj) {
+		//console.info('$p._callPreInit()');
+		
+		/* call _init on each sub-object: */
+		Object.keys(obj).forEach( (key,i) => {
+			let sub = obj[key];
 			if (typeof sub === 'object' && sub._init) {
 				sub._init();
 			}
 		});
-		
-		/* call user init, if it exists: */
-		if ($p.init) $p.init();
+
 	}
 }
 /* load when DOM is ready: */
