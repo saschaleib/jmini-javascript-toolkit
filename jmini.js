@@ -17,38 +17,439 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+HTMLElement.prototype.on = function(n, cb) {
+	this.addEventListener(n, cb);
+	return this;
+}
+/* Attaches an event listener that will only be called once to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.once = function(n, cb) {
+	this.addEventListener(n, cb, {once: true});
+	return this;
+}
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.off = function(n, cb) {
+	this.removeEventListener(n, cb);
+	return this;
+}
+/* Attaches a listener for the "blur" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onBlur = function(cb) {
+	this.addEventListener('blur', cb);
+	return this;
+}
+/* Attaches a listener for the "click" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onClick = function(cb) {
+	this.addEventListener('click', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onFocus = function(cb) {
+	this.addEventListener('focus', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to a <form> Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement (form only) */
+/* returns: HTMLElement (passes through the parent element) */
+HTMLFormElement.prototype.onSubmit = function(cb) {
+	this.addEventListener('submit', cb);
+	return this;
+}
+/* Attaches a listener for the "DOMContentLoaded" event to the document */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element ( */
+/* returns: HTMLDocument (passes through the parent element) */
+document.onReady = function(cb) {
+	document.addEventListener('DOMContentLoaded', cb);
+	return document;
+}
+/* creates a new Element */
+/* parent object: Element */
+/* parameter: name (String) the name of the element (required) */
+/* parameter: attr (Object) a list of attributes to be added, */
+/* returns: the newly created HTMLElement */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.new = function(name, atlist = undefined) {
+	var r = null;
+	try {
+		r = document.createElement(name);
+		if (atlist) {
+			for (let attr in atlist) {
+				r.setAttribute(attr, atlist[attr]);
+			}
+		}
+	} catch(e) {
+		console.error(e);
+	}
+	return r;
+}
 
-/* .first */ Array.prototype.first=function(){return this.length>0?this[0]:null};
-/* .last */ Array.prototype.last=function(){return this.length>0?this[this.length-1]:null};
-/* .addClass */ HTMLElement.prototype.addClass=function(t){return this.classList.add(t),this};
-/* .removeClass */ HTMLElement.prototype.removeClass=function(e){return this.classList.remove(e),this};
-/* .toggleClass */ HTMLElement.prototype.toggleClass=function(t){return this.classList.toggle(t),this};
-/* .hasClass */ HTMLElement.prototype.hasClass=function(s){return this.classList.contains(s)};
-/* .on */ HTMLElement.prototype.on=function(t,e){return this.addEventListener(t,e),this};
-/* .once */ HTMLElement.prototype.once=function(e,t){return this.addEventListener(e,t,{once:!0}),this};
-/* .off */ HTMLElement.prototype.off=function(e,t){return this.removeEventListener(e,t),this};
-/* .onBlur */ HTMLElement.prototype.onBlur=function(t){return this.addEventListener("blur",t),this};
-/* .onClick */ HTMLElement.prototype.onClick=function(t){return this.addEventListener("click",t),this};
-/* .onFocus */ HTMLElement.prototype.onFocus=function(t){return this.addEventListener("focus",t),this};
-/* .onSubmit */ HTMLFormElement.prototype.onSubmit=function(t){return this.addEventListener("submit",t),this};
-/* .onReady */ document.onReady=function(n){return document.addEventListener('DOMContentLoaded',n),document};
-/* .toBytesString */ Number.prototype.toBytesString=function(i=2,t="en-US",r=void 0){let e=["Bytes","KiB","MiB","GiB","TiB","PiB","EiB","ZiB","YiB","???"];var n=Math.floor(this);if(r&&r[n])return r[n];for(var o=0;n>980&&o<e.length;)n/=1024,o+=1;return new Intl.NumberFormat(t,{maximumSignificantDigits:i}).format(n)+" "+e[o]};
-/* HTMLElement.new */ HTMLElement.new=function(e,t=void 0){var n=null;try{if(n=document.createElement(e),t)for(let e in t)n.setAttribute(e,t[e])}catch(e){console.error(e)}return n};
-/* .getAttr */ HTMLElement.prototype.getAttr=function(t){let e=this.getAttribute(t);return e||""};
-/* .setAttr */ HTMLElement.prototype.setAttr=function(t,e){return this.setAttribute(t,e),this};
-/* .appendText */ HTMLElement.prototype.appendText=function(e){let t=document.createTextNode(e);return this.append(t),this};
-/* .prependText */ HTMLElement.prototype.prependText=function(e){return this.prepend(document.createTextNode(e)),this};
-/* .getText */ HTMLElement.prototype.getText=function(){return this.textContent};
-/* .setText */ HTMLElement.prototype.setText=function(t){return this.textContent=t.toString(),this};
-/* .appendNew */ HTMLElement.prototype.appendNew=function(e,n=void 0){var t=null;try{t=HTMLElement.new(e,n),this.appendChild(t)}catch(t){console.error(t)}return t};
-/* .prependNew */ HTMLElement.prototype.prependNew=function(e,n=void 0){var r=null;try{r=HTMLElement.new(e,n),this.prepend(r)}catch(r){console.error(r)}return r};
-/* .setHtml */ HTMLElement.prototype.setHtml=function(e){let t=(new DOMParser).parseFromString("<div>"+e+"</div>","application/xml");return this.innerHTML=t.documentElement.innerHTML,this};
-/* .getHtml */ HTMLElement.prototype.getHtml=function(t=null){return this.innerHTML};
-/* .empty */ HTMLElement.prototype.empty=function(){for(;this.firstChild;)this.removeChild(this.lastChild)};
-/* .getAncestors */ HTMLElement.prototype.getAncestors=function(e=void 0){let t=[];for(var o=this.parentNode;o;)e&&!e(o)||t.push(o),o=o.parentNode;return t};
-/* .getSiblings */ HTMLElement.prototype.getSiblings=function(e=void 0){let t=[];if(this.parentNode)for(var i=this.parentNode.firstChild;i;)i!==this&&i.nodeType===Node.ELEMENT_NODE&&(e&&!e(i)||t.push(i)),i=i.nextSibling;return t};
-/* $p (page) */ let $p={_init:function(){console.info("$p._init()"),Object.keys($p).forEach(((i,t)=>{let n=$p[i];"object"==typeof n&&n._init&&n._init()})),$p.init&&$p.init()}};document.onReady($p._init);
-/* $p.gui (GUI) */ $p.gui={_init:function(){Object.keys($p.gui).forEach((i=>{let t=$p.gui[i];"object"==typeof t&&t._init&&t._init()}))}};
-/* $p.gui.tabs */ $p.gui.tabs={_init:function(){document.querySelectorAll("*[role=tablist]").forEach($p.gui.tabs.add)},add:function(t){t.querySelectorAll("*[role=tab]").forEach((t=>t.onClick($p.gui.tabs._onTabClick)))},_onTabClick:function(t){const e="aria-selected",i="aria-controls",l="true";t.preventDefault();let r=this.getAttribute(e);if(r&&r==l)return;var u=null;let n=this.getAncestors((t=>"tablist"==(t.getAttribute?t.getAttribute("role"):null))).first();if(n){n.querySelectorAll("*[role=tab]").forEach((t=>{let i=t.getAttribute(e);i&&i==l&&(u=t)}))}if(this.setAttribute(e,l),u){u.setAttribute(e,"false");let t=u.getAttribute(i),l=document.getElementById(t);l&&(l.hidden=!0)}let o=this.getAttribute(i),a=document.getElementById(o);a&&(a.hidden=!1)}};
-/* $p.url (URL) */ $p.url={_init:function(){console.info("$p.url._init()"),$p._callPreInit($p.url)}};
-/* $p.url.fragment */ $p.url.fragment={_init:function(){window.addEventListener("hashchange",$p.url.fragment._onHashChange)},get:function(){return location.hash.substr(1)},set:function(n){location.hash=n},onChange:function(n){$p.url.fragment._cbs.push(n)},_cbs:[],_onHashChange:function(n){$p.url.fragment._cbs.forEach((a=>{a(n)}))}};
+/* Gets attribute value from an element */
+/* parameter: name (String) the name of the attribute, */
+/* parent object: Element */
+/* returns: the value of the attribute (String) */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.getAttr = function(n) {
+	let a = this.getAttribute(n);
+	return ( a ? a : '');
+}
+
+/* Sets an attribute value for an element */
+/* parameter: name (String) the name of the attribute, */
+/* parameter: value (String) the value for the attribute */
+/* parent object: Element */
+/* returns: the parent element (Object) */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.setAttr = function(n, v) {
+	this.setAttribute(n, v);
+	return this;
+}
+
+/* Appends a new text node to the end of the child nodes list of an element */
+/* parameter: (required) text to add */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.appendText = function(txt) {
+	let t = document.createTextNode(txt);
+	this.append(t);
+	return this;
+}
+/* Prepends a new text node to the beginning of the child nodes list of an element */
+/* parameter: (required) text to add */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.prependText = function(txt) {
+	this.prepend(document.createTextNode(txt));
+	return this;
+}
+/* Sets or gets the text content of an element */
+/* parent object: Element */
+/* returns: the text content as String */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.getText = function() {
+	return this.textContent;
+}
+/* Sets the text content of an element */
+/* parameter: (required) text to set */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.setText = function(txt) {
+	this.textContent = txt.toString();
+	return this;
+}
+/* appends a new child HTMLElement to the parent. */
+/* parent object: HTMLElement */
+/* parameter: name (String, required) name of the new child element */
+/* parameter: att (Object, optional) name of the new child element */
+/* returns: the (modified) parent object */
+/* Requires: HTMLElement.new (static) */
+HTMLElement.prototype.appendNew = function(n, att = undefined) {
+	var e = null;
+	try {
+		e = HTMLElement.new(n, att);
+		this.appendChild(e);
+	} catch(e) {
+		console.error(e);
+	}
+	return e;
+}
+/* prepends a new child HTMLElement to the parent. */
+/* parent object: HTMLElement */
+/* parameter: name (String, required) name of the new child element */
+/* parameter: att (Object, optional) name of the new child element */
+/* returns: the (modified) parent object */
+/* Requires: HTMLElement.new (static) */
+HTMLElement.prototype.prependNew = function(n, att = undefined) {
+	var e = null;
+	try {
+		e = HTMLElement.new(n, att);
+		this.prepend(e);
+	} catch(e) {
+		console.error(e);
+	}
+	return e;
+}
+/* Sets the html content of an element */
+/* parameter: xhtml (String) to parse and set */
+/* parent object: Element */
+/* returns: the (modified) parent object */
+HTMLElement.prototype.setHtml = function(xhtml) {
+	let parser = new DOMParser();
+	let doc = parser.parseFromString('<div>' + xhtml + '</div>', 'application/xml');
+	this.innerHTML = doc.documentElement.innerHTML;
+	return this;
+}
+/* Gets the html content of an element */
+/* parameter: (optional) html to set */
+/* parent object: Element */
+/* returns: the inner HTML as String */
+HTMLElement.prototype.getHtml = function(xhtml = null) {
+	return this.innerHTML;
+}
+/* removes all child nodes of the element */
+/* parent object: HTMLElement */
+HTMLElement.prototype.empty = function() {
+	while (this.firstChild) {
+		this.removeChild(this.lastChild);
+	}
+}
+/* returns a list of ancestors of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getAncestors = function(cb = undefined) {
+	let r = [];
+	
+	var p = this.parentNode;
+	while (p) {
+		if ( p.nodeType === Node.ELEMENT_NODE && ( !cb || cb(p) ) ) {
+			r.push(p);
+		}
+		p = p.parentNode;
+	}
+
+	return r;
+}
+/* returns a list of siblings of an element (omitting the element itself) */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getSiblings = function(cb = undefined) {
+	let r = [];
+	if(this.parentNode) {
+		var s = this.parentNode.firstChild;
+		while (s) {
+			if (s !== this && s.nodeType === Node.ELEMENT_NODE ) {
+				if ( !cb || cb(s) ) {
+					r.push(s);
+				}
+			}
+			s = s.nextSibling;
+		}
+	}
+	return r;
+}
+/* returns the first element of an array, or null, if none exists */
+/* parent object: Array */
+/* returns: any type */
+Array.prototype.first = function() {
+	if (this.length > 0) {
+		return this[0];
+	} else {
+		return null;
+	}
+}
+/* returns the last element of an array, or null, if none exists */
+/* parent object: Array */
+/* returns: any type */
+Array.prototype.last = function() {
+	if (this.length > 0) {
+		return this[this.length-1];
+	} else {
+		return null;
+	}
+}
+/* Adds a class to the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.addClass = function(n) {
+	this.classList.add(n);
+	return this;
+}
+/* Removes a class from the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.removeClass = function(n) {
+	this.classList.remove(n);
+	return this;
+}
+/* Toggles a class on the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.toggleClass = function(n) {
+	this.classList.toggle(n);
+	return this;
+}
+/* Returns true, if the parent HTMLElement has a class of the specified name */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: Boolean */
+HTMLElement.prototype.hasClass = function(n) {
+	return this.classList.contains(n);
+}
+/* Page frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+let $p = {
+
+	/* shadow init function */
+	_init: function() {
+		console.info('$p._init()');
+		
+		/* call sub-sections, as they were added: */
+		Object.keys($p).forEach( (key,index) => {
+			let sub = $p[key];
+			if (typeof sub === 'object' && sub._init) {
+				sub._init();
+			}
+		});
+		
+		/* call user init, if it exists: */
+		if ($p.init) $p.init();
+	}
+}
+/* load when DOM is ready: */
+document.onReady($p._init);
+/* Page GUI frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.gui = {
+
+	/* shadow init function */
+	_init: function() {
+		console.info('$p.gui._init()');
+		
+		/* call sub-sections, as they were added: */
+		Object.keys($p.gui).forEach( (key) => {
+			let sub = $p.gui[key];
+			if (typeof sub === 'object' && sub._init) {
+				sub._init();
+			}
+		});
+	}
+}
+/* Page GUI frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.gui.tabs = {
+
+	/* pre-init function */
+	_init: function() {
+		console.log('$p.gui.tabs._init()');
+				
+		/* find and add all existing tabs */
+		document.querySelectorAll('*[role=tablist]')
+			.forEach($p.gui.tabs.add);
+	},
+	
+	/* add a new tab interface: */
+	add: function(tablist) {
+		console.log('$p.gui.tabs.add()');
+
+		tablist.querySelectorAll('*[role=tab]')
+			.forEach( t => t.onClick($p.gui.tabs._onTabClick) )
+	},
+	
+	/* callback for tab click */
+	_onTabClick: function(e) {
+		console.log('$p.gui.tabs._onTabClick()');
+		
+		/* reusable constants: */
+		const kAriaSelected = 'aria-selected';
+		const kAriaControls = 'aria-controls';
+		const kTrue = 'true';
+		const kFalse = 'false';
+		const kHidden = 'hidden';
+		
+		/* cancel default action */
+		e.preventDefault();
+		
+		/* if the active tab is clicked, do nothing: */
+		let selState = this.getAttribute(kAriaSelected);
+		if ( selState && selState == kTrue ) {
+			return;
+		}
+		
+		/* find the active tab element: */
+		var aItem = null;
+		let tablist = this.getAncestors( (it) => {
+			return ((it.getAttribute ? it.getAttribute('role') : null) == 'tablist');
+		}).first();
+		if (tablist) {
+			let lis = tablist.querySelectorAll('*[role=tab]');
+			lis.forEach( (it) => {
+				let selected = it.getAttribute(kAriaSelected);
+				if ( selected && selected == kTrue ) {
+					aItem = it;
+				}
+			});
+		}
+		
+		/* swap the active states: */
+		this.setAttribute(kAriaSelected, kTrue);
+		if (aItem) {
+			aItem.setAttribute(kAriaSelected, kFalse);
+			let aId = aItem.getAttribute(kAriaControls);
+			let aObj = document.getElementById(aId);
+			if (aObj) aObj.hidden = true;
+		}
+		
+		/* show the new panel: */
+		let nId = this.getAttribute(kAriaControls);
+		let nObj = document.getElementById(nId);
+		if (nObj) nObj.hidden = false;
+	}
+}
+/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
+/* parameter: (Number, optional) number of digits (default = 2) */
+/* parameter: (String, optional) the locale format to use (default = 'en') */
+/* parameter: (Object, optional) options for the International number format (default = null) */
+/* parameter: (Object, optional) overrides for specific values (default = undefined) */
+/* parent object: Number */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+
+	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
+	var m = Math.floor(this);
+
+	/* check first if there is an override value */
+	if (o && o[m]) {
+		return o[m];
+		
+	} else {
+
+		var p = 0;
+		while (m > 980 && p < u.length) {
+			m = m/1024;
+			p += 1;
+		}
+		let f = new Intl.NumberFormat(l, {
+			maximumSignificantDigits: d
+		});
+
+		return f.format(m) + '\u202F' + u[p];
+	}
+}

@@ -18,5 +18,15 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "traversal/getSiblings.html"
+	},
+	{	"id": "element_getchildren",
+		"name": ".getChildren",
+		"namehtml": "<tt>HTMLElement.getChildren()</tt>",
+		"type": "prototype",
+		"desc": "Get an array of immediate child elements, possibly filtered via a callback function",
+		"file": "Element.getChildren",
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "traversal/getChildren.html"
 	}
 ]
