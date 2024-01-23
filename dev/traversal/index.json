@@ -28,5 +28,15 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "traversal/getChildren.html"
+	},
+	{	"id": "element_getdescendants",
+		"name": ".getDescendants",
+		"namehtml": "<tt>HTMLElement.getDescendants()</tt>",
+		"type": "prototype",
+		"desc": "Get an array of descendant elements, possibly filtered via a callback function",
+		"file": "Element.getDescendants",
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "traversal/getDescendants.html"
 	}
 ]

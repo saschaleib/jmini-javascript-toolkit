@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;HTMLElement&gt;.getDescendants() — jMini Test</title>
+		<script src="Element.getDescendants.js" type="text/javascript"></script>
+		<script src="../elements/Element.getAttr.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;HTMLElement&gt;</i>.getDescendants()</h1>
+		<main>
+			<h2><span>List descendant elements</span></h2>
+			<p>
+				Usage: <code><i>&lt;HTMLElement&gt;</i>.<b>getDescendants</b>(callback <i>&lt;Function&gt;</i> = <i>undefined</i>)</code>
+			</p>
+			
+			<p>Mixed list:</p>
+			<ul id="target">
+				<li data-id="1">First Child</li>
+				<li data-id="2">Second Child</li>
+				<li data-id="3">Third Child</li>
+				<li data-id="4">Fourth Child
+					<ul>
+						<li data-id="11">First Grandchild</li>
+					</ul>
+				</li>
+				<li data-id="5">Fifth Child</li>
+				<li data-id="6">Sixt Child
+					<ul>
+						<li data-id="12">Second Grandchild</li>
+					</ul>
+				</li>
+				<li data-id="7">Seventh Child</li>
+				<li data-id="8">Eight Child
+					<ul>
+						<li data-id="13">Third Grandchild</li>
+						<li data-id="14">Fourth Grandchild</li>
+					</ul>
+				
+				</li>
+				<li data-id="9">Ninth Child</li>
+			</ul>
+			
+		</main>
+		<footer>
+			<p><mark>See console for results or errors.</mark></p>
+		</footer>
+		
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.getChildren()');
+
+			/*  list all descendants */
+			let desc1 = document
+				.getElementById('target')
+					.getDescendants();
+			
+			console.log(desc1);
+			
+			/* another test which only looks for elements with data-id >= 12 */
+			let desc2 = document
+				.getElementById('target')
+					.getDescendants( function(child) {
+						return ( Number(child.getAttr('data-id')) >= 12 );
+					});
+			
+			console.log(desc2);
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>

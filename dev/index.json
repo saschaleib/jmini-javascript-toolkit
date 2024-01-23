@@ -41,14 +41,14 @@
 			"title": "Traversal",
 			"desc": "Functions to traverse the DOM tree",
 			"path": "traversal/",
-			"size": 0
+			"size": 760
 		},
 		{
 			"id": "page",
 			"title": "$p (page)",
 			"desc": "A simple JS framework for web page functionality",
 			"path": "page/",
-			"size": 0
+			"size": 1442
 		}
 	]
 }
