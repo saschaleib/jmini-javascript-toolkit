@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>&lt;HTMLFormElement&gt;.onSubmit() — jMini Test</title>
 		<script src="./Form.onSubmit.js" type="text/javascript"></script>
-		<script src="../elements/Element.attr.js" type="text/javascript"></script>
+		<script src="../elements/Element.setAttr.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<h1>Tests: <i>&lt;HTMLFormElement&gt;</i>.onSubmit()</h1>
@@ -44,7 +44,7 @@
 			}
 			
 			frm.onSubmit( func )
-				.attr('style', 'border: red dotted 2px;padding: 3px;');
+				.setAttr('style', 'border: red dotted 2px;padding: 3px;');
 
 			/* done. */
 			console.groupEnd();
