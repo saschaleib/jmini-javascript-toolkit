@@ -1,4 +1,4 @@
-/* Page GUI frameword core */
+/* Page GUI tabbed interface class */
 /* Authors:
     - Sascha Leib <ad@hominem.info>
  */

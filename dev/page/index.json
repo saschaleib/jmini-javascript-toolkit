@@ -29,6 +29,16 @@
 		"conflics": [],
 		"moreinfo": "page/gui_tabs.html"
 	},
+	{	"id": "page_gui_overlay",
+		"name": "$p.gui.overlay",
+		"namehtml": "<code>$p.gui.overlay</code> (UI overlay interface)",
+		"type": "gui",
+		"desc": "Page framework, UI overlay",
+		"file": "page_gui_overlay",
+		"requires": ["page_gui_core","element_onclick","htmlelement_new"],
+		"conflics": [],
+		"moreinfo": "page/gui_overlay.html"
+	},
 	{	"id": "page_url_core",
 		"name": "$p.url (URL)",
 		"namehtml": "<code>$p.url</code> (<abbr>URL</abbr>)",
