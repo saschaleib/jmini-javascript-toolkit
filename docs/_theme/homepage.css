@@ -89,5 +89,8 @@ main code.block {
 	color: #006064;
 }
 #homegrid #hg-download {
-	grid-column: 2 / span 2;
+	grid-column: 1 / span 2;
+}
+#homegrid #hg-status {
+	grid-column: 3 / span 2;
 }
