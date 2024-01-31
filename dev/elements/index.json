@@ -120,5 +120,15 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "elements/empty.html"
+	},
+	{	"id": "element_load",
+		"name": ".load",
+		"namehtml": "<i>&lt;HTMLElement&gt;</i>.<b>load</b>",
+		"type": "prototype",
+		"desc": "Loads an HTML document into an existing element",
+		"file": "Element.load",
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "elements/load.html"
 	}
 ]
