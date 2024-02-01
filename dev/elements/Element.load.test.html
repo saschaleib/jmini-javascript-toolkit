@@ -11,18 +11,33 @@
 		<script type="text/javascript">
 		
 			function load1() {
-				let trg1 = document.getElementById('target1');
+				let trg1 = document.getElementById('target');
+				let addrField = document.getElementById('addrField');
+
+				console.group('Element.load() test:');
 				
-				trg1.load('sample-file.html', {}, {
-					200: (rp) => {
-							console.log('status: 200 OK');
-						},
-					'success': (rp) => {
-							console.log('status: Success');
-						},
-					});
+				/* get the address to fetch: */
+				const url = addrField.value;
+				
+				/* launch the load */
+				trg1.load(url)
+				.then( fp => {
+					console.info('Fulfilled promise:');
+					console.log(fp);
+				 },
+				 rejected => {
+					console.info('Rejected promise:');
+					console.log(rejected);
+				  })
+				.catch( error => {
+					console.info('Catch block:');
+					console.error(error);
+				 })
+				.finally( () => {
+					console.info('Finally block executed.');
+					console.groupEnd();
+				 });
 			}
-		
 		</script>
 	</head>
 	<body>
@@ -36,9 +51,10 @@
 
 			<p class="buttons">
 				<button onClick="load1()">Load</button>
+				<input type="text" value="sample-file.html" id="addrField">
 			</p>
 
-			<div id="target1">
+			<div id="target">
 			</div>
 		</main>
 		<footer>
@@ -48,7 +64,7 @@
 		<script type="text/javascript">
 		
 			console.group('Tests: <HTMLElement>.load()');
-			/* no main thread */
+			console.info('click button to run script.');
 			console.groupEnd();
 
 		</script>
