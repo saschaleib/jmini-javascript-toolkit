@@ -46,33 +46,83 @@
 
 						<dt>Parameters:</dt>
 						<dd><ol>
-							<li><strong>url</strong> – the address to load the HTML snippet from.</li>
-							<li><strong>options</strong> – an object containing options for the HTTP request, as specified for the <a href="">fetch()</a> function.
+							<li><strong>url</strong> – the address to load the HTML snippet from (required).</li>
+							<li><strong>options</strong> – an object containing options for the HTTP request, as specified for the
+								<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" class="ext mdn" target="_blank">Fetch&nbsp;<abbr>API</abbr></a>
+								(optional).</li>
 						</ol></dd>
 
 						<dt>Returns:</dt>
-						<dd>The parent element.</dd>
+						<dd>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" class="ext mdn" target="_blank">Promise</a>
+							object, as returned by the <a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" class="ext mdn" target="_blank">fetch()</a>
+							global function.
+						</dd>
 					</dl>
-
+					
 					<h3>Notes:</h3>
-					<ol>
-						<li>
-							This method returns the element that it was called on, thus allowing for command chaining.
-						</li>
-					</ol>
+					
+					<ul>
+						<li>This is an <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing" class="ext mdn" target="_blank">asynchronous</a>
+							function, as the fetched data may only be available after a delay.</li>
+						<li>Different to a plain <code>fetch()</code> request, this method rejects the promise also if
+							a server-side error (HTTP codes 400 or higher) occurred.</li>
+						<li>Security restrictions on which resources can be loaded, still apply to these requests.
+							See <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" class="ext mdn" target="_blank">CORS</a>
+							for more information.</li>
+					</ul>
 
 					<h3>Examples:</h3>
 
 					<p>A simple example could look like this:</p>
 
+<code class="block javascript">document.getElementById('foo').<b>load</b>("bar.html");</code>
+
+					<p>Since this method returns a
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" class="ext mdn" target="_blank">Promise</a>
+						object, the <code>.<b>then</b>()</code> method can be used to chain program code that is called
+						only after the resource is loaded:</p>
+
 <code class="block javascript">document.getElementById('foo')
-  .<b>load</b>("bar.html")
-  .show()
+   .<b>load</b>("bar.html")
+   .<b>then</b>( result => { console.info(result); } )
 ;</code>
+
+					<p>The <code>.<b>then</b>()</code> method has an additional (optional) callback function,
+					which gets called if an error occured:</p>
+
+<code class="block javascript">document.getElementById('foo')
+   .<b>load</b>("bar.html")
+   .<b>then</b>(
+      success => { console.info(success); },
+      failure => { console.error(failure); })
+;</code>
+
+					<p>Moreover, the additional <code>.catch()</code> and <code>.finally()</code> callbacks can be 
+						used. These function similarly to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch" class="ext mdn" target="_blank">try</a>
+						blocks:
+					</p>
+
+<code class="block javascript">document.getElementById('foo')
+   .<b>load</b>("bar.html")
+   .<b>then</b>( … )
+   .<b>catch</b>( err => {
+      console.error(error);
+   })
+   .<b>finally</b>( () => {
+      console.info('done.');
+   })
+;</code>
+
+					<h3>See also:</h3>
+					<ul>
+						<li><a href="setHtml.html">.setHtml()</a></li>
+					</ul>
 
 					<h3>More information:</h3>
 					<ul>
 						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" class="ext mdn" target="_blank">fetch() global function</a>
+							on <abbr title="Mozilla Develper Network">MDN</abbr></li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" class="ext mdn" target="_blank">Promise</a>
 							on <abbr title="Mozilla Develper Network">MDN</abbr></li>
 					</ul>
 				</main>
