@@ -4,9 +4,18 @@
 /* returns: void */
 /* Support: DOM Level 1 (1998) */
 HTMLElement.prototype.load = async function(url, opt = undefined ) {
-	//console.group('HTMLElement.load("' + url + '")');
-	const rp = await fetch(url, opt);
-	const html = await rp.text();
-	this.innerHTML = html;
-	return this;
+	//console.info('HTMLElement.load("' + url + '")');
+
+	return fetch(url, opt)
+	.then( rp => {
+		if (!rp.ok) {
+			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+		};
+		
+		return rp.text()
+		.then( html => {
+			this.innerHTML = html;
+			return html;
+		})
+	});
 }
