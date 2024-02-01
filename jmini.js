@@ -68,103 +68,6 @@ HTMLElement.prototype.toggleClass = function(n) {
 HTMLElement.prototype.hasClass = function(n) {
 	return this.classList.contains(n);
 }
-/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
-/* parameter: (Number, optional) number of digits (default = 2) */
-/* parameter: (String, optional) the locale format to use (default = 'en') */
-/* parameter: (Object, optional) options for the International number format (default = null) */
-/* parameter: (Object, optional) overrides for specific values (default = undefined) */
-/* parent object: Number */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
-
-	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
-	var m = Math.floor(this);
-
-	/* check first if there is an override value */
-	if (o && o[m]) {
-		return o[m];
-		
-	} else {
-
-		var p = 0;
-		while (m > 980 && p < u.length) {
-			m = m/1024;
-			p += 1;
-		}
-		let f = new Intl.NumberFormat(l, {
-			maximumSignificantDigits: d
-		});
-
-		return f.format(m) + '\u202F' + u[p];
-	}
-}
-/* Attaches an event listener to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-HTMLElement.prototype.on = function(n, cb) {
-	this.addEventListener(n, cb);
-	return this;
-}
-/* Attaches an event listener that will only be called once to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-/* returns: nothing */
-HTMLElement.prototype.once = function(n, cb) {
-	this.addEventListener(n, cb, {once: true});
-	return this;
-}
-/* Attaches an event listener to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-/* returns: nothing */
-HTMLElement.prototype.off = function(n, cb) {
-	this.removeEventListener(n, cb);
-	return this;
-}
-/* Attaches a listener for the "blur" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onBlur = function(cb) {
-	this.addEventListener('blur', cb);
-	return this;
-}
-/* Attaches a listener for the "click" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onClick = function(cb) {
-	this.addEventListener('click', cb);
-	return this;
-}
-/* Attaches a listener for the "focus" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onFocus = function(cb) {
-	this.addEventListener('focus', cb);
-	return this;
-}
-/* Attaches a listener for the "focus" event to a <form> Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement (form only) */
-/* returns: HTMLElement (passes through the parent element) */
-HTMLFormElement.prototype.onSubmit = function(cb) {
-	this.addEventListener('submit', cb);
-	return this;
-}
-/* Attaches a listener for the "DOMContentLoaded" event to the document */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element ( */
-/* returns: HTMLDocument (passes through the parent element) */
-document.onReady = function(cb) {
-	document.addEventListener('DOMContentLoaded', cb);
-	return document;
-}
 /* creates a new Element */
 /* parent object: Element */
 /* parameter: name (String) the name of the element (required) */
@@ -304,24 +207,21 @@ HTMLElement.prototype.empty = function() {
 /* parent object: Element */
 /* returns: void */
 /* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.load = async function(url) {
-	console.log('HTMLElement.load(' + url + ')');
-	
-	fetch(url)
-	.then( (r) => {
-		return r.text();
-	})
-	.then((txt) => {
-		let doc = document.createDocumentFragment();
-		doc.innerHTML = txt;
-		console.log(doc);
-		
-		//this.innerHTML = txt;
-	})
-	.catch(e => {
-		console.error(e);
-	});
+HTMLElement.prototype.load = async function(url, opt = undefined ) {
+	//console.info('HTMLElement.load("' + url + '")');
 
+	return fetch(url, opt)
+	.then( rp => {
+		if (!rp.ok) {
+			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+		};
+		
+		return rp.text()
+		.then( html => {
+			this.innerHTML = html;
+			return html;
+		})
+	});
 }
 
 /* returns a list of ancestors of an element (optionally filtered by a callback function */
@@ -662,5 +562,102 @@ $p.url.fragment = {
 		$p.url.fragment._cbs.forEach( cb => {
 			cb(e);
 		});
+	}
+}
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+HTMLElement.prototype.on = function(n, cb) {
+	this.addEventListener(n, cb);
+	return this;
+}
+/* Attaches an event listener that will only be called once to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.once = function(n, cb) {
+	this.addEventListener(n, cb, {once: true});
+	return this;
+}
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.off = function(n, cb) {
+	this.removeEventListener(n, cb);
+	return this;
+}
+/* Attaches a listener for the "blur" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onBlur = function(cb) {
+	this.addEventListener('blur', cb);
+	return this;
+}
+/* Attaches a listener for the "click" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onClick = function(cb) {
+	this.addEventListener('click', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onFocus = function(cb) {
+	this.addEventListener('focus', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to a <form> Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement (form only) */
+/* returns: HTMLElement (passes through the parent element) */
+HTMLFormElement.prototype.onSubmit = function(cb) {
+	this.addEventListener('submit', cb);
+	return this;
+}
+/* Attaches a listener for the "DOMContentLoaded" event to the document */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element ( */
+/* returns: HTMLDocument (passes through the parent element) */
+document.onReady = function(cb) {
+	document.addEventListener('DOMContentLoaded', cb);
+	return document;
+}
+/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
+/* parameter: (Number, optional) number of digits (default = 2) */
+/* parameter: (String, optional) the locale format to use (default = 'en') */
+/* parameter: (Object, optional) options for the International number format (default = null) */
+/* parameter: (Object, optional) overrides for specific values (default = undefined) */
+/* parent object: Number */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+
+	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
+	var m = Math.floor(this);
+
+	/* check first if there is an override value */
+	if (o && o[m]) {
+		return o[m];
+		
+	} else {
+
+		var p = 0;
+		while (m > 980 && p < u.length) {
+			m = m/1024;
+			p += 1;
+		}
+		let f = new Intl.NumberFormat(l, {
+			maximumSignificantDigits: d
+		});
+
+		return f.format(m) + '\u202F' + u[p];
 	}
 }
