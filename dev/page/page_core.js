@@ -23,7 +23,7 @@ let $p = {
 		Object.keys(obj).forEach( (key,i) => {
 			let sub = obj[key];
 			if (typeof sub === 'object' && sub._init) {
-				sub._init();
+				sub._init.bind(sub)();
 			}
 		});
 

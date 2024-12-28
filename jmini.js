@@ -337,7 +337,7 @@ let $p = {
 	}
 }
 /* load when DOM is ready: */
-document.onReady($p._init);
+document.addEventListener('DOMContentLoaded', $p._init);
 /* Page GUI frameword core */
 /* Authors:
     - Sascha Leib <ad@hominem.info>

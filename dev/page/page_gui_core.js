@@ -10,10 +10,10 @@ $p.gui = {
 		console.info('$p.gui._init()');
 		
 		/* call sub-sections, as they were added: */
-		Object.keys($p.gui).forEach( (key) => {
+		Object.keys(this).forEach( (key) => {
 			let sub = $p.gui[key];
 			if (typeof sub === 'object' && sub._init) {
-				sub._init();
+				sub._init.bind(sub)();
 			}
 		});
 	}

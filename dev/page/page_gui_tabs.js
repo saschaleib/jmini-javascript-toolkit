@@ -11,7 +11,7 @@ $p.gui.tabs = {
 				
 		/* find and add all existing tabs */
 		document.querySelectorAll('*[role=tablist]')
-			.forEach($p.gui.tabs.add);
+			.forEach(this.add);
 	},
 	
 	/* add a new tab interface: */
