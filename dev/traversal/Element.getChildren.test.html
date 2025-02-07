@@ -38,12 +38,14 @@
 			console.group('Tests: <HTMLElement>.getChildren()');
 
 			/*  list all children */
+			console.log("List all children of the target <ul>:");
 			let trg = document.getElementById('target')
 			let children = trg.getChildren();
 			
 			console.log(children);
 			
 			/* another test which only looks for elements with data-age > 5 */
+			console.log("List only children that have a specific attribute value:");
 			let olderChildren = trg.getChildren( function(child) {
 				return ( Number(child.getAttr('data-age')) > 5 );
 			});

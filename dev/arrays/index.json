@@ -18,5 +18,15 @@
 		"requires": [],
 		"conflics": [],
 		"moreinfo": "arrays/last.html"
+	},
+	{	"id": "array_toHtml",
+		"name": ".toHtml",
+		"namehtml": "<code>Array.toHtml()</code>",
+		"type": "prototype",
+		"desc": "Returns the array content as HTML table",
+		"file": "Array.toHtml",
+		"requires": ["htmlelement_new","element_appendnew","element_settext"],
+		"conflics": [],
+		"moreinfo": "arrays/toHtml.html"
 	}
 ]

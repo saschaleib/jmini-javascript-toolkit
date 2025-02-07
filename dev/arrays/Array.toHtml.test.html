@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>&lt;Array&gt;.toHtml() — jMini Test</title>
+		<script src="../elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="../elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="../elements/Element.setText.js" type="text/javascript"></script>
+		<script src="./Array.toHtml.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: <i>&lt;Array&gt;</i>.toHtml()</h1>
+		<main>
+			<h2><span>Convert an array to an HTML table</span></h2>
+			<p>
+				Usage: <code><i>&lt;Array&gt;</i>.<b>toHtml</b>(<em>atlist</em> = undefined)</code>
+			</p>
+			
+			<div id="target"></div>
+			
+		</main>
+		<footer>
+			<ul>
+				<li><a href="http://jmini.kolmio.com/wiki/toolbox/arrays/last/index">Documentation</a>
+			</ul>
+		</footer>
+		<script type="text/javascript">
+		
+			console.group('Tests: <HTMLElement>.toHtml()');
+
+			let myArr = ["first", 2, 3.1, "fourth", "fifth", "sixt", [1,2,3,4,5,6, 7], "eigth", {"name": "nineth"}, "tenth"];
+
+			/*  insert the table to the page: */
+			let trg = document.getElementById('target')
+			let table = myArr.toHtml({
+				"border": 1
+			});
+			trg.appendChild(table);
+
+			/* done. */
+			console.groupEnd();
+
+		</script>
+	</body>
+</html>		

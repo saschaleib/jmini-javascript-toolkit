@@ -30,15 +30,18 @@
 		
 		<script type="text/javascript">
 		
-			console.group('Tests: <HTMLElement>.getSiblings()');
+			console.group('Tests: <HTMLElement>.getAncestors()');
 
 			/*  list all siblings */
+			console.log("List all ancestors of the third list item:");
+			
 			let trg = document.getElementById('target')
 			let list = trg.getAncestors();
 			
 			console.log(list);
 			
 			/* another test which only looks for <ul> elements */
+			console.log("List only <ul> ancestors of the third list item:");
 			let ulist = trg.getAncestors( function(it) {
 				return it.nodeName == 'UL';
 			});

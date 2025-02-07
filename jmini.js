@@ -314,7 +314,7 @@ let $p = {
 
 	/* shadow init function */
 	_init: function() {
-		//console.info('$p._init()');
+		console.info('$p._init()');
 		
 		/* call sub-sections, as they were added: */
 		$p._callPreInit($p);
@@ -324,7 +324,7 @@ let $p = {
 	}, 
 	
 	_callPreInit: function(obj) {
-		//console.info('$p._callPreInit()');
+		console.info('$p._callPreInit()');
 		
 		/* call _init on each sub-object: */
 		Object.keys(obj).forEach( (key,i) => {
@@ -337,7 +337,7 @@ let $p = {
 	}
 }
 /* load when DOM is ready: */
-document.onReady($p._init);
+$p._init();
 /* Page GUI frameword core */
 /* Authors:
     - Sascha Leib <ad@hominem.info>

@@ -51,6 +51,7 @@
 			console.group('Tests: <HTMLElement>.getChildren()');
 
 			/*  list all descendants */
+			console.log("Get all descendants of the target list element:");
 			let desc1 = document
 				.getElementById('target')
 					.getDescendants();
@@ -58,6 +59,7 @@
 			console.log(desc1);
 			
 			/* another test which only looks for elements with data-id >= 12 */
+			console.log("Get only descendants with a specific attribute value:");
 			let desc2 = document
 				.getElementById('target')
 					.getDescendants( function(child) {

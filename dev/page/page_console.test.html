@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>$p.console — jMini Test</title>
+		<script src="../events/Document.onReady.js" type="text/javascript"></script>
+		<script src="../elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="../elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="../elements/Element.setText.js" type="text/javascript"></script>
+		<script src="../arrays/Array.toHtml.js" type="text/javascript"></script>
+		<script src="./page_core.js" type="text/javascript"></script>
+		<script src="./page_console.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" media="all" href="./console.css">
+		<script type="text/javascript">
+			
+			$p.init = function(parent) {
+				//console.info('$p.init(parent=',parent,')');
+				//$p.console.log('this=',this);
+			}
+			
+			$p.console.init = function(parent) {
+				console.info('$p.console.init(parent=',parent,')');
+				//console.log('this=',this);
+				
+				this.setTarget(document.getElementById('console'));
+			}
+
+			$p.test = {
+				_init: function() {
+					$p.console.info('pre-inits are called before the module inits. Thus this will be redirected to the browser console:');
+					$p.console.info('$p.test._init()');
+				},
+				
+				init: function() {
+
+					const myArr = ["first", 2, 3.1, "fourth", "fifth", "s<i>x&t", [1,2,3,4,5,6, 7], "eigth", {"name": "nineth"}, "tenth"];
+
+					$p.console._log('log', "This is the on-page console log");
+					$p.console.info("Information item");
+					$p.console.log("A regular log item");
+					$p.console.warn("Warning message!");
+					$p.console.error("Error message!");
+					
+					$p.console.group('Test group');
+					$p.console.info('Only shown if group is open.');
+					
+					$p.console.group('Array (in sub-group)', false);
+					$p.console.log(myArr);
+					$p.console.groupEnd();
+					
+					$p.console.log("Nestled groups are also possible.");
+					$p.console.groupEnd();
+					
+					$p.console.log('After the group.');
+					$p.console.info("End of console log.");
+
+					/* done. */
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>Tests: $p.console</h1>
+		<main>
+			<p>Logging some tests to the in-page console:</p>
+			<div id="console"></div>
+		</main>
+		<footer>
+		</footer>
+	</body>
+</html>

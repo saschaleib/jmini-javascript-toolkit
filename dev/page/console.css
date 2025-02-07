@@ -1,0 +1,88 @@
+/* console.css
+
+	Sample CSS file for the $p.console output
+
+	Note: this assumes that the console element has the ID 'console'. Please adapt to your setup!
+*/
+
+#console {
+	display: block;
+	width: 100%;
+	max-width: 800px;
+	margin: .25em auto;
+	padding: .25em .25em 0 .25em;
+	border: #666 solid 1px;
+	box-shadow: inset .125em .125em .125em #999;
+	font-family: Consolas, Courier, monospace;
+}
+#console ul {
+	list-style: none;
+	margin: 0; padding: 0;
+	overflow: auto;
+}
+#console details {
+	
+}
+#console details > summary {
+padding: .3em;
+	border-bottom: #666 solid 1px;
+	cursor: pointer;
+}
+#console details[open] {
+	border-bottom: none 0;
+}
+#console details[open] > ul {
+	margin-left: .9em;
+}
+#console li {
+	color: #333;
+	width: calc(100% - .47em);
+	min-width: fit-content;
+	padding: .25em;
+	border-bottom: #999 solid 1px;
+}
+#console li.info {
+	color: #5C5C5F;
+}
+#console li.info::before {
+	content: '\1F6C8 ';
+	color: #3D3D3D;
+}
+#console li.warn {
+	background-color: #FFFBD6;
+	color: #715100;
+}
+#console li.warn::before {
+	content: '\26A0 ';
+	color: #BE9B00;
+}
+#console li.error {
+	background-color: #FDF2F5;
+	color: #A4000F;
+}
+#console li.error::before {
+	content: '\2B23 ';
+	color: #D70022;
+}
+
+#console table {
+	border: #666 solid 1px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+#console table thead {
+	border-bottom: #666 solid 2px;
+}
+#console table th, #console table td {
+	padding: .25em;
+	border: #666 solid 1px;
+}
+#console table td[class]::before {
+	content: attr(class);
+	display: inline-block;
+	background-color: #999;
+	color: #FFF;
+	padding: 0 2pt;
+	border-radius: 2pt;
+	margin-right: .25em;
+}

@@ -58,5 +58,15 @@
 		"requires": ["page_url_core"],
 		"conflics": [],
 		"moreinfo": "page/url_fragment.html"
+	},
+	{	"id": "page_console",
+		"name": "$p.console",
+		"namehtml": "<code>$p.console</code>",
+		"type": "framework",
+		"desc": "Enables console logging into an in-page element",
+		"file": "page_console",
+		"requires": ["page_core"],
+		"conflics": [],
+		"moreinfo": "page/page_core.html"
 	}
 ]

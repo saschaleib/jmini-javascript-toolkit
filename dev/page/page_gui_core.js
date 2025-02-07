@@ -6,15 +6,15 @@
 $p.gui = {
 
 	/* shadow init function */
-	_init: function() {
+	_init: function(p) {
 		console.info('$p.gui._init()');
+		//console.log('parent=',p);
 		
-		/* call sub-sections, as they were added: */
-		Object.keys($p.gui).forEach( (key) => {
-			let sub = $p.gui[key];
-			if (typeof sub === 'object' && sub._init) {
-				sub._init();
-			}
-		});
+		/* call sub-sections' pre-inits: */
+		$p._callInit(this, true);
+		
+		/* Now call the actual init: */
+		p._callInit(this);
+		if (this.init) this.init(this);
 	}
 }

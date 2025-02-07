@@ -6,10 +6,15 @@
 $p.url = {
 
 	/* shadow init function */
-	_init: function() {
+	_init: function(p) {
 		console.info('$p.url._init()');
+		//console.log('parent=',p);
 		
-		/* call sub-sections, as they were added: */
-		$p._callPreInit($p.url);
+		/* call sub-sections' pre-inits: */
+		$p._callInit(this, true);
+		
+		/* Now call the actual init: */
+		p._callInit(this);
+		if (this.init) this.init(this);
 	}
 }
