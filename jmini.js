@@ -68,67 +68,23 @@ Array.prototype.toHtml = function(atlist = undefined) {
 	
 	return table;
 }
-/* Adds a class to the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.addClass = function(n) {
-	this.classList.add(n);
-	return this;
-}
-/* Removes a class from the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.removeClass = function(n) {
-	this.classList.remove(n);
-	return this;
-}
-/* Toggles a class on the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.toggleClass = function(n) {
-	this.classList.toggle(n);
-	return this;
-}
-/* Returns true, if the parent HTMLElement has a class of the specified name */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: Boolean */
-HTMLElement.prototype.hasClass = function(n) {
-	return this.classList.contains(n);
-}
-/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
-/* parameter: (Number, optional) number of digits (default = 2) */
-/* parameter: (String, optional) the locale format to use (default = 'en') */
-/* parameter: (Object, optional) options for the International number format (default = null) */
-/* parameter: (Object, optional) overrides for specific values (default = undefined) */
-/* parent object: Number */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+/* Loads a JSON file over the network */
+/* parent object: JSON */
+/* parameter: url (String) the address where to load the file from (required) */
+/* parameter: opt (Object) fetch parameters */
+/* returns: Promise */
+/* Support: Widely supported since ca. 2014 */
+JSON.load = async function(url, opt) {
+	console.info('JSON.load("'+url+'",',opt,')');
+	
+	return fetch(url, opt)
+	.then( rp => {
+		if (!rp.ok) {
+			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+		};
 
-	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
-	var m = Math.floor(this);
-
-	/* check first if there is an override value */
-	if (o && o[m]) {
-		return o[m];
-		
-	} else {
-
-		var p = 0;
-		while (m > 980 && p < u.length) {
-			m = m/1024;
-			p += 1;
-		}
-		let f = new Intl.NumberFormat(l, {
-			maximumSignificantDigits: d
-		});
-
-		return f.format(m) + '\u202F' + u[p];
-	}
+		return rp.json()
+	});
 }
 /* Attaches an event listener to an HTMLElement */
 /* parameter: (String, required) name of the event to listen to */
@@ -196,6 +152,305 @@ document.onReady = function(cb) {
 	document.addEventListener('DOMContentLoaded', cb);
 	return document;
 }
+/* Adds a class to the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.addClass = function(n) {
+	this.classList.add(n);
+	return this;
+}
+/* Removes a class from the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.removeClass = function(n) {
+	this.classList.remove(n);
+	return this;
+}
+/* Toggles a class on the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.toggleClass = function(n) {
+	this.classList.toggle(n);
+	return this;
+}
+/* Returns true, if the parent HTMLElement has a class of the specified name */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: Boolean */
+HTMLElement.prototype.hasClass = function(n) {
+	return this.classList.contains(n);
+}
+/* returns a list of ancestors of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getAncestors = function(cb = undefined) {
+	let r = [];
+	
+	var p = this.parentNode;
+	while (p) {
+		if ( p.nodeType === Node.ELEMENT_NODE && ( !cb || cb(p) ) ) {
+			r.push(p);
+		}
+		p = p.parentNode;
+	}
+
+	return r;
+}
+/* returns a list of siblings of an element (omitting the element itself) */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getSiblings = function(cb = undefined) {
+	let r = [];
+	if(this.parentNode) {
+		var s = this.parentNode.firstChild;
+		while (s) {
+			if (s !== this && s.nodeType === Node.ELEMENT_NODE ) {
+				if ( !cb || cb(s) ) {
+					r.push(s);
+				}
+			}
+			s = s.nextSibling;
+		}
+	}
+	return r;
+}
+/* returns a list of direct (!) children of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+
+HTMLElement.prototype.getChildren = function(cb = undefined) {
+
+       let r = [];
+
+       if (this.hasChildNodes()) {
+
+             let children = this.childNodes;
+             for (const n of children) {
+                    if ( n.nodeType === Node.ELEMENT_NODE && ( !cb || cb(n) ) ) {
+                          r.push(n);
+                    }
+             }
+       }
+
+       return r;
+}
+/* returns a list of descendants of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+
+HTMLElement.prototype.getDescendants = function(cb = undefined) {
+
+		let r = [];
+
+		if (this.hasChildNodes()) {
+
+			let children = this.childNodes;
+			for (const n of children) {
+				if ( n.nodeType === Node.ELEMENT_NODE ) {
+					r = r.concat(n.getDescendants(cb));
+					if ( !cb || cb(n) ) {
+						r.push(n);
+					}
+				}
+			}
+		}
+
+       return r;
+}
+/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
+/* parameter: (Number, optional) number of digits (default = 2) */
+/* parameter: (String, optional) the locale format to use (default = 'en') */
+/* parameter: (Object, optional) options for the International number format (default = null) */
+/* parameter: (Object, optional) overrides for specific values (default = undefined) */
+/* parent object: Number */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+
+	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
+	var m = Math.floor(this);
+
+	/* check first if there is an override value */
+	if (o && o[m]) {
+		return o[m];
+		
+	} else {
+
+		var p = 0;
+		while (m > 980 && p < u.length) {
+			m = m/1024;
+			p += 1;
+		}
+		let f = new Intl.NumberFormat(l, {
+			maximumSignificantDigits: d
+		});
+
+		return f.format(m) + '\u202F' + u[p];
+	}
+}
+/* creates a new Element */
+/* parent object: Element */
+/* parameter: name (String) the name of the element (required) */
+/* parameter: attr (Object) a list of attributes to be added, */
+/* returns: the newly created HTMLElement */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.new = function(name, atlist = undefined) {
+	var r = null;
+	try {
+		r = document.createElement(name);
+		if (atlist) {
+			for (let attr in atlist) {
+				r.setAttribute(attr, atlist[attr]);
+			}
+		}
+	} catch(e) {
+		console.error(e);
+	}
+	return r;
+}
+
+/* Gets attribute value from an element */
+/* parameter: name (String) the name of the attribute, */
+/* parent object: Element */
+/* returns: the value of the attribute (String) */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.getAttr = function(n) {
+	let a = this.getAttribute(n);
+	return ( a ? a : '');
+}
+
+/* Sets an attribute value for an element */
+/* parameter: name (String) the name of the attribute, */
+/* parameter: value (String) the value for the attribute */
+/* parent object: Element */
+/* returns: the parent element (Object) */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.setAttr = function(n, v) {
+	this.setAttribute(n, v);
+	return this;
+}
+
+/* Appends a new text node to the end of the child nodes list of an element */
+/* parameter: (required) text to add */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.appendText = function(txt) {
+	let t = document.createTextNode(txt);
+	this.append(t);
+	return this;
+}
+/* Prepends a new text node to the beginning of the child nodes list of an element */
+/* parameter: (required) text to add */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.prependText = function(txt) {
+	this.prepend(document.createTextNode(txt));
+	return this;
+}
+/* Sets or gets the text content of an element */
+/* parent object: Element */
+/* returns: the text content as String */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.getText = function() {
+	return this.textContent;
+}
+/* Sets the text content of an element */
+/* parameter: (required) text to set */
+/* parent object: HTMLElement */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.setText = function(txt) {
+	this.textContent = txt.toString();
+	return this;
+}
+/* appends a new child HTMLElement to the parent. */
+/* parent object: HTMLElement */
+/* parameter: name (String, required) name of the new child element */
+/* parameter: att (Object, optional) name of the new child element */
+/* returns: the (modified) parent object */
+/* Requires: HTMLElement.new (static) */
+HTMLElement.prototype.appendNew = function(n, att = undefined) {
+	var e = null;
+	try {
+		e = HTMLElement.new(n, att);
+		this.appendChild(e);
+	} catch(e) {
+		console.error(e);
+	}
+	return e;
+}
+/* prepends a new child HTMLElement to the parent. */
+/* parent object: HTMLElement */
+/* parameter: name (String, required) name of the new child element */
+/* parameter: att (Object, optional) name of the new child element */
+/* returns: the (modified) parent object */
+/* Requires: HTMLElement.new (static) */
+HTMLElement.prototype.prependNew = function(n, att = undefined) {
+	var e = null;
+	try {
+		e = HTMLElement.new(n, att);
+		this.prepend(e);
+	} catch(e) {
+		console.error(e);
+	}
+	return e;
+}
+/* Sets the html content of an element */
+/* parameter: xhtml (String) to parse and set */
+/* parent object: Element */
+/* returns: the (modified) parent object */
+HTMLElement.prototype.setHtml = function(xhtml) {
+	let parser = new DOMParser();
+	let doc = parser.parseFromString('<div>' + xhtml + '</div>', 'application/xml');
+	this.innerHTML = doc.documentElement.innerHTML;
+	return this;
+}
+/* Gets the html content of an element */
+/* parameter: (optional) html to set */
+/* parent object: Element */
+/* returns: the inner HTML as String */
+HTMLElement.prototype.getHtml = function(xhtml = null) {
+	return this.innerHTML;
+}
+/* removes all child nodes of the element */
+/* parent object: HTMLElement */
+HTMLElement.prototype.empty = function() {
+	while (this.firstChild) {
+		this.removeChild(this.lastChild);
+	}
+	return this;
+}
+/* Loads an HTML document into an existing element */
+/* parameter: url (String) the address of the document to load */
+/* parent object: Element */
+/* returns: void */
+/* Support: DOM Level 1 (1998) */
+HTMLElement.prototype.load = async function(url, opt = undefined ) {
+	//console.info('HTMLElement.load("' + url + '")');
+
+	return fetch(url, opt)
+	.then( rp => {
+		if (!rp.ok) {
+			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+		};
+		
+		return rp.text()
+		.then( html => {
+			this.innerHTML = html;
+			return html;
+		})
+	});
+}
+
 /* Page frameword core */
 /* Authors:
     - Sascha Leib <ad@hominem.info>
@@ -600,243 +855,4 @@ $p.console = {
 		}
 
 	}
-
-
-}
-/* creates a new Element */
-/* parent object: Element */
-/* parameter: name (String) the name of the element (required) */
-/* parameter: attr (Object) a list of attributes to be added, */
-/* returns: the newly created HTMLElement */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.new = function(name, atlist = undefined) {
-	var r = null;
-	try {
-		r = document.createElement(name);
-		if (atlist) {
-			for (let attr in atlist) {
-				r.setAttribute(attr, atlist[attr]);
-			}
-		}
-	} catch(e) {
-		console.error(e);
-	}
-	return r;
-}
-
-/* Gets attribute value from an element */
-/* parameter: name (String) the name of the attribute, */
-/* parent object: Element */
-/* returns: the value of the attribute (String) */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.getAttr = function(n) {
-	let a = this.getAttribute(n);
-	return ( a ? a : '');
-}
-
-/* Sets an attribute value for an element */
-/* parameter: name (String) the name of the attribute, */
-/* parameter: value (String) the value for the attribute */
-/* parent object: Element */
-/* returns: the parent element (Object) */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.setAttr = function(n, v) {
-	this.setAttribute(n, v);
-	return this;
-}
-
-/* Appends a new text node to the end of the child nodes list of an element */
-/* parameter: (required) text to add */
-/* parent object: HTMLElement */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.appendText = function(txt) {
-	let t = document.createTextNode(txt);
-	this.append(t);
-	return this;
-}
-/* Prepends a new text node to the beginning of the child nodes list of an element */
-/* parameter: (required) text to add */
-/* parent object: HTMLElement */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.prependText = function(txt) {
-	this.prepend(document.createTextNode(txt));
-	return this;
-}
-/* Sets or gets the text content of an element */
-/* parent object: Element */
-/* returns: the text content as String */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.getText = function() {
-	return this.textContent;
-}
-/* Sets the text content of an element */
-/* parameter: (required) text to set */
-/* parent object: HTMLElement */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.setText = function(txt) {
-	this.textContent = txt.toString();
-	return this;
-}
-/* appends a new child HTMLElement to the parent. */
-/* parent object: HTMLElement */
-/* parameter: name (String, required) name of the new child element */
-/* parameter: att (Object, optional) name of the new child element */
-/* returns: the (modified) parent object */
-/* Requires: HTMLElement.new (static) */
-HTMLElement.prototype.appendNew = function(n, att = undefined) {
-	var e = null;
-	try {
-		e = HTMLElement.new(n, att);
-		this.appendChild(e);
-	} catch(e) {
-		console.error(e);
-	}
-	return e;
-}
-/* prepends a new child HTMLElement to the parent. */
-/* parent object: HTMLElement */
-/* parameter: name (String, required) name of the new child element */
-/* parameter: att (Object, optional) name of the new child element */
-/* returns: the (modified) parent object */
-/* Requires: HTMLElement.new (static) */
-HTMLElement.prototype.prependNew = function(n, att = undefined) {
-	var e = null;
-	try {
-		e = HTMLElement.new(n, att);
-		this.prepend(e);
-	} catch(e) {
-		console.error(e);
-	}
-	return e;
-}
-/* Sets the html content of an element */
-/* parameter: xhtml (String) to parse and set */
-/* parent object: Element */
-/* returns: the (modified) parent object */
-HTMLElement.prototype.setHtml = function(xhtml) {
-	let parser = new DOMParser();
-	let doc = parser.parseFromString('<div>' + xhtml + '</div>', 'application/xml');
-	this.innerHTML = doc.documentElement.innerHTML;
-	return this;
-}
-/* Gets the html content of an element */
-/* parameter: (optional) html to set */
-/* parent object: Element */
-/* returns: the inner HTML as String */
-HTMLElement.prototype.getHtml = function(xhtml = null) {
-	return this.innerHTML;
-}
-/* removes all child nodes of the element */
-/* parent object: HTMLElement */
-HTMLElement.prototype.empty = function() {
-	while (this.firstChild) {
-		this.removeChild(this.lastChild);
-	}
-	return this;
-}
-/* Loads an HTML document into an existing element */
-/* parameter: url (String) the address of the document to load */
-/* parent object: Element */
-/* returns: void */
-/* Support: DOM Level 1 (1998) */
-HTMLElement.prototype.load = async function(url, opt = undefined ) {
-	//console.info('HTMLElement.load("' + url + '")');
-
-	return fetch(url, opt)
-	.then( rp => {
-		if (!rp.ok) {
-			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
-		};
-		
-		return rp.text()
-		.then( html => {
-			this.innerHTML = html;
-			return html;
-		})
-	});
-}
-
-/* returns a list of ancestors of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-HTMLElement.prototype.getAncestors = function(cb = undefined) {
-	let r = [];
-	
-	var p = this.parentNode;
-	while (p) {
-		if ( p.nodeType === Node.ELEMENT_NODE && ( !cb || cb(p) ) ) {
-			r.push(p);
-		}
-		p = p.parentNode;
-	}
-
-	return r;
-}
-/* returns a list of siblings of an element (omitting the element itself) */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-HTMLElement.prototype.getSiblings = function(cb = undefined) {
-	let r = [];
-	if(this.parentNode) {
-		var s = this.parentNode.firstChild;
-		while (s) {
-			if (s !== this && s.nodeType === Node.ELEMENT_NODE ) {
-				if ( !cb || cb(s) ) {
-					r.push(s);
-				}
-			}
-			s = s.nextSibling;
-		}
-	}
-	return r;
-}
-/* returns a list of direct (!) children of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-
-HTMLElement.prototype.getChildren = function(cb = undefined) {
-
-       let r = [];
-
-       if (this.hasChildNodes()) {
-
-             let children = this.childNodes;
-             for (const n of children) {
-                    if ( n.nodeType === Node.ELEMENT_NODE && ( !cb || cb(n) ) ) {
-                          r.push(n);
-                    }
-             }
-       }
-
-       return r;
-}
-/* returns a list of descendants of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-
-HTMLElement.prototype.getDescendants = function(cb = undefined) {
-
-		let r = [];
-
-		if (this.hasChildNodes()) {
-
-			let children = this.childNodes;
-			for (const n of children) {
-				if ( n.nodeType === Node.ELEMENT_NODE ) {
-					r = r.concat(n.getDescendants(cb));
-					if ( !cb || cb(n) ) {
-						r.push(n);
-					}
-				}
-			}
-		}
-
-       return r;
 }

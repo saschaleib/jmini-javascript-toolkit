@@ -4,24 +4,94 @@
 		<meta charset="utf-8" />
 		<title>JSON.load() — jMini Test</title>
 		<script src="JSON.load.js" type="text/javascript"></script>
+		<script src="../events/Document.onReady.js" type="text/javascript"></script>
+		<script src="../elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="../elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="../elements/Element.setText.js" type="text/javascript"></script>
+		<script src="../page/page_core.js" type="text/javascript"></script>
+		<script src="../page/page_console.min.js" type="text/javascript"></script>
+		<link href="../page/console.css" rel="stylesheet" type="text/css" media="all">
+		<script type="text/javascript">
+
+			$p.console.init = function(parent) {
+				// prepare the console:
+				this.setTarget(document.getElementById('console'));
+			}
+
+			$p.test = {
+				init: function() {
+					$p.console.info('Note that because requests are asynchronous, the order of results it not predicatble:');
+					
+					/* 1. Simple test */
+					JSON.load('../index.json')
+					.then( json => {
+						$p.console.group("TEST 1: Simple fetch:", false);
+						$p.console.info("Successfully loaded JSON file:");
+						$p.console.log(json);
+						console.log(json);
+						$p.console.info("See also browser console for an object dump of the JSON.");
+						$p.console.groupEnd();
+					});
+
+					/* 2. Error test */
+					JSON.load('this-file-does-not-exist.json')
+					.then( result => {
+						$p.console.group("TEST 2: Error test (this message will never be shown).", false);
+						$p.console.log(result);
+					})
+					.catch( error => {
+						$p.console.group("TEST 2: Error test (loading non-existing file will throw an error):", false);
+						$p.console.error(error.toString());
+					})
+					.finally( () => {
+						$p.console.info('A .finally() block will always be called!');
+						$p.console.groupEnd();
+					});
+
+					/* 3. Error test 2 */
+					JSON.load('../page/console.css')
+					.then( result => {
+						$p.console.group("TEST 3: Error test 2 (this message will never be shown).", false);
+						$p.console.log(result);
+					})
+					.catch( error => {
+						$p.console.group('TEST 3: Error test 2 (loading an invalid file):', false);
+						$p.console.error(error.toString());
+					})
+					.finally( () => {
+						$p.console.info('End of error test 2.');
+						$p.console.groupEnd();
+					});
+
+					/* 4. CORS test */
+					JSON.load('https://fallacies.online/wiki/lib/tpl/ad-hominem/rest/pageinfo.php?id=glossary%3Aindex&v=preview')
+					.then( result => {
+						$p.console.group("TEST 4: Loading from a different domain. If this works, CORS is not active.", false);
+						$p.console.log(result);
+					})
+					.catch( error => {
+						$p.console.group("TEST 4: Loading from a different domain. CORS has blocked this access.", false);
+						$p.console.error(error.toString());
+					})
+					.finally( () => {
+						$p.console.info('End of CORS test.');
+						$p.console.groupEnd();
+					});
+
+					/* done. */
+				}
+			}
+			
+		</script>
 	</head>
 	<body>
 		<h1>Tests: JSON.load()</h1>
-		<main data-itemid="main-item">
-
+		<main>
+			<p>Logging some tests to the in-page console:</p>
+			<div id="console"></div>
 		</main>
 		<footer>
-			<p><mark>See console for any errors.</mark></p>
+			<p>See page source for the test code and the browser console for additional info.</p>
 		</footer>
-		<script type="text/javascript">
-
-			JSON.load('../index.json', (data) => {
-				console.log(data);
-			}, (status, message, url) => {
-				console.error(status, message, url);
-			});
-
-		</script>
-
 	</body>
 </html>
