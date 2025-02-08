@@ -1,0 +1,12 @@
+[
+	{	"id": "json_load",
+		"name": "JSON.load",
+		"namehtml": "<b>JSON.load</b>",
+		"type": "static",
+		"desc": "Loads a JSON file and returns it as data structure.",
+		"file": "JSON.load",
+		"requires": [],
+		"conflics": [],
+		"moreinfo": "toolbox/data/json-load/index"
+	}
+]

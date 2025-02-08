@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>JSON.load() — jMini Test</title>
+		<script src="JSON.load.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Tests: JSON.load()</h1>
+		<main data-itemid="main-item">
+
+		</main>
+		<footer>
+			<p><mark>See console for any errors.</mark></p>
+		</footer>
+		<script type="text/javascript">
+
+			JSON.load('../index.json', (data) => {
+				console.log(data);
+			}, (status, message, url) => {
+				console.error(status, message, url);
+			});
+
+		</script>
+
+	</body>
+</html>

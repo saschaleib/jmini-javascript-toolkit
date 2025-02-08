@@ -45,7 +45,7 @@ padding: .3em;
 	color: #5C5C5F;
 }
 #console li.info::before {
-	content: '\1F6C8 ';
+	content: '\24d8 ';
 	color: #3D3D3D;
 }
 #console li.warn {

@@ -16,6 +16,13 @@
 			"size": 320
 		},
 		{
+			"id": "data",
+			"title": "Data",
+			"desc": "Functions for loading and managing data.",
+			"path": "data/",
+			"size": 264
+		},
+		{
 			"id": "elements",
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
