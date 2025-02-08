@@ -8,10 +8,8 @@
 #console {
 	display: block;
 	width: 100%;
-	max-width: 800px;
-	margin: .25em auto;
+	margin: .25em 0;
 	padding: .25em .25em 0 .25em;
-	border: #666 solid 1px;
 	box-shadow: inset .125em .125em .125em #999;
 	font-family: Consolas, Courier, monospace;
 }

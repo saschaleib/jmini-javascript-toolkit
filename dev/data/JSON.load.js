@@ -10,7 +10,7 @@ JSON.load = async function(url, opt) {
 	return fetch(url, opt)
 	.then( rp => {
 		if (!rp.ok) {
-			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+			throw new Error(`HTTP ${rp.status}: ${rp.statusText} – “${url}”.`);
 		};
 
 		return rp.json()
