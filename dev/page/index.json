@@ -7,7 +7,7 @@
 		"file": "page_core",
 		"requires": ["document_onready"],
 		"conflics": [],
-		"moreinfo": "page/core.html"
+		"moreinfo": "framework/page/p-core/index"
 	},
 	{	"id": "page_gui_core",
 		"name": "$p.gui (GUI)",
@@ -17,7 +17,7 @@
 		"file": "page_gui_core",
 		"requires": ["page_core"],
 		"conflics": [],
-		"moreinfo": "page/gui_core.html"
+		"moreinfo": "framework/page/p-gui/index"
 	},
 	{	"id": "page_gui_tabs",
 		"name": "$p.gui.tabs",
@@ -27,7 +27,7 @@
 		"file": "page_gui_tabs",
 		"requires": ["page_gui_core","element_onclick","element_getancestors","array_first"],
 		"conflics": [],
-		"moreinfo": "page/gui_tabs.html"
+		"moreinfo": "framework/page/p-gui/tabs/index"
 	},
 	{	"id": "page_gui_overlay",
 		"name": "$p.gui.overlay",
@@ -37,7 +37,7 @@
 		"file": "page_gui_overlay",
 		"requires": ["page_gui_core","element_onclick","htmlelement_new"],
 		"conflics": [],
-		"moreinfo": "page/gui_overlay.html"
+		"moreinfo": "framework/page/p-gui/overlay/index"
 	},
 	{	"id": "page_url_core",
 		"name": "$p.url (URL)",
@@ -47,7 +47,7 @@
 		"file": "page_url_core",
 		"requires": ["page_core"],
 		"conflics": [],
-		"moreinfo": "page/url_core.html"
+		"moreinfo": "framework/page/p-url/index"
 	},
 	{	"id": "page_url_fragment",
 		"name": "$p.url.fragment",
@@ -57,7 +57,7 @@
 		"file": "page_url_fragment",
 		"requires": ["page_url_core"],
 		"conflics": [],
-		"moreinfo": "page/url_fragment.html"
+		"moreinfo": "framework/page/p-url/fragment/index"
 	},
 	{	"id": "page_console",
 		"name": "$p.console",
@@ -67,6 +67,6 @@
 		"file": "page_console",
 		"requires": ["page_core"],
 		"conflics": [],
-		"moreinfo": "page/page_core.html"
+		"moreinfo": "framework/page/p-console/index"
 	}
 ]

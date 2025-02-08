@@ -1,40 +1,40 @@
 {
-	"version": "2023-10-24",
+	"version": "2025-02-07",
 	"topics": [
 		{
 			"id": "array",
 			"title": "Array",
 			"desc": "Functions for Arrays",
 			"path": "arrays/",
-			"size": 324
+			"size": 570
 		},
 		{
 			"id": "classes",
 			"title": "Classes",
 			"desc": "Everything related to classes.",
 			"path": "classes/",
-			"size": 324
+			"size": 320
 		},
 		{
 			"id": "elements",
 			"title": "Elements",
 			"desc": "Functions related to DOM Elements.",
 			"path": "elements/",
-			"size": 1208
+			"size": 1478
 		},
 		{
 			"id": "events",
 			"title": "Events",
 			"desc": "Everything related to event handling.",
 			"path": "events/",
-			"size": 713
+			"size": 700
 		},
 		{
 			"id": "numbers",
 			"title": "Numbers",
 			"desc": "Everything related to numbers.",
 			"path": "number/",
-			"size": 277
+			"size": 310
 		},
 		{
 			"id": "traversal",
@@ -48,7 +48,7 @@
 			"title": "$p (page)",
 			"desc": "A simple JS framework for web page functionality",
 			"path": "page/",
-			"size": 1442
+			"size": 3380
 		}
 	]
 }

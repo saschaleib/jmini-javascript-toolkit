@@ -7,7 +7,7 @@
 		"file": "Element.on",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/on.html"
+		"moreinfo": "toolbox/event/on/index"
 	},
 	{	"id": "element_once",
 		"name": ".once",
@@ -17,7 +17,7 @@
 		"file": "Element.once",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/once.html"
+		"moreinfo": "toolbox/event/once/index"
 	},
 	{	"id": "element_off",
 		"name": ".off",
@@ -27,7 +27,7 @@
 		"file": "Element.off",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/on.html"
+		"moreinfo": "toolbox/event/off/index"
 	},
 	{	"id": "element_onblur",
 		"name": ".onBlur",
@@ -37,7 +37,7 @@
 		"file": "Element.onBlur",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/onBlur.html"
+		"moreinfo": "toolbox/event/onblur/index"
 	},
 	{	"id": "element_onclick",
 		"name": ".onClick",
@@ -47,7 +47,7 @@
 		"file": "Element.onClick",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/onClick.html"
+		"moreinfo": "toolbox/event/onclick/index"
 	},
 	{	"id": "element_onfocus",
 		"name": ".onFocus",
@@ -57,7 +57,7 @@
 		"file": "Element.onFocus",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/onFocus.html"
+		"moreinfo": "toolbox/event/onfocus/index"
 	},
 	{	"id": "formelement_onsubmit",
 		"name": ".onSubmit",
@@ -67,7 +67,7 @@
 		"file": "Form.onSubmit",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/onSubmit.html"
+		"moreinfo": "toolbox/event/onsubmit/index"
 	},
 	{	"id": "document_onready",
 		"name": ".onReady",
@@ -77,6 +77,6 @@
 		"file": "Document.onReady",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "events/onReady.html"
+		"moreinfo": "toolbox/event/onready/index"
 	}
 ]

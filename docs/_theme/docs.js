@@ -13,8 +13,8 @@
 $p.nav = {
 	
 	_settings: {
-		devPath:  '/jmini/dev/',
-		docsPath: '/jmini/docs/'
+		devPath:  '/dev/',
+		docsPath: '/wiki/'
 	},
 
 	_pageId: '',

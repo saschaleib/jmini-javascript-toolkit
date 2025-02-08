@@ -37,6 +37,37 @@ Array.prototype.last = function() {
 		return null;
 	}
 }
+/* Converts an array into a Html structure */
+/* parent object: Array */
+/* parameters: */
+/*  - atlist: Attributes list (object), optional
+/* returns: HtmlElement (including sub-elements) */
+Array.prototype.toHtml = function(atlist = undefined) {
+	
+	/* create the table header: */
+	const thead = HTMLElement.new('thead');
+	const thr = thead.appendNew('tr');
+	thr.appendNew('th').setText('#');
+	thr.appendNew('th').setText('Value');
+	
+	/* create the body: */
+	const tbody = HTMLElement.new('tbody');
+
+	this.forEach(function (rval, i) {
+		let tr = tbody.appendNew('tr');
+		tr.appendNew('th').setText(i);
+		tr.appendNew('td', {
+			"class": (typeof rval)
+		}).setText(JSON.stringify(rval));
+	});
+	
+	/* combine header and body to table: */
+	const table = HTMLElement.new('table', atlist);
+	table.appendChild(thead);
+	table.appendChild(tbody);
+	
+	return table;
+}
 /* Adds a class to the parent HTMLElement */
 /* parameter: (String, required) name of the class */
 /* parent object: HTMLElement */
@@ -67,6 +98,510 @@ HTMLElement.prototype.toggleClass = function(n) {
 /* returns: Boolean */
 HTMLElement.prototype.hasClass = function(n) {
 	return this.classList.contains(n);
+}
+/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
+/* parameter: (Number, optional) number of digits (default = 2) */
+/* parameter: (String, optional) the locale format to use (default = 'en') */
+/* parameter: (Object, optional) options for the International number format (default = null) */
+/* parameter: (Object, optional) overrides for specific values (default = undefined) */
+/* parent object: Number */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+
+	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
+	var m = Math.floor(this);
+
+	/* check first if there is an override value */
+	if (o && o[m]) {
+		return o[m];
+		
+	} else {
+
+		var p = 0;
+		while (m > 980 && p < u.length) {
+			m = m/1024;
+			p += 1;
+		}
+		let f = new Intl.NumberFormat(l, {
+			maximumSignificantDigits: d
+		});
+
+		return f.format(m) + '\u202F' + u[p];
+	}
+}
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+HTMLElement.prototype.on = function(n, cb) {
+	this.addEventListener(n, cb);
+	return this;
+}
+/* Attaches an event listener that will only be called once to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.once = function(n, cb) {
+	this.addEventListener(n, cb, {once: true});
+	return this;
+}
+/* Attaches an event listener to an HTMLElement */
+/* parameter: (String, required) name of the event to listen to */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement */
+/* returns: nothing */
+HTMLElement.prototype.off = function(n, cb) {
+	this.removeEventListener(n, cb);
+	return this;
+}
+/* Attaches a listener for the "blur" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onBlur = function(cb) {
+	this.addEventListener('blur', cb);
+	return this;
+}
+/* Attaches a listener for the "click" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onClick = function(cb) {
+	this.addEventListener('click', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to an Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element */
+/* returns: Element (passes through the parent element) */
+HTMLElement.prototype.onFocus = function(cb) {
+	this.addEventListener('focus', cb);
+	return this;
+}
+/* Attaches a listener for the "focus" event to a <form> Element */
+/* parameter: (Function, required) the callback function */
+/* parent object: HTMLElement (form only) */
+/* returns: HTMLElement (passes through the parent element) */
+HTMLFormElement.prototype.onSubmit = function(cb) {
+	this.addEventListener('submit', cb);
+	return this;
+}
+/* Attaches a listener for the "DOMContentLoaded" event to the document */
+/* parameter: (Function, required) the callback function */
+/* parent object: Element ( */
+/* returns: HTMLDocument (passes through the parent element) */
+document.onReady = function(cb) {
+	document.addEventListener('DOMContentLoaded', cb);
+	return document;
+}
+/* Page frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+let $p = {
+
+	/* shadow init function */
+	_init: function() {
+		console.info('$p._init()');
+		
+		/* call sub-sections' pre-inits: */
+		$p._callInit($p, true);
+		
+		/* Now call the actual inits: */
+		$p._callInit($p);
+		if ($p.init) $p.init($p);
+	}, 
+	
+	/* initialize sub-items of an object: */
+	_callInit: function(obj, pre = false) {
+		//console.info('$p._callInit(obj=',obj,', pre=',pre,')');
+
+		/* call init / _init on each sub-object: */
+		Object.keys(obj).forEach( (key,i) => {
+			const sub = obj[key];
+			let init = null;
+			if (typeof sub === 'object') {
+				if (pre && sub._init) {
+					init = sub._init;
+				} else if (!pre && sub.init) {
+					init = sub.init;
+				}
+
+				// bind to object
+				if (typeof init == 'function') {
+					const init2 = init.bind(sub);
+					init2(obj);
+				}
+			}
+		});
+
+	}
+}
+/* call pre-init when the file is loaded */
+document.addEventListener('DOMContentLoaded', $p._init);
+/* Page GUI frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.gui = {
+
+	/* shadow init function */
+	_init: function(p) {
+		console.info('$p.gui._init()');
+		//console.log('parent=',p);
+		
+		/* call sub-sections' pre-inits: */
+		$p._callInit(this, true);
+		
+		/* Now call the actual init: */
+		p._callInit(this);
+		if (this.init) this.init(this);
+	}
+}
+/* Page GUI tabbed interface class */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.gui.tabs = {
+
+	/* pre-init function */
+	_init: function() {
+		console.log('$p.gui.tabs._init()');
+				
+		/* find and add all existing tabs */
+		document.querySelectorAll('*[role=tablist]')
+			.forEach($p.gui.tabs.add);
+	},
+	
+	/* add a new tab interface: */
+	add: function(tablist) {
+		console.log('$p.gui.tabs.add()');
+
+		tablist.querySelectorAll('*[role=tab]')
+			.forEach( t => t.onClick($p.gui.tabs._onTabClick) )
+	},
+	
+	/* callback for tab click */
+	_onTabClick: function(e) {
+		console.log('$p.gui.tabs._onTabClick()');
+		
+		/* reusable constants: */
+		const kAriaSelected = 'aria-selected';
+		const kAriaControls = 'aria-controls';
+		const kTrue = 'true';
+		const kFalse = 'false';
+		const kHidden = 'hidden';
+		
+		/* cancel default action */
+		e.preventDefault();
+		
+		/* if the active tab is clicked, do nothing: */
+		let selState = this.getAttribute(kAriaSelected);
+		if ( selState && selState == kTrue ) {
+			return;
+		}
+		
+		/* find the active tab element: */
+		var aItem = null;
+		let tablist = this.getAncestors( (it) => {
+			return ((it.getAttribute ? it.getAttribute('role') : null) == 'tablist');
+		}).first();
+		if (tablist) {
+			let lis = tablist.querySelectorAll('*[role=tab]');
+			lis.forEach( (it) => {
+				let selected = it.getAttribute(kAriaSelected);
+				if ( selected && selected == kTrue ) {
+					aItem = it;
+				}
+			});
+		}
+		
+		/* swap the active states: */
+		this.setAttribute(kAriaSelected, kTrue);
+		if (aItem) {
+			aItem.setAttribute(kAriaSelected, kFalse);
+			let aId = aItem.getAttribute(kAriaControls);
+			let aObj = document.getElementById(aId);
+			if (aObj) aObj.hidden = true;
+		}
+		
+		/* show the new panel: */
+		let nId = this.getAttribute(kAriaControls);
+		let nObj = document.getElementById(nId);
+		if (nObj) nObj.hidden = false;
+	}
+}
+/* Page GUI frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.gui.overlay = {
+
+	/* pre-init function */
+	_init: function() {
+		
+		console.log("$p.gui.overlay._init()");
+
+		/* create the overlay element */
+		let o = HTMLElement.new('div', {
+			'id': 'overlay',
+			'style': 'z-index:9; display:none;',
+			'tabindex': '-1'
+		})
+		.onClick($p.gui.overlay.hide);
+
+		/* store a reference for later */
+		$p.gui.overlay._element = o;
+		
+		/* attach it to the page */
+		document.body.appendChild(o);
+	},
+
+	/* reference to the overlay element */
+	_element: null,
+	
+	/* list of callbacks for when the overlay is closed */
+	_callbacks: [],
+	
+	/* show/open the overlay */
+	show: function(callback, zIdx, color = null) {
+
+		console.log("$p.gui.overlay.show()");
+
+		let o = $p.gui.overlay._element;
+		if (o) {
+
+			/* set the z-index of the overlay */
+			if (zIdx !== undefined) {
+				o.style.zIndex = parseInt(zIdx);
+			}
+
+			/* give it a background colour: */
+			o.style.backgroundColor = ( color ? color : 'transparent' );
+
+			/* attach the callback on close */
+			if (callback !== undefined && typeof callback == "function") {
+				$p.gui.overlay._callbacks.push(callback);
+			}
+
+			/* set CSS display to default */
+			o.style.display = null;
+		}
+	},
+	
+	/* hide/close the overlay */
+	hide: function() {
+
+		console.log("$p.gui.overlay.hide()");
+
+		/* loop over all callbacks */
+		while ($p.gui.overlay._callbacks.length > 0) {
+			let cb = $p.gui.overlay._callbacks.pop();
+			cb(); /* call the callback */
+		}
+
+		/* hide the overlay by CSS */
+		$p.gui.overlay._element.style.display = 'none';
+
+	},
+}
+/* Page URL frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.url = {
+
+	/* shadow init function */
+	_init: function(p) {
+		console.info('$p.url._init()');
+		//console.log('parent=',p);
+		
+		/* call sub-sections' pre-inits: */
+		$p._callInit(this, true);
+		
+		/* Now call the actual init: */
+		p._callInit(this);
+		if (this.init) this.init(this);
+	}
+}
+/* Page URL frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.url.fragment = {
+
+	/* shadow init function */
+	_init: function() {
+		console.info('$p.url.fragment._init()');
+		
+		/* catch any later changes to the fragment: */
+		window.addEventListener('hashchange', $p.url.fragment._onHashChange);
+
+	},
+	
+	/* get the current hash (if any) */
+	get: function() {
+		return location.hash.substr(1);
+	},
+	
+	/* set the location hash: */
+	set: function(h) {
+		location.hash = h;
+	},
+	
+	/* add a callback for hash changes */
+	onChange: function(cb) {
+		$p.url.fragment._cbs.push(cb);
+	},
+	
+	/* store callbacks here: */
+	_cbs: [],
+	
+	/* callback function for hash changes: */
+	_onHashChange: function(e) {
+		console.log("$p.url.fragment._onHashChange()");
+		$p.url.fragment._cbs.forEach( cb => {
+			cb(e);
+		});
+	}
+}
+/* page console */
+/* enables an in-page console as an alternative to the browser console
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.console = {
+
+	/* shadow init function */
+	_init: function(p) {
+		//console.info('$p.console._init()');
+		//console.log('this=', this);
+		//console.log('parent=', p);
+		
+		/* call sub-sections' pre-inits, if any are added: */
+		$p._callInit(this, true);
+	
+	},
+	
+	// reference to the list object where to add items:
+	_targetStack: [],
+	
+	/* set and prepare the target element for console logging */
+	/* parameters: */
+	/* elm - HtmlElement: the container for the log list (required) */
+	setTarget: function(elm) {
+		//console.info('$p.console.setTarget(',elm,')');
+		
+		if (elm) {
+			/* create a list inside: */
+			$p.console._targetStack = [
+				elm.appendNew('ul', {
+					'class': 'console'
+				})];
+		}
+	},
+	
+	/* internal log function that is called by the public interface: */
+	_log: function(cls, obj) {
+		//console.info('$p.console._log(cls="',cls,'", obj="',obj,'")');
+
+		let msg = '';
+		if (obj.toHtml) {
+			msg = obj.toHtml();
+		} else if (typeof obj == 'object') {
+			msg = JSON.stringify(obj);
+		} else {
+			msg = obj;
+		}
+		
+		// find the target element:
+		trg = null;
+		if ($p.console._targetStack.length > 0) {
+			trg = $p.console._targetStack[$p.console._targetStack.length-1];
+		}
+		
+		if (trg) {
+			const li = trg.appendNew('li', {'class': cls});
+			if (typeof msg == 'object') {
+				li.appendChild(msg);
+			} else {
+				li.setText(msg);
+			}
+		} else {
+			switch(cls) {
+				case 'info':
+					console.info(obj);
+					break;
+				case 'warn':
+					console.warn(obj);
+					break;
+				case 'error':
+					console.error(obj);
+					break;
+				default:
+					console.log(obj);
+			}
+		}
+	}, 
+	
+	log: function(msg) {
+		$p.console._log('log', msg);
+	}, 
+	
+	info: function(msg) {
+		$p.console._log('info', msg);
+	},
+	warn: function(msg) {
+		$p.console._log('warn', msg);
+	},
+	error: function(msg) {
+		$p.console._log('error', msg);
+	},
+	
+	group: function(msg = '', open = true) {
+	
+		// find the target element:
+		trg = null;
+		if ($p.console._targetStack.length > 0) {
+			trg = $p.console._targetStack[$p.console._targetStack.length-1];
+		}
+	
+		if (trg) {
+			const det = trg.appendNew('details');
+			if (open) {
+				det.setAttribute('open', '');
+			}
+			det.appendNew('summary').setText(msg);
+			const ul = det.appendNew('ul', {
+				'class': 'sub'
+			});
+			
+			trg.appendChild(det);
+			$p.console._targetStack.push(ul);
+		} else {
+			console.group(msg);
+		}
+	},
+	
+	groupEnd: function() {
+		if ($p.console._targetStack.length > 1) {
+			$p.console._targetStack.pop();
+		} else {
+			console.groupEnd();
+		}
+
+	}
+
+
 }
 /* creates a new Element */
 /* parent object: Element */
@@ -304,360 +839,4 @@ HTMLElement.prototype.getDescendants = function(cb = undefined) {
 		}
 
        return r;
-}
-/* Page frameword core */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-let $p = {
-
-	/* shadow init function */
-	_init: function() {
-		console.info('$p._init()');
-		
-		/* call sub-sections, as they were added: */
-		$p._callPreInit($p);
-
-		/* call user init, if it exists: */
-		if ($p.init) $p.init();
-	}, 
-	
-	_callPreInit: function(obj) {
-		console.info('$p._callPreInit()');
-		
-		/* call _init on each sub-object: */
-		Object.keys(obj).forEach( (key,i) => {
-			let sub = obj[key];
-			if (typeof sub === 'object' && sub._init) {
-				sub._init();
-			}
-		});
-
-	}
-}
-/* load when DOM is ready: */
-$p._init();
-/* Page GUI frameword core */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-$p.gui = {
-
-	/* shadow init function */
-	_init: function() {
-		console.info('$p.gui._init()');
-		
-		/* call sub-sections, as they were added: */
-		Object.keys($p.gui).forEach( (key) => {
-			let sub = $p.gui[key];
-			if (typeof sub === 'object' && sub._init) {
-				sub._init();
-			}
-		});
-	}
-}
-/* Page GUI tabbed interface class */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-$p.gui.tabs = {
-
-	/* pre-init function */
-	_init: function() {
-		console.log('$p.gui.tabs._init()');
-				
-		/* find and add all existing tabs */
-		document.querySelectorAll('*[role=tablist]')
-			.forEach($p.gui.tabs.add);
-	},
-	
-	/* add a new tab interface: */
-	add: function(tablist) {
-		console.log('$p.gui.tabs.add()');
-
-		tablist.querySelectorAll('*[role=tab]')
-			.forEach( t => t.onClick($p.gui.tabs._onTabClick) )
-	},
-	
-	/* callback for tab click */
-	_onTabClick: function(e) {
-		console.log('$p.gui.tabs._onTabClick()');
-		
-		/* reusable constants: */
-		const kAriaSelected = 'aria-selected';
-		const kAriaControls = 'aria-controls';
-		const kTrue = 'true';
-		const kFalse = 'false';
-		const kHidden = 'hidden';
-		
-		/* cancel default action */
-		e.preventDefault();
-		
-		/* if the active tab is clicked, do nothing: */
-		let selState = this.getAttribute(kAriaSelected);
-		if ( selState && selState == kTrue ) {
-			return;
-		}
-		
-		/* find the active tab element: */
-		var aItem = null;
-		let tablist = this.getAncestors( (it) => {
-			return ((it.getAttribute ? it.getAttribute('role') : null) == 'tablist');
-		}).first();
-		if (tablist) {
-			let lis = tablist.querySelectorAll('*[role=tab]');
-			lis.forEach( (it) => {
-				let selected = it.getAttribute(kAriaSelected);
-				if ( selected && selected == kTrue ) {
-					aItem = it;
-				}
-			});
-		}
-		
-		/* swap the active states: */
-		this.setAttribute(kAriaSelected, kTrue);
-		if (aItem) {
-			aItem.setAttribute(kAriaSelected, kFalse);
-			let aId = aItem.getAttribute(kAriaControls);
-			let aObj = document.getElementById(aId);
-			if (aObj) aObj.hidden = true;
-		}
-		
-		/* show the new panel: */
-		let nId = this.getAttribute(kAriaControls);
-		let nObj = document.getElementById(nId);
-		if (nObj) nObj.hidden = false;
-	}
-}
-/* Page GUI frameword core */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-$p.gui.overlay = {
-
-	/* pre-init function */
-	_init: function() {
-		
-		console.log("$p.gui.overlay._init()");
-
-		/* create the overlay element */
-		let o = HTMLElement.new('div', {
-			'id': 'overlay',
-			'style': 'z-index:9; display:none;',
-			'tabindex': '-1'
-		})
-		.onClick($p.gui.overlay.hide);
-
-		/* store a reference for later */
-		$p.gui.overlay._element = o;
-		
-		/* attach it to the page */
-		document.body.appendChild(o);
-	},
-
-	/* reference to the overlay element */
-	_element: null,
-	
-	/* list of callbacks for when the overlay is closed */
-	_callbacks: [],
-	
-	/* show/open the overlay */
-	show: function(callback, zIdx, color = null) {
-
-		console.log("$p.gui.overlay.show()");
-
-		let o = $p.gui.overlay._element;
-		if (o) {
-
-			/* set the z-index of the overlay */
-			if (zIdx !== undefined) {
-				o.style.zIndex = parseInt(zIdx);
-			}
-
-			/* give it a background colour: */
-			o.style.backgroundColor = ( color ? color : 'transparent' );
-
-			/* attach the callback on close */
-			if (callback !== undefined && typeof callback == "function") {
-				$p.gui.overlay._callbacks.push(callback);
-			}
-
-			/* set CSS display to default */
-			o.style.display = null;
-		}
-	},
-	
-	/* hide/close the overlay */
-	hide: function() {
-
-		console.log("$p.gui.overlay.hide()");
-
-		/* loop over all callbacks */
-		while ($p.gui.overlay._callbacks.length > 0) {
-			let cb = $p.gui.overlay._callbacks.pop();
-			cb(); /* call the callback */
-		}
-
-		/* hide the overlay by CSS */
-		$p.gui.overlay._element.style.display = 'none';
-
-	},
-}
-/* Page URL frameword core */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-$p.url = {
-
-	/* shadow init function */
-	_init: function() {
-		console.info('$p.url._init()');
-		
-		/* call sub-sections, as they were added: */
-		$p._callPreInit($p.url);
-	}
-}
-/* Page URL frameword core */
-/* Authors:
-    - Sascha Leib <ad@hominem.info>
- */
-/* This project is licensed under the terms of the MIT license. */
-$p.url.fragment = {
-
-	/* shadow init function */
-	_init: function() {
-		console.info('$p.url.fragment._init()');
-		
-		/* catch any later changes to the fragment: */
-		window.addEventListener('hashchange', $p.url.fragment._onHashChange);
-
-	},
-	
-	/* get the current hash (if any) */
-	get: function() {
-		return location.hash.substr(1);
-	},
-	
-	/* set the location hash: */
-	set: function(h) {
-		location.hash = h;
-	},
-	
-	/* add a callback for hash changes */
-	onChange: function(cb) {
-		$p.url.fragment._cbs.push(cb);
-	},
-	
-	/* store callbacks here: */
-	_cbs: [],
-	
-	/* callback function for hash changes: */
-	_onHashChange: function(e) {
-		console.log("$p.url.fragment._onHashChange()");
-		$p.url.fragment._cbs.forEach( cb => {
-			cb(e);
-		});
-	}
-}
-/* Attaches an event listener to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-HTMLElement.prototype.on = function(n, cb) {
-	this.addEventListener(n, cb);
-	return this;
-}
-/* Attaches an event listener that will only be called once to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-/* returns: nothing */
-HTMLElement.prototype.once = function(n, cb) {
-	this.addEventListener(n, cb, {once: true});
-	return this;
-}
-/* Attaches an event listener to an HTMLElement */
-/* parameter: (String, required) name of the event to listen to */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement */
-/* returns: nothing */
-HTMLElement.prototype.off = function(n, cb) {
-	this.removeEventListener(n, cb);
-	return this;
-}
-/* Attaches a listener for the "blur" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onBlur = function(cb) {
-	this.addEventListener('blur', cb);
-	return this;
-}
-/* Attaches a listener for the "click" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onClick = function(cb) {
-	this.addEventListener('click', cb);
-	return this;
-}
-/* Attaches a listener for the "focus" event to an Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element */
-/* returns: Element (passes through the parent element) */
-HTMLElement.prototype.onFocus = function(cb) {
-	this.addEventListener('focus', cb);
-	return this;
-}
-/* Attaches a listener for the "focus" event to a <form> Element */
-/* parameter: (Function, required) the callback function */
-/* parent object: HTMLElement (form only) */
-/* returns: HTMLElement (passes through the parent element) */
-HTMLFormElement.prototype.onSubmit = function(cb) {
-	this.addEventListener('submit', cb);
-	return this;
-}
-/* Attaches a listener for the "DOMContentLoaded" event to the document */
-/* parameter: (Function, required) the callback function */
-/* parent object: Element ( */
-/* returns: HTMLDocument (passes through the parent element) */
-document.onReady = function(cb) {
-	document.addEventListener('DOMContentLoaded', cb);
-	return document;
-}
-/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
-/* parameter: (Number, optional) number of digits (default = 2) */
-/* parameter: (String, optional) the locale format to use (default = 'en') */
-/* parameter: (Object, optional) options for the International number format (default = null) */
-/* parameter: (Object, optional) overrides for specific values (default = undefined) */
-/* parent object: Number */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
-
-	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
-	var m = Math.floor(this);
-
-	/* check first if there is an override value */
-	if (o && o[m]) {
-		return o[m];
-		
-	} else {
-
-		var p = 0;
-		while (m > 980 && p < u.length) {
-			m = m/1024;
-			p += 1;
-		}
-		let f = new Intl.NumberFormat(l, {
-			maximumSignificantDigits: d
-		});
-
-		return f.format(m) + '\u202F' + u[p];
-	}
 }

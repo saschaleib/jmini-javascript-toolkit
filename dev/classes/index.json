@@ -7,7 +7,7 @@
 		"file": "Element.addClass",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "classes/addClass.html"
+		"moreinfo": "toolbox/classes/addclass/index"
 	},
 	{	"id": "element_removeclass",
 		"name": ".removeClass",
@@ -17,7 +17,7 @@
 		"file": "Element.removeClass",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "classes/removeClass.html"
+		"moreinfo": "toolbox/classes/removeclass/index"
 	},
 	{	"id": "element_toggleclass",
 		"name": ".toggleClass",
@@ -27,7 +27,7 @@
 		"file": "Element.toggleClass",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "classes/toggleClass.html"
+		"moreinfo": "toolbox/classes/toggleclass/index"
 	},
 	{	"id": "element_hasclass",
 		"name": ".hasClass",
@@ -37,6 +37,6 @@
 		"file": "Element.hasClass",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "classes/hasClass.html"
+		"moreinfo": "toolbox/classes/hasclass/index"
 	}
 ]

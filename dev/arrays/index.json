@@ -7,7 +7,7 @@
 		"file": "Array.first",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "arrays/first.html"
+		"moreinfo": "toolbox/arrays/first/index"
 	},
 	{	"id": "array_last",
 		"name": ".last",
@@ -17,7 +17,7 @@
 		"file": "Array.last",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "arrays/last.html"
+		"moreinfo": "toolbox/arrays/last/index"
 	},
 	{	"id": "array_toHtml",
 		"name": ".toHtml",
@@ -27,6 +27,6 @@
 		"file": "Array.toHtml",
 		"requires": ["htmlelement_new","element_appendnew","element_settext"],
 		"conflics": [],
-		"moreinfo": "arrays/toHtml.html"
+		"moreinfo": "toolbox/arrays/tohtml/index"
 	}
 ]

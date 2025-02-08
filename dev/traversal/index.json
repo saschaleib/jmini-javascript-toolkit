@@ -7,7 +7,7 @@
 		"file": "Element.getAncestors",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "traversal/getAncestors.html"
+		"moreinfo": "toolbox/traversal/getancestors/index"
 	},
 	{	"id": "element_getsiblings",
 		"name": ".getSiblings",
@@ -17,7 +17,7 @@
 		"file": "Element.getSiblings",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "traversal/getSiblings.html"
+		"moreinfo": "toolbox/traversal/getsiblings/index"
 	},
 	{	"id": "element_getchildren",
 		"name": ".getChildren",
@@ -27,7 +27,7 @@
 		"file": "Element.getChildren",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "traversal/getChildren.html"
+		"moreinfo": "toolbox/traversal/getchildren/index"
 	},
 	{	"id": "element_getdescendants",
 		"name": ".getDescendants",
@@ -37,6 +37,6 @@
 		"file": "Element.getDescendants",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "traversal/getDescendants.html"
+		"moreinfo": "toolbox/traversal/getdescendants/index"
 	}
 ]

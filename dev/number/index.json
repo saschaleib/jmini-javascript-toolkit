@@ -7,6 +7,6 @@
 		"file": "Number.toBytesString",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "numbers/toBytesString.html"
+		"moreinfo": "toolbox/numbers/tobytesstring/index"
 	}
 ]

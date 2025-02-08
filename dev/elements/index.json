@@ -7,7 +7,7 @@
 		"file": "HTMLElement.new",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/new_static.html"
+		"moreinfo": "toolbox/element/htmlelement_new/index"
 	},
 	{	"id": "element_getattr",
 		"name": ".getAttr",
@@ -17,7 +17,7 @@
 		"file": "Element.getAttr",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/getAttr.html"
+		"moreinfo": "toolbox/element/getattr/index"
 	},
 	{	"id": "element_setattr",
 		"name": ".setAttr",
@@ -27,7 +27,7 @@
 		"file": "Element.setAttr",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/setAttr.html"
+		"moreinfo": "toolbox/element/setattr/index"
 	},
 	{	"id": "element_appendtext",
 		"name": ".appendText",
@@ -37,7 +37,7 @@
 		"file": "Element.appendText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/appendText.html"
+		"moreinfo": "toolbox/element/appendtext/index"
 	},
 	{	"id": "element_prependtext",
 		"name": ".prependText",
@@ -48,7 +48,7 @@
 		"file": "Element.prependText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/prependText.html"
+		"moreinfo": "toolbox/element/prependtext/index"
 	},
 	{	"id": "element_gettext",
 		"name": ".getText",
@@ -58,7 +58,7 @@
 		"file": "Element.getText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/getText.html"
+		"moreinfo": "toolbox/element/gettext/index"
 	},
 	{	"id": "element_settext",
 		"name": ".setText",
@@ -69,7 +69,7 @@
 		"file": "Element.setText",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/setText.html"
+		"moreinfo": "toolbox/element/settext/index"
 	},
 	{	"id": "element_appendnew",
 		"name": ".appendNew",
@@ -79,7 +79,7 @@
 		"file": "Element.appendNew",
 		"requires": ["htmlelement_new"],
 		"conflics": [],
-		"moreinfo": "elements/appendNew.html"
+		"moreinfo": "toolbox/element/appendnew/index"
 	},
 	{	"id": "element_prependnew",
 		"name": ".prependNew",
@@ -89,7 +89,7 @@
 		"file": "Element.prependNew",
 		"requires": ["htmlelement_new"],
 		"conflics": [],
-		"moreinfo": "elements/prependNew.html"
+		"moreinfo": "toolbox/element/prependnew/index"
 	},
 	{	"id": "element_sethtml",
 		"name": ".setHtml",
@@ -99,7 +99,7 @@
 		"file": "Element.setHtml",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/setHtml.html"
+		"moreinfo": "toolbox/element/sethtml/index"
 	},
 	{	"id": "element_gethtml",
 		"name": ".getHtml",
@@ -109,7 +109,7 @@
 		"file": "Element.getHtml",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/getHtml.html"
+		"moreinfo": "toolbox/element/gethtml/index"
 	},
 	{	"id": "element_empty",
 		"name": ".empty",
@@ -119,7 +119,7 @@
 		"file": "Element.empty",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/empty.html"
+		"moreinfo": "toolbox/element/empty/index"
 	},
 	{	"id": "element_load",
 		"name": ".load",
@@ -129,6 +129,6 @@
 		"file": "Element.load",
 		"requires": [],
 		"conflics": [],
-		"moreinfo": "elements/load.html"
+		"moreinfo": "toolbox/element/load/index"
 	}
 ]
