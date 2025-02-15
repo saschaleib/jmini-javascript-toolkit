@@ -1,7 +1,7 @@
 [
 	{	"id": "number_tobytesstring",
 		"name": ".toBytesString",
-		"namehtml": "<i>&lt;Number&gt;</i>.<b>toBytesString</b>",
+		"namehtml": "&lt;<i>Number</i>&gt;.<b>toBytesString</b>()",
 		"type": "prototype",
 		"desc": "Converts a number to a formatted bytes sting using KiB, MiB, etc.",
 		"file": "Number.toBytesString",

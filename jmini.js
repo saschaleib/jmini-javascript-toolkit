@@ -68,6 +68,37 @@ Array.prototype.toHtml = function(atlist = undefined) {
 	
 	return table;
 }
+/* Adds a class to the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.addClass = function(n) {
+	this.classList.add(n);
+	return this;
+}
+/* Removes a class from the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.removeClass = function(n) {
+	this.classList.remove(n);
+	return this;
+}
+/* Toggles a class on the parent HTMLElement */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: HTMLElement */
+HTMLElement.prototype.toggleClass = function(n) {
+	this.classList.toggle(n);
+	return this;
+}
+/* Returns true, if the parent HTMLElement has a class of the specified name */
+/* parameter: (String, required) name of the class */
+/* parent object: HTMLElement */
+/* returns: Boolean */
+HTMLElement.prototype.hasClass = function(n) {
+	return this.classList.contains(n);
+}
 /* Loads a JSON file over the network */
 /* parent object: JSON */
 /* parameter: url (String) the address where to load the file from (required) */
@@ -80,7 +111,7 @@ JSON.load = async function(url, opt) {
 	return fetch(url, opt)
 	.then( rp => {
 		if (!rp.ok) {
-			throw new Error('HTTP Status ' + rp.status + ' – ' + rp.statusText);
+			throw new Error(`HTTP ${rp.status}: ${rp.statusText} – “${url}”.`);
 		};
 
 		return rp.json()
@@ -151,149 +182,6 @@ HTMLFormElement.prototype.onSubmit = function(cb) {
 document.onReady = function(cb) {
 	document.addEventListener('DOMContentLoaded', cb);
 	return document;
-}
-/* Adds a class to the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.addClass = function(n) {
-	this.classList.add(n);
-	return this;
-}
-/* Removes a class from the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.removeClass = function(n) {
-	this.classList.remove(n);
-	return this;
-}
-/* Toggles a class on the parent HTMLElement */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: HTMLElement */
-HTMLElement.prototype.toggleClass = function(n) {
-	this.classList.toggle(n);
-	return this;
-}
-/* Returns true, if the parent HTMLElement has a class of the specified name */
-/* parameter: (String, required) name of the class */
-/* parent object: HTMLElement */
-/* returns: Boolean */
-HTMLElement.prototype.hasClass = function(n) {
-	return this.classList.contains(n);
-}
-/* returns a list of ancestors of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-HTMLElement.prototype.getAncestors = function(cb = undefined) {
-	let r = [];
-	
-	var p = this.parentNode;
-	while (p) {
-		if ( p.nodeType === Node.ELEMENT_NODE && ( !cb || cb(p) ) ) {
-			r.push(p);
-		}
-		p = p.parentNode;
-	}
-
-	return r;
-}
-/* returns a list of siblings of an element (omitting the element itself) */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-HTMLElement.prototype.getSiblings = function(cb = undefined) {
-	let r = [];
-	if(this.parentNode) {
-		var s = this.parentNode.firstChild;
-		while (s) {
-			if (s !== this && s.nodeType === Node.ELEMENT_NODE ) {
-				if ( !cb || cb(s) ) {
-					r.push(s);
-				}
-			}
-			s = s.nextSibling;
-		}
-	}
-	return r;
-}
-/* returns a list of direct (!) children of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-
-HTMLElement.prototype.getChildren = function(cb = undefined) {
-
-       let r = [];
-
-       if (this.hasChildNodes()) {
-
-             let children = this.childNodes;
-             for (const n of children) {
-                    if ( n.nodeType === Node.ELEMENT_NODE && ( !cb || cb(n) ) ) {
-                          r.push(n);
-                    }
-             }
-       }
-
-       return r;
-}
-/* returns a list of descendants of an element (optionally filtered by a callback function */
-/* parameter: callback (function, optional), check each element if it should be added */
-/* parent object: Element */
-/* returns: Array of HTMLElements */
-
-HTMLElement.prototype.getDescendants = function(cb = undefined) {
-
-		let r = [];
-
-		if (this.hasChildNodes()) {
-
-			let children = this.childNodes;
-			for (const n of children) {
-				if ( n.nodeType === Node.ELEMENT_NODE ) {
-					r = r.concat(n.getDescendants(cb));
-					if ( !cb || cb(n) ) {
-						r.push(n);
-					}
-				}
-			}
-		}
-
-       return r;
-}
-/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
-/* parameter: (Number, optional) number of digits (default = 2) */
-/* parameter: (String, optional) the locale format to use (default = 'en') */
-/* parameter: (Object, optional) options for the International number format (default = null) */
-/* parameter: (Object, optional) overrides for specific values (default = undefined) */
-/* parent object: Number */
-/* returns: the (modified) parent object */
-/* Support: DOM Level 1 (1998) */
-Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
-
-	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
-	var m = Math.floor(this);
-
-	/* check first if there is an override value */
-	if (o && o[m]) {
-		return o[m];
-		
-	} else {
-
-		var p = 0;
-		while (m > 980 && p < u.length) {
-			m = m/1024;
-			p += 1;
-		}
-		let f = new Intl.NumberFormat(l, {
-			maximumSignificantDigits: d
-		});
-
-		return f.format(m) + '\u202F' + u[p];
-	}
 }
 /* creates a new Element */
 /* parent object: Element */
@@ -451,6 +339,118 @@ HTMLElement.prototype.load = async function(url, opt = undefined ) {
 	});
 }
 
+/* Formats an integer number to a String containing the correct Bytes multiplier (e.g. 1.2 GiB) */
+/* parameter: (Number, optional) number of digits (default = 2) */
+/* parameter: (String, optional) the locale format to use (default = 'en') */
+/* parameter: (Object, optional) options for the International number format (default = null) */
+/* parameter: (Object, optional) overrides for specific values (default = undefined) */
+/* parent object: Number */
+/* returns: the (modified) parent object */
+/* Support: DOM Level 1 (1998) */
+Number.prototype.toBytesString = function(d = 2, l = 'en-US', o = undefined) {
+
+	let u = ['Bytes','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB','???'];
+	var m = Math.floor(this);
+
+	/* check first if there is an override value */
+	if (o && o[m]) {
+		return o[m];
+		
+	} else {
+
+		var p = 0;
+		while (m > 980 && p < u.length) {
+			m = m/1024;
+			p += 1;
+		}
+		let f = new Intl.NumberFormat(l, {
+			maximumSignificantDigits: d
+		});
+
+		return f.format(m) + '\u202F' + u[p];
+	}
+}
+/* returns a list of ancestors of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getAncestors = function(cb = undefined) {
+	let r = [];
+	
+	var p = this.parentNode;
+	while (p) {
+		if ( p.nodeType === Node.ELEMENT_NODE && ( !cb || cb(p) ) ) {
+			r.push(p);
+		}
+		p = p.parentNode;
+	}
+
+	return r;
+}
+/* returns a list of siblings of an element (omitting the element itself) */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+HTMLElement.prototype.getSiblings = function(cb = undefined) {
+	let r = [];
+	if(this.parentNode) {
+		var s = this.parentNode.firstChild;
+		while (s) {
+			if (s !== this && s.nodeType === Node.ELEMENT_NODE ) {
+				if ( !cb || cb(s) ) {
+					r.push(s);
+				}
+			}
+			s = s.nextSibling;
+		}
+	}
+	return r;
+}
+/* returns a list of direct (!) children of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+
+HTMLElement.prototype.getChildren = function(cb = undefined) {
+
+       let r = [];
+
+       if (this.hasChildNodes()) {
+
+             let children = this.childNodes;
+             for (const n of children) {
+                    if ( n.nodeType === Node.ELEMENT_NODE && ( !cb || cb(n) ) ) {
+                          r.push(n);
+                    }
+             }
+       }
+
+       return r;
+}
+/* returns a list of descendants of an element (optionally filtered by a callback function */
+/* parameter: callback (function, optional), check each element if it should be added */
+/* parent object: Element */
+/* returns: Array of HTMLElements */
+
+HTMLElement.prototype.getDescendants = function(cb = undefined) {
+
+		let r = [];
+
+		if (this.hasChildNodes()) {
+
+			let children = this.childNodes;
+			for (const n of children) {
+				if ( n.nodeType === Node.ELEMENT_NODE ) {
+					r = r.concat(n.getDescendants(cb));
+					if ( !cb || cb(n) ) {
+						r.push(n);
+					}
+				}
+			}
+		}
+
+       return r;
+}
 /* Page frameword core */
 /* Authors:
     - Sascha Leib <ad@hominem.info>
@@ -728,6 +728,95 @@ $p.url.fragment = {
 		});
 	}
 }
+/* Page Dyn frameword core */
+/* Authors:
+    - Sascha Leib <ad@hominem.info>
+ */
+/* This project is licensed under the terms of the MIT license. */
+$p.dyn = {
+
+	/* shadow init function */
+	_init: function(p) {
+		//console.info('$p.dyn._init()');
+		//console.log('parent=',p);
+		
+		/* call sub-sections' pre-inits: */
+		$p._callInit(this, true);
+	},
+	
+	/* the actual initialisation method: */
+	init: function(p) {
+		$p.console.info('$p.dyn.init()');
+		//$p.console.log('parent=',p);
+
+		// first make sure all sub-modules are initialized:
+		$p._callInit(this);
+
+		// then parse the entire document for JSON script tags:
+		this.parse(document);
+
+	},
+	
+	/* find all the JSON script elements within a given scope: */
+	parse: function(scope) {
+		
+		/* fins all script tags in the scope */
+		const scripts = scope.getElementsByTagName('script');
+		
+		/* filter them down to only the ones marked as JSON type */
+		const js = Array.prototype.filter.call(scripts, s => {
+			return ( s.hasAttribute('type') && s.getAttribute('type') == 'application/json' );
+		});
+
+		/* loop over all remaining elements to make sure they have an "action" property: */
+		for (var i = 0; i < js.length; i++) {
+			try {
+				const it = js[i];
+				const json = JSON.parse(it.innerHTML);
+				if (json.action) {
+					
+					// check if we have an action registered:
+					const cb = $p.dyn.action.get(json.action);
+					if (cb) {
+						cb(it.parentElement, json);
+					} else {
+						if ($p.console) $p.console.warn('Unknown action: ' + json.action);
+						console.warn('Unknown action: ' + json.action);
+					}
+				}
+			} catch (err) {
+				if ($p.console) $p.console.error(err.toString());
+				console.error(err);
+			}
+		}
+	}, 
+	
+	/* internal sub-module for actions: */
+	action: {
+		
+		_store: [],
+		
+		/* register an action callback for a specific id: */
+		register: function(id, callback) {
+			//console.info('$p.dyn.action.register("' + id + '")');
+			
+			$p.dyn.action._store.push({
+				'id': id,
+				'cb': callback
+			});
+		},
+		
+		/* return the callback function registered for a specific name: */
+		get: function(id) {
+			//console.info('$p.dyn.action.get("' + id + '")');
+
+			const pos = $p.dyn.action._store.findIndex( it => it.id == id);
+			
+			return ( pos >= 0 ? $p.dyn.action._store[pos].cb : null);
+
+		}
+	}
+}
 /* page console */
 /* enables an in-page console as an alternative to the browser console
 /* Authors:
@@ -779,7 +868,7 @@ $p.console = {
 		}
 		
 		// find the target element:
-		trg = null;
+		let trg = null;
 		if ($p.console._targetStack.length > 0) {
 			trg = $p.console._targetStack[$p.console._targetStack.length-1];
 		}
@@ -855,4 +944,6 @@ $p.console = {
 		}
 
 	}
+
+
 }

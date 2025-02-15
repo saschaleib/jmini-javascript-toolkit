@@ -49,7 +49,7 @@ $p.console = {
 		}
 		
 		// find the target element:
-		trg = null;
+		let trg = null;
 		if ($p.console._targetStack.length > 0) {
 			trg = $p.console._targetStack[$p.console._targetStack.length-1];
 		}

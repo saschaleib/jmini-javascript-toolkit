@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* Stylesheet for the jMini Documentation pages
+ * File name: default.css
+ */
+
+/* general settings */
+html, body {
+	background-color: transparent;
+}
+#pre-header,
+#sidebar-nav {
+	display: none;
+}
+
+#main-sb-layout {
+	display: block;
+	max-width: 100%;
+	margin: 0;
+}
+#footer-layout {
+	background-color: transparent;
+	color: #000;
+	border-top: #333 solid 1px;
+}
+#footer-layout a:link,
+#footer-layout a:visited {
+	color: #333;
+	text-decoration: underline dashed;
+}

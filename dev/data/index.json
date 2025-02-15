@@ -1,7 +1,7 @@
 [
 	{	"id": "json_load",
 		"name": "JSON.load",
-		"namehtml": "<b>JSON.load</b>",
+		"namehtml": "JSON.<b>load</b>()",
 		"type": "static",
 		"desc": "Loads a JSON file and returns it as data structure.",
 		"file": "JSON.load",

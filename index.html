@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<title>jMini – the efficient JavaScript Toolbox</title>
 		<meta name="description" content="jMini Homepage.">
-		<link rel="stylesheet" type="text/css" media="all" href="docs/_theme/global.css" />
-		<link rel="stylesheet" type="text/css" media="all" href="docs/_theme/homepage.css" />
-		<link rel="stylesheet" type="text/css" media="print" href="docs/_theme/print.css" />
-		<script src="jmini.js" type="text/javascript"></script>
-		<script src="docs/_theme/docs.js" type="text/javascript"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#263832" />
+		<link rel="stylesheet" type="text/css" media="all" href="./_theme/2022/css/global.css">
+		<link rel="stylesheet" type="text/css" media="all" href="./_theme/2022/css/homepage.css">
+		<link rel="stylesheet" type="text/css" media="print" href="./_theme/2022/css/print.css">
+		<script src="./jmini.min.js"></script>
+		<script src="./_theme/2022/js/homepage.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#263832">
 	</head>
 	<body data-pageid="home:index">
 		<nav id="pre-header">
@@ -32,12 +32,17 @@
 			<div id="main-sb-layout">
 				<nav id="sidebar-nav">
 					<h2>Documentation</h2>
+					<script type="application/json"> {
+						"action": "docindex",
+						"from": "dev/",
+						"to": "wiki/"
+					} </script>
 				</nav>
 				<main>
-					<h2 class="sr-only">Homepage</h2>
-
 					<section id="homegrid">
+					<h2 class="sr-only">Homepage</h2>
 						<article id="hg-intro">
+							<h3 class="sr-only">About</h3>
 							<p>
 								<strong>jMini</strong> is a JavaScript toolbox for <em>lightweight</em> and <em>efficient</em> web development.
 								It is aimed at supporting <em>standards-compliant</em> coding practices, and helps you to
@@ -45,11 +50,11 @@
 							</p>
 						</article>
 						<article id="hg-stats">
-							<dl>
-								<dt>Statistics</h2>
-								<dd><span class="number">37</span> Modules</dd>
-								<dd>Size: <span class="number">0</span> to&nbsp;<span class="number">12 KiB</span></dd>
-							</dl>
+							<h3>Statistics</h3>
+							<ul>
+								<li><span class="number">37</span> Modules</li>
+								<li>Size: <span class="number">0</span> to&nbsp;<span class="number">12 KiB</span></li>
+							</ul>
 						</article>
 						<article id="hg-download">
 							<h3>Download</h3>
