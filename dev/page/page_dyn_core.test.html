@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>$page.dyn (dynamic loader core) — jMini Test</title>
+		<script src="../events/Document.onReady.js" type="text/javascript"></script>
+		<script src="../events/Document.onReady.js" type="text/javascript"></script>
+		<script src="../elements/HTMLElement.new.js" type="text/javascript"></script>
+		<script src="../elements/Element.appendNew.js" type="text/javascript"></script>
+		<script src="../elements/Element.setText.js" type="text/javascript"></script>
+		<script src="../arrays/Array.toHtml.js" type="text/javascript"></script>
+		<script src="./page_core.min.js" type="text/javascript"></script>
+		<script src="./page_console.min.js" type="text/javascript"></script>
+		<script src="./page_dyn_core.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" media="all" href="./console.css">
+		<script type="text/javascript">
+
+			/* prepare the on-page console: */
+			$p.console.init = function(parent) {
+				this.setTarget(document.getElementById('console'));
+			}
+
+			/* define a very simple action handler to register to the dyn module: */
+			$p.dyn.test = {
+				_init: function(d) {
+					//console.info('$p.dyn.test._init()');
+					
+					// note: the first parameter ("d") refers to the *parent* object,
+					// i.e. here to "$p.dyn", which allows for the shortcut
+					// of using "d.action" instead of "$p.dyn.action":
+
+					/* register as action handler for JSON snippets */
+					d.action.register('test-action', this.callback);
+				},
+				
+				callback: function(e, json) {
+					$p.console.group('$p.dyn.test.callback called, with parameters:');
+					$p.console.log('1. parent element: <'+e.localName+'…');
+					$p.console.log('2. JSON object: ' + JSON.stringify(json));
+					$p.console.groupEnd();
+				}
+			}		
+
+		</script>
+	</head>
+	<body>
+		<h1>Tests: $p.dyn (dynamic loader core)</h1>
+		<main>
+			<p>This module takes initializes the dynamic loader. For testing, this page contains <b>5</b> embedded &lt;script</gt> elements. Of these are <i>four</i> of type &quot;application/json&quot; (i.e. one should be ignored), one has a syntax error (there should be an error on the console for this) and one does not contain an &quot;action&quot; property (this should also be ignored).</p>
+			
+			<script type="application/javascript">
+				$p.console.log("This inline code is executed *before* the jMini $p has been initialized.");
+				$p.console.log("For this reason, this will log to the browser console, even though it references the $p.console object.");
+			</script>
+			
+			<script type="application/json"> {
+					"utility": "definitely-not-the-right-one",
+					"parameter": "zero"
+			} </script>
+			
+			<script type="application/json">
+				{"invalid": [shoudl throw an error}
+			</script>
+
+			<script type="application/json"> {
+					"action": "test-action",
+					"parameter": "two"
+			} </script>
+			
+			<script type="application/json"> {
+					"action": "unknown-action",
+					"parameter": "one"
+			} </script>
+			
+			<p>This leaves two valid JSON snippets. One of these refers to an <q>unknown action</q>, the first of these will call a simple action handler that just logs the JSON to the console - the other will give an <q>unknown action</a> warning on the console:</p>
+			<div id="console"></div>
+		</main>
+		<footer>
+			<p>See page source and browser console for more information.</p>
+		</footer>
+	</body>
+</html>

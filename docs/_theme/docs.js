@@ -13,8 +13,8 @@
 $p.nav = {
 	
 	_settings: {
-		devPath:  '/dev/',
-		docsPath: '/wiki/'
+		devPath:  './dev/',
+		docsPath: './wiki/'
 	},
 
 	_pageId: '',
