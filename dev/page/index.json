@@ -59,6 +59,16 @@
 		"conflics": [],
 		"moreinfo": "framework/page/p-url/fragment/index"
 	},
+	{	"id": "page_dyn_core",
+		"name": "$p.dyn (loader)",
+		"namehtml": "<code>$p.dyn</code> (loader)",
+		"type": "framework",
+		"desc": "Dynamic loading module",
+		"file": "page_dyn_core",
+		"requires": ["page_core"],
+		"conflics": [],
+		"moreinfo": "framework/page/p-dyn/index"
+	},
 	{	"id": "page_console",
 		"name": "$p.console",
 		"namehtml": "<code>$p.console</code>",
