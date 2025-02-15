@@ -16,7 +16,7 @@ $p.dyn = {
 	
 	/* the actual initialisation method: */
 	init: function(p) {
-		$p.console.info('$p.dyn.init()');
+		console.info('$p.dyn.init()');
 		//$p.console.log('parent=',p);
 
 		// first make sure all sub-modules are initialized:
